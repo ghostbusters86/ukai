@@ -1,0 +1,76 @@
+/*ipad pro*/
+@media screen and (max-width: 1024px) {
+	.subtitle {
+	    margin-top: 30px;
+	}
+}
+/*ipad*/
+@media screen and (max-width: 768px) {
+	#footer .image-footer {
+	    width: 250px;
+	}
+	#about-footer .af-info {
+		font-size: 16px;
+	}
+	.title {
+		font-size: 34px;	
+	}
+	.video-us {
+	    height: 390px;
+	}
+	.subtitle {
+	    font-size: 28px;
+	    margin-top: 15px;
+	}
+	.subcontent {
+	    font-size: 18px;
+	}
+}
+
+/*mobile*/
+@media screen and (max-width: 575px) {
+	.navbar-dark .navbar-nav .nav-link {
+	    margin: 0;
+	    font-size: 18px;
+	}
+	.navbar-dark .navbar-brand {
+	    display: contents;
+	}
+	#bgputih {
+	    margin: 20px 10px;
+	}
+	#footer {
+		padding-top: 30px;
+	    padding-bottom: 1px;
+	}
+
+	/*halaman contact*/
+	#bgjudul {
+	    padding: 30px 0px;
+	}
+	.title {
+	    font-size: 28px;
+	}
+	.gambar .img-fluid{
+		max-width: 100%;
+	    display: block;
+	    position: unset;
+	}
+
+	/*halaman about*/
+	.about {
+	    font-size: 16px;
+	}
+	.video-us {
+	    height: 200px;
+	}
+
+	/*halaman fasilitas*/
+	.subtitle {
+		font-size: 28px;
+		margin-top: 20px;
+	}
+	.subcontent {
+	    font-size: 18px;
+	}
+}

@@ -1,0 +1,158 @@
+/*@font-face {
+  font-family: ntailu;
+  src: url(../assets/font/ntailu.ttf);
+}
+font-family: 'Playfair Display', serif;
+*/
+
+.header-logo {
+    height: 100px;
+    background-color: #fff;
+    display: block;
+    text-align: center;
+    padding: 10px 0px;
+}
+.header-logo img {
+    height: 100%;
+    margin: 0 auto;
+}
+
+/*navbar*/
+nav.navbar.navbar-expand-md {
+    background-color: #4ea448;   
+}
+.navbar-dark .navbar-brand {
+    display: none;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+    margin: 0 12px;
+    font-size: 20px;
+}
+
+/*headline*/
+#bgputih {
+    background-color: #fff;
+    color: #595959;
+    margin: 20px;
+}
+.text-headline {
+    font-size: 18px;
+    text-align: center;
+}
+.title-headline {
+    border-bottom: 2px solid #595959;
+}
+
+/*footer*/
+footer {
+    background-color: #1d283b;
+}
+
+#footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #000;
+    color: #fff;
+}
+
+#footer .image-footer {
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+#footer .af-contact {
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+
+#about-footer h4 {
+    font-family: minionpro;
+    font-weight: bold;
+}
+
+#about-footer .af-info {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#footer .f-line {
+    border-top: 1px solid #fff;
+}
+
+/*halaman contact*/
+#bgjudul {
+    background-color: #4ea34740;
+    color: #595959;
+    padding: 60px 0px;
+}
+.gambar .img-fluid{
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/*halaman news & gallery*/
+.news-title h5{
+    color: #595959;
+}
+.list-inline-item a{
+    color: #595959;
+}
+.btn:focus, .btn:active, button:focus, button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+#image-gallery .modal-footer{
+  display: block;
+}
+.thumb{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/*halaman detail news*/
+.news-image .img-fluid {
+    width: 100%;
+}
+
+/*halaman about*/
+#banner .img-fluid {
+    width: 100%;
+}
+.about {
+    color: #595959;
+    font-size: 18px;
+}
+hr.undertitle {
+    border-top: 2px solid #4ea347;
+}
+.video-us {
+    width: 100%;
+    height: 620px;
+}
+
+/*halaman fasilitas*/
+.img-fasilitas {
+    width: 100%;
+    margin-top: 20px;
+}
+.subtitle {
+    margin-top: 50px;
+    color: #595959;
+}
+.hrsubtitile {
+    border-top: 2px solid #4ea347;
+}
+.subcontent {
+    font-size: 22px;
+    color: #595959;
+}

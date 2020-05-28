@@ -16,7 +16,7 @@ class Jawaban extends CI_Controller {
     $data = array(
       'title' => 'Dasboard Admin UKAI',
       'jawaban' => $jawaban,
-      'isi' => 'admin/jawaban/jawaban_V'
+      'isi' => 'admin/jawaban_v'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }
@@ -34,7 +34,7 @@ class Jawaban extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai - Tambah Jawaban',   
-        'isi' => 'admin/jawaban/jawaban_T'
+        'isi' => 'admin/jawaban_t'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
@@ -59,7 +59,7 @@ class Jawaban extends CI_Controller {
 
     $valid = $this->form_validation;
     $valid->set_rules(
-      'Status_answer',
+      'Status_answer',  
       'Status_answer',
       'required',
       array(
@@ -70,7 +70,7 @@ class Jawaban extends CI_Controller {
       $data = array(
         'title' => 'Dasboard Admin Ukai- Tambah BAB Booster',  
         'edit'  => $edit,  
-        'isi'   => 'admin/jawaban/jawaban_E'
+        'isi'   => 'admin/jawaban_e'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 

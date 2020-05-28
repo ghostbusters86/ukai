@@ -12,10 +12,10 @@ class Ambil_soal extends CI_Controller {
   public function index() { 
     $ambil_soal = $this->M_ambil_soal->select_ambil_soal();
 
-    $data = array(
+    $data = array(  
       'title' => 'Dasboard Admin UKAI',
       'ambil_soal' => $ambil_soal,
-      'isi' => 'admin/ambil_soal/ambil_soal_V'
+      'isi' => 'admin/ambil_soal_v'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }
@@ -33,7 +33,7 @@ class Ambil_soal extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai- Tambah Ambil Soal Booster',   
-        'isi' => 'admin/ambil_soal/ambil_soal_T'
+        'isi' => 'admin/ambil_soal_t'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
@@ -42,7 +42,7 @@ class Ambil_soal extends CI_Controller {
       $data = array(
         'kode_soal'    =>  $i->post('kode_soal'),
         'id_user'      =>  $i->post('id_user'),
-        'mulai'         =>  $i->post('mulai'),
+        'mulai'         =>  $i->post('mulai'), 
         'berakhir'      =>  $i->post('berakhir'));
 
       $this->M_ambil_soal->add($data);

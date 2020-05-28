@@ -10,7 +10,7 @@
   </div>
 
   <div class="row my-4">
-  	<div class="col-12 ">
+  	<div class="col-12 ">  
   		<?php
   		if ($this->session->flashdata('notifikasi')) {
   			echo "<br>";
@@ -21,7 +21,6 @@
   			</button></div>";
   		}
   		?>  
-
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All (<?php echo $semua; ?>)</a>
@@ -29,7 +28,7 @@
           <a class="nav-item nav-link" id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="false">Pending (<?php echo $pending; ?>)</a>
         </div>
       </nav>
-
+      
  <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
             <div class="table-responsive p-4">

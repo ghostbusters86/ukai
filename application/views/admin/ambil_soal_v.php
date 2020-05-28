@@ -1,8 +1,8 @@
 <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-    <h1 class="h2">User</h1>
+    <h1 class="h2">ambil_soal</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/user/add'); ?>">
+      <a href="<?php echo site_url('admin/ambil_soal/add'); ?>">
         <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
       </div>
   </div>
@@ -25,44 +25,32 @@
        		<thead>
        			<tr>
        				<th>No</th>
-       				<th>Nama Lengkap</th>
-       				<th>Jenis Kelamin</th>
-       				<th>No HP</th>
-       				<th>Universitas</th>
-       				<th>Email</th>
-       				<!-- <th>Password</th> -->
-       				<th>Akses Level</th>
-       				<th>Aktive</th>
+       				<th>User</th>
+       				<th>Kode Soal</th>
+       				<th>Mulai</th>
+       				<th>Berakhir</th>
        				<th>Aksi</th>
        			</tr>
        		</thead>
        		<tbody>
        			<?php
        			$no = 1;
-       			foreach ($user as $user):
+       			foreach ($ambil_soal as $ambil_soal):
        				?>
        				<tr>
        					<td><?php echo $no; ?></td>
-       					<!-- <td width="15%"><img src="<?php echo base_url(); ?>img/img_artikel/<?php echo $user->gambar_artikel; ?>" alt="<?php echo $user->judul_artikel; ?>"  class="slide-image" width="200"/></td> -->
-       					<td><?php echo $user->nama_lengkap; ?></td>
-       					<td><?php echo $user->jk_user; ?></td>
-       					<td><?php echo $user->nohp_user; ?></td>
-       					<td><?php echo $user->universitas_user; ?></td>
-       					<td><?php echo $user->email; ?></td>
-       					<!-- <td><?php echo $user->password; ?></td> -->
-       					<td><?php echo $user->akses_level; ?></td>
-       					<td><?php echo $user->active; ?></td>
+       					<td><?php echo $ambil_soal->id_user; ?></td>
+       					<td><?php echo $ambil_soal->kode_soal; ?></td>
+       					<td><?php echo $ambil_soal->mulai; ?></td>
+       					<td><?php echo $ambil_soal->berakhir; ?></td>
        					<td>
-       						<a href="<?php echo site_url('admin/artikel/edit/'.$user->id_user); ?>">
-       							<button class="btn btn-sm btn-outline-success">Edit</button>
-       						</a>
 
-       						<button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#<?php echo $user->id_user; ?><?php echo $user->id_user; ?>">
+       						<button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#<?php echo $ambil_soal->id_ambil_soal; ?><?php echo $ambil_soal->id_ambil_soal; ?>">
        							Delete
        						</button>
 
        						<!-- Modal -->
-       						<div class="modal fade" id="<?php echo $user->id_user; ?><?php echo $user->id_user; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       						<div class="modal fade" id="<?php echo $ambil_soal->id_ambil_soal; ?><?php echo $ambil_soal->id_ambil_soal; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
        							<div class="modal-dialog" role="document">
        								<div class="modal-content">
        									<div class="modal-header">
@@ -72,10 +60,10 @@
        										</button>
        									</div>
        									<div class="modal-body">
-       										Apakah Anda ingin menghapus data <b><?php echo $user->judul_artikel; ?></b> ?
+       										Apakah Anda ingin menghapus data <b><?php echo $ambil_soal->id_ambil_soal; ?></b> ?
        									</div>
        									<div class="modal-footer">
-       										<a href="<?php echo site_url('admin/artikel/delete/'.$user->id_user)?>">
+       										<a href="<?php echo site_url('admin/ambil_soal/delete/'.$ambil_soal->id_ambil_soal)?>">
        											<button type="button" class="btn btn-danger">Delete</button>
        										</a>
        									</div>

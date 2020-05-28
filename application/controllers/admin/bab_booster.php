@@ -10,14 +10,14 @@ class Bab_booster extends CI_Controller {
     $this->load->model('M_paket_booster');
     $this->load->helper('text');
   }
-
+      
   public function index() {
     $bab_booster = $this->M_bab_booster->select_bab_booster();
 
     $semua  = $this->M_bab_booster->count_semua();
-    $publish  = $this->M_bab_booster->count_publish();
+    $publish  = $this->M_bab_booster->count_published();
     $pending  = $this->M_bab_booster->count_pending();
-    $bab_publish = $this->M_bab_booster->select_bab_publish();
+    $bab_publish = $this->M_bab_booster->select_bab_published();
     $bab_pending = $this->M_bab_booster->select_bab_pending();
 
     $data = array(   
@@ -34,7 +34,7 @@ class Bab_booster extends CI_Controller {
   }
  
     public function add() {  
-    $paket_booster = $this->M_paket_booster->select_paket_booster();
+    $paket_booster = $this->M_paket_booster->select_published();
 
     $valid = $this->form_validation;
     $valid->set_rules(

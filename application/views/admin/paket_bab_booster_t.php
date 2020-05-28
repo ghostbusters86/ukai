@@ -52,6 +52,7 @@
                <select class="custom-select form-control" name="id_booster">
                 <?php foreach ($paket_booster as $paket_booster) { ?>
                   <option value="<?php echo $paket_booster->id_booster ?>">
+                    <?php echo $paket_booster->nama_booster ?>
                     <?php echo $paket_booster->kode_paket ?>
                   </option>                   
                 <?php } ?> 

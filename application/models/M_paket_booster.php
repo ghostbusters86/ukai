@@ -21,47 +21,39 @@ class M_paket_booster extends CI_Model {
     {
       $this->db->select('*');
       $this->db->from('paket_booster');
-      $status_booster  =   $this->db->count_all_results();
-      return $status_booster;
-    }
-    public function count_publish()  
-    {
+      $publish = $this->db->count_all_results();
+      return $publish;
+    }   
+    public function count_published()  
+    {  
       $this->db->select('*');
       $this->db->from('paket_booster');
       $this->db->where('status_booster', '1');
-      $status_booster  =   $this->db->count_all_results();
-      return $status_booster;
+      $publish = $this->db->count_all_results();
+      return $publish;
     }
     public function count_pending()
     {
       $this->db->select('*');   
       $this->db->from('paket_booster');
       $this->db->where('status_booster', '0');
-      $status_booster  =   $this->db->count_all_results();
-      return $status_booster;
-    }
-    public function select_paket()
-    {
-      $this->db->select('*');
-      $this->db->from('paket_booster a');  
-      $this->db->order_by('id_booster', 'DESC');
-      $query  = $this->db->get();
-      return $query->result();
+      $pending = $this->db->count_all_results();
+      return $pending;
     }
     public function select_published()
     {
       $this->db->select('*');
-      $this->db->from('paket_booster a');
-      $this->db->where('status_booster', '0');
+      $this->db->from('paket_booster');
+      $this->db->where('status_booster', '1');
       $this->db->order_by('id_booster', 'DESC');
-      $query  = $this->db->get();
+      $query = $this->db->get();
       return $query->result();
     }
     public function select_pending()
     {
       $this->db->select('*');
-      $this->db->from('paket_booster a');
-      $this->db->where('status_booster', '1');
+      $this->db->from('paket_booster');
+      $this->db->where('status_booster', '0');
       $this->db->order_by('id_booster', 'DESC');
       $query  = $this->db->get();
       return $query->result();

@@ -11,7 +11,7 @@
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/soal/edit/'.$edit->id_soal)) ?>
+    echo form_open_multipart(site_url('admin/paket_reguler/edit_soal/'.$edit->id_soal)) ?>
 
     <div class="row my-4">
 
@@ -30,13 +30,6 @@
             <div class="form-group">
               <label>Soal :</label>
               <select class="custom-select form-control" name="kode_soal">
-                <?php foreach ($bab_booster as $bab_booster) { ?>
-                  <option value="<?php echo $bab_booster->kode_soal ?>"
-                    <?php if($edit->kode_soal == $bab_booster->kode_soal) { echo "selected"; } ?>>
-                    <?php echo $bab_booster->kode_soal ?> -
-                    <?php echo $bab_booster->kode_paket ?>
-                  </option>                   
-                <?php } ?> 
                 <?php foreach ($paket_reguler as $paket_reguler) { ?>
                   <option value="<?php echo $paket_reguler->kode_soal ?>">
                     <?php echo $paket_reguler->kode_soal ?> -

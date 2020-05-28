@@ -14,7 +14,7 @@ class Transaksi extends CI_Controller {
     $data = array(
       'title' => 'Dasboard Admin UKAI',
       'transaksi' => $transaksi,
-      'isi' => 'admin/transaksi/transaksi_V'
+      'isi' => 'admin/transaksi_v'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }  
@@ -61,7 +61,7 @@ class Transaksi extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai- Tambah Transaksi',   
-        'isi' => 'admin/transaksi/transaksi_T'
+        'isi' => 'admin/transaksi_t'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
@@ -127,7 +127,7 @@ class Transaksi extends CI_Controller {
       $data = array(
         'title' => 'Dasboard Admin Ukai- Tambah Transaksi',  
         'edit'  => $edit, 
-        'isi'   => 'admin/transaksi/transaksi_E'
+        'isi'   => 'admin/transaksi_e'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 

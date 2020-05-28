@@ -14,7 +14,7 @@ class User extends CI_Controller {
     $data = array(
       'title' => 'Dasboard Admin UKAI',
       'user'  => $user,
-      'isi' => 'admin/user/user_V'
+      'isi' => 'admin/user_v'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }
@@ -22,7 +22,7 @@ class User extends CI_Controller {
   function add() {  
       $data = array(
       'title' => 'Dasboard Admin UKAI',
-      'isi' => 'admin/user/user_T'
+      'isi' => 'admin/user_t'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }
@@ -30,7 +30,7 @@ class User extends CI_Controller {
   function edit() {  
       $data = array(
       'title' => 'Dasboard Admin UKAI',
-      'isi' => 'admin/user/user_E'
+      'isi' => 'admin/user_e'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }

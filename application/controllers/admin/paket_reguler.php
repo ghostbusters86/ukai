@@ -7,6 +7,7 @@ class Paket_reguler extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('M_paket_reguler');
+    $this->load->model('M_soal');
     $this->load->helper('text');
   }
 
@@ -14,20 +15,20 @@ class Paket_reguler extends CI_Controller {
     $paket_reguler = $this->M_paket_reguler->select_paket_reguler();
 
     $semua  = $this->M_paket_reguler->count_semua();
-    $publish  = $this->M_paket_reguler->count_publish();
+    $publish  = $this->M_paket_reguler->count_published();
     $pending  = $this->M_paket_reguler->count_pending();
-    $paket_reguler_published = $this->M_paket_reguler->select_pending();
-    $paket_reguler_pending = $this->M_paket_reguler->select_published();
+    $paket_reguler_published = $this->M_paket_reguler->select_published();
+    $paket_reguler_pending = $this->M_paket_reguler->select_pending();
 
     $data = array(
       'title' => 'Dasboard Admin UKAI',
       'paket_reguler' => $paket_reguler,
       'semua' => $semua,
-      'publish' => $publish,
+      'publish' => $publish,     
       'pending' => $pending,
       'paket_reguler_published' => $paket_reguler_published,
       'paket_reguler_pending' => $paket_reguler_pending,
-      'isi' => 'admin//paket_reguler/paket_reguler_V'
+      'isi' => 'admin/paket_reguler_V'
     );
     $this->load->view("admin/layout/wrapper", $data, false);     
   }
@@ -89,7 +90,7 @@ class Paket_reguler extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai- Tambah Paket reguler',   
-        'isi' => 'admin/paket_reguler/paket_reguler_T'
+        'isi' => 'admin/paket_reguler_T'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
@@ -113,18 +114,19 @@ class Paket_reguler extends CI_Controller {
 
   public function edit($id_reguler) {    
     $edit  = $this->M_paket_reguler->detail($id_reguler); 
+    $soal = $this->M_soal->select_soal_reguler();
 
     $valid = $this->form_validation;
     $valid->set_rules(
       'nama_reguler',
-      'nama_reguler',
+      'nama_reguler',  
       'required',
       array(
         'required'  =>  'Anda belum mengisikan Nama reguler.') 
     );
     
     $valid->set_rules(
-      'desk_reguler',
+      'desk_reguler', 
       'desk_reguler',
       'required',
       array(
@@ -172,7 +174,8 @@ class Paket_reguler extends CI_Controller {
       $data = array(
         'title' => 'Dasboard Admin Ukai- Ubah Paket reguler',  
         'edit'  => $edit,  
-        'isi'   => 'admin/paket_reguler/paket_reguler_E'
+        'soal' => $soal,
+        'isi'   => 'admin/paket_reguler_E'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
@@ -200,6 +203,171 @@ class Paket_reguler extends CI_Controller {
     $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
     redirect('admin/paket_reguler');
   }
+
+  public function add_soal($id_reguler) {  
+    $paket_reguler = $this->M_paket_reguler->select_published();
+    $soal_reguler = $this->M_paket_reguler->detail($id_reguler);
+
+    $valid = $this->form_validation;
+    $valid->set_rules(     
+      'kode_soal',
+      'kode_soal',   
+      'required',     
+      array(  
+        'required'  =>  'Anda belum mengisikan ID Booster.') 
+    );
+    
+    $valid->set_rules(
+      'pertanyaan',
+      'pertanyaan',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Nama BAB Booster.')
+    );
+    $valid->set_rules(
+      'jawaban_d',
+      'jawaban_d',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban D.')
+    );
+    $valid->set_rules(
+      'jawaban_c',
+      'jawaban_c',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban C.')
+    );
+    $valid->set_rules(
+      'jawaban_b',
+      'jawaban_b',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban B.')
+    );
+
+    $valid->set_rules(
+      'jawaban_a',
+      'jawaban_a',   
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban A.')
+    );
+
+    if ($valid->run()===false) {
+      $data = array(
+        'title'   => 'Dasboard Admin Ukai- Tambah BAB Booster',   
+        'paket_reguler' => $paket_reguler,   
+        'soal_reguler' => $soal_reguler,  
+        'isi' => 'admin/paket_reguler_soal_t'
+      );
+      $this->load->view("admin/layout/wrapper", $data, false);
+
+    }else{
+        $i  = $this->input;
+        $data = array(
+          'kode_soal'         =>  $i->post('kode_soal'),
+          'pertanyaan'       =>  $i->post('pertanyaan'),
+          'jawaban_a'       =>  $i->post('jawaban_a'),
+          'jawaban_b'       =>  $i->post('jawaban_b'),
+          'jawaban_c'      =>  $i->post('jawaban_c'),
+          'jawaban_d'      =>  $i->post('jawaban_d'),
+          'kunci_soal'      =>  $i->post('kunci_soal'),
+          'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
+
+        $this->M_soal->add($data);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> Soal Baru</strong></center>');
+        redirect('/admin/paket_reguler/edit/'.$soal_reguler->id_reguler);
+      }   
+    }
+
+   public function edit_soal($id_soal) {    
+    $edit  = $this->M_soal->detail($id_soal); 
+    $paket_reguler = $this->M_paket_reguler->select_paket_reguler();
+
+        $valid = $this->form_validation;
+    $valid->set_rules(
+      'kode_soal',
+      'kode_soal',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Kode Soal.') 
+    );
+    $valid->set_rules(
+      'pertanyaan',
+      'pertanyaan',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Pertanyaam.')
+    );
+    $valid->set_rules(
+      'jawaban_d',
+      'jawaban_d',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban D.')
+    );
+    $valid->set_rules(
+      'jawaban_c',
+      'jawaban_c',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban C')
+    );
+    $valid->set_rules(
+      'jawaban_b',
+      'jawaban_b',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban B.')
+    );
+    $valid->set_rules(
+      'jawaban_a',
+      'jawaban_a',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban A.')
+    );
+
+    if ($valid->run()===false) {
+      $data = array(
+        'title' => 'Dasboard Admin Ukai - Ubah BAB Booster',  
+        'edit'  => $edit,  
+        'paket_reguler' => $paket_reguler, 
+        'isi'   => 'admin/paket_reguler_soal_e'
+      );
+      $this->load->view("admin/layout/wrapper", $data, false);
+
+    }else{
+        $i  = $this->input;
+        $data = array(  
+          'kode_soal'            =>  $i->post('kode_soal'),
+          'pertanyaan'       =>  $i->post('pertanyaan'),
+          'jawaban_a'       =>  $i->post('jawaban_a'),
+          'jawaban_b'       =>  $i->post('jawaban_b'),
+          'jawaban_c'      =>  $i->post('jawaban_c'),
+          'jawaban_d'      =>  $i->post('jawaban_d'),
+          'kunci_soal'      =>  $i->post('kunci_soal'),
+          'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
+
+        $this->M_soal->edit($data,$id_soal);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Soal Reguler </strong></center>');
+        redirect('/admin/paket_reguler/edit/'.$edit->id_reguler);
+      }
+    }
+
+    public function delete_soal($id) {
+    $soal  = $this->M_soal->detail($id); 
+    $data = array(
+      'id'  =>  $id,
+      'soal'=>  $soal);
+    $this->M_paket_reguler->delete($data);
+    $this->M_soal->delete($data);
+    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
+    redirect('admin/paket_reguler/edit/'.$soal->id_reguler);
+  }
+
+
 
 }
 

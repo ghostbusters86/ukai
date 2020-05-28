@@ -3,7 +3,7 @@
   <nav id="sidebar">
     <div class="sidebar-header">
       <center> 
-        <img src="<?php echo base_url(); ?>img/img_user/<?php echo $this->session->userdata('gmb_user'); ?>" alt="Foto_Profil" class="rounded-circle coba mb-2" width="50%">
+        <img src="<?php echo base_url(); ?>assets/images/admin.png" alt="Foto_Profil" class="rounded-circle coba mb-2" width="60%">
         <br>
         <span><?php echo $this->session->userdata('nanma_lengkap'); ?></span> 
         <hr>
@@ -28,16 +28,8 @@
         <a href="<?php echo base_url('admin/paket_booster'); ?>"><i class="fas fa-bookmark pr-3"></i>Paket Booster</a>
       </li>
       <li>
-        <a href="<?php echo base_url('admin/bab_booster'); ?>"><i class="far fa-folder-open pr-3"></i>Bab Booster</a>
-      </li>
-      <li>
         <a href="<?php echo base_url('admin/soal'); ?>"><i class="far fa-edit pr-3"></i>Soal</a>
       </li>
-
-      <li>
-        <a href="<?php echo base_url('admin/jawaban'); ?>"><i class="far fa-file-archive pr-3"></i>Jawaban</a>
-      </li>
-
       <li>
         <a href="<?php echo base_url('admin/ambil_soal'); ?>"><i class="far fa-file-alt pr-3"></i>Ambil Soal</a>
       </li>

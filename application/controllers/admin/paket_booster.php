@@ -8,27 +8,29 @@ class Paket_booster extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('M_paket_booster');
+    $this->load->model('M_bab_booster');
+    $this->load->model('M_soal');
     $this->load->helper('text');   
   }
 
-  public function index() {
+  public function index() {   
 
+    $select_paket  = $this->M_paket_booster->select_paket_booster();
     $semua  = $this->M_paket_booster->count_semua();
-    $publish  = $this->M_paket_booster->count_publish();
+    $publish  = $this->M_paket_booster->count_published();
     $pending  = $this->M_paket_booster->count_pending();
-    $select_paket  = $this->M_paket_booster->select_paket();
-    $paket_booster_published = $this->M_paket_booster->select_pending();
-    $paket_booster_pending = $this->M_paket_booster->select_published();
+    $paket_booster_published = $this->M_paket_booster->select_published();
+    $paket_booster_pending = $this->M_paket_booster->select_pending();
 
-    $data = array(
+    $data = array(  
       'title' => 'Dasboard Admin UKAI',
-      'semua' => $semua,
+      'semua' => $semua,  
       'publish' => $publish,
       'pending' => $pending,
       'select_paket' => $select_paket,
       'paket_booster_published' => $paket_booster_published,
       'paket_booster_pending' => $paket_booster_pending,
-      'isi' => 'admin//paket_booster/paket_booster_V'
+      'isi' => 'admin/paket_booster_V'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }
@@ -75,7 +77,7 @@ class Paket_booster extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai- Tambah Paket Booster',   
-        'isi' => 'admin/paket_booster/paket_booster_T'
+        'isi' => 'admin/paket_booster_T'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
@@ -96,7 +98,16 @@ class Paket_booster extends CI_Controller {
     }
 
   public function edit($id_booster) {    
-    $edit  = $this->M_paket_booster->detail($id_booster); 
+    $edit  = $this->M_paket_booster->detail($id_booster);
+
+
+    $bab_booster = $this->M_bab_booster->select_bab_booster();
+    $semua  = $this->M_bab_booster->count_semua();
+    $publish  = $this->M_bab_booster->count_published();
+    $pending  = $this->M_bab_booster->count_pending();
+    $bab_publish = $this->M_bab_booster->select_bab_published();
+    $bab_pending = $this->M_bab_booster->select_bab_pending();
+ 
 
        $valid = $this->form_validation;
     $valid->set_rules(
@@ -140,8 +151,14 @@ class Paket_booster extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title' => 'Dasboard Admin Ukai- Ubah Paket Booster',  
-        'edit'  => $edit,  
-        'isi'   => 'admin/paket_booster/paket_booster_E'
+        'edit'  => $edit,
+        'bab_booster' => $bab_booster,
+        'semua' =>  $semua,
+        'publish' =>  $publish,  
+        'pending' =>  $pending,
+        'bab_publish' =>  $bab_publish,
+        'bab_pending' =>  $bab_pending,  
+        'isi'   => 'admin/paket_booster_E'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
@@ -166,6 +183,312 @@ class Paket_booster extends CI_Controller {
     $this->M_paket_booster->delete($data);
     $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
     redirect('admin/paket_booster');
+  }
+
+   public function add_bab() {  
+    $paket_booster = $this->M_paket_booster->select_published();
+
+    $valid = $this->form_validation;
+    $valid->set_rules(
+      'id_booster',
+      'id_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan ID Booster.') 
+    );
+    
+    $valid->set_rules(
+      'nama_bab_booster',
+      'nama_bab_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Nama BAB Booster.')
+    );
+    $valid->set_rules(
+      'time_bab_booster',
+      'time_bab_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Waktu BAB Booster.')
+    );
+    $valid->set_rules(
+      'status_bab_booster',
+      'status_bab_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Status BAB Booster.')
+    );
+    $valid->set_rules( 
+      'kode_soal',
+      'kode_soal',   
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Kode Soal.')
+    );
+
+    if ($valid->run()===false) {
+      $data = array(
+        'title'   => 'Dasboard Admin Ukai - Ubah BAB Booster',  
+        'paket_booster' => $paket_booster, 
+        'isi' => 'admin/paket_bab_booster_t'
+      );
+      $this->load->view("admin/layout/wrapper", $data, false);
+
+    }else{
+        $i  = $this->input;
+        $data = array(
+          'id_booster'            =>  $i->post('id_booster'),
+          'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
+          'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
+          'time_bab_booster'       =>  $i->post('time_bab_booster'),
+          'status_bab_booster'      =>  $i->post('status_bab_booster'),
+          'kode_soal'=>  $i->post('kode_soal'));
+
+        $this->M_bab_booster->add($data);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil menambahkan data <strong> BAB Booster Baru</strong></center>');
+        redirect('/admin/paket_booster');
+      }
+    }
+
+     public function edit_bab($id_bab_booster) {  
+    $paket_booster = $this->M_paket_booster->select_paket_booster();  
+    $edit  = $this->M_bab_booster->detail($id_bab_booster); 
+
+    $soal = $this->M_soal->listing();
+
+    $valid = $this->form_validation;
+    $valid->set_rules(
+      'id_booster',  
+      'id_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan ID Booster.') 
+    );
+    
+    $valid->set_rules(
+      'nama_bab_booster',
+      'nama_bab_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Nama BAB Booster.')
+    );
+    $valid->set_rules(
+      'time_bab_booster',
+      'time_bab_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Waktu BAB Booster.')
+    );
+    $valid->set_rules(
+      'status_bab_booster',
+      'status_bab_booster',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Status BAB Booster.')
+    );
+    $valid->set_rules(
+      'kode_soal',
+      'kode_soal',   
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Kode Soal.')
+    );
+
+    if ($valid->run()===false) {
+      $data = array(
+        'title' => 'Dasboard Admin Ukai- Tambah BAB Booster',  
+        'edit'  => $edit, 
+        'soal' => $soal, 
+        'paket_booster'  => $paket_booster,  
+        'isi'   => 'admin/paket_bab_booster_e'
+      );
+      $this->load->view("admin/layout/wrapper", $data, false);
+
+    }else{
+        $i  = $this->input;
+        $data = array(  
+          'id_booster'             =>  $i->post('id_booster'),
+          'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
+          'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
+          'time_bab_booster'       =>  $i->post('time_bab_booster'),
+          'status_bab_booster'     =>  $i->post('status_bab_booster'),
+          'kode_soal'              =>  $i->post('kode_soal'));
+
+        $this->M_bab_booster->edit($data,$id_bab_booster);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Bab Booster Baru</strong></center>');
+        redirect('/admin/bab_booster');
+      }
+    }
+
+  public function delete_bab($id) {
+    $data = array('id'  =>  $id);
+    $this->M_bab_booster->delete($data);
+    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
+    redirect('admin/bab_booster');
+  }
+
+  public function add_soal($id_bab_booster) {  
+    $paket_bab_booster = $this->M_bab_booster->select_bab_published();
+    $soal_bab_booster = $this->M_bab_booster->detail($id_bab_booster);
+
+    $valid = $this->form_validation;
+    $valid->set_rules(     
+      'kode_soal',
+      'kode_soal',   
+      'required',     
+      array(  
+        'required'  =>  'Anda belum mengisikan ID Booster.') 
+    );
+    
+    $valid->set_rules(
+      'pertanyaan',
+      'pertanyaan',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Nama BAB Booster.')
+    );
+    $valid->set_rules(
+      'jawaban_d',
+      'jawaban_d',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban D.')
+    );
+    $valid->set_rules(
+      'jawaban_c',
+      'jawaban_c',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban C.')
+    );
+    $valid->set_rules(
+      'jawaban_b',
+      'jawaban_b',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban B.')
+    );
+
+    $valid->set_rules(
+      'jawaban_a',
+      'jawaban_a',   
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawaban A.')
+    );
+
+    if ($valid->run()===false) {
+      $data = array(
+        'title'   => 'Dasboard Admin Ukai- Tambah BAB Booster',   
+        'paket_bab_booster' => $paket_bab_booster,   
+        'soal_bab_booster' => $soal_bab_booster,  
+        'isi' => 'admin/paket_booster_soal_t'
+      );
+      $this->load->view("admin/layout/wrapper", $data, false);
+
+    }else{
+        $i  = $this->input;
+        $data = array(
+          'kode_soal'         =>  $i->post('kode_soal'),
+          'pertanyaan'       =>  $i->post('pertanyaan'),
+          'jawaban_a'       =>  $i->post('jawaban_a'),
+          'jawaban_b'       =>  $i->post('jawaban_b'),
+          'jawaban_c'      =>  $i->post('jawaban_c'),
+          'jawaban_d'      =>  $i->post('jawaban_d'),
+          'kunci_soal'      =>  $i->post('kunci_soal'),
+          'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
+
+        $this->M_soal->add($data);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> Soal Baru</strong></center>');
+        redirect('/admin/paket_booster/edit_bab/'.$soal_bab_booster->id_bab_booster);
+      }   
+    }
+
+
+   public function edit_soal($id_soal) {    
+    $edit  = $this->M_soal->detail_booster($id_soal); 
+    $bab_booster = $this->M_bab_booster->select_bab_booster();
+
+        $valid = $this->form_validation;
+    $valid->set_rules(
+      'kode_soal',
+      'kode_soal',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Kode Soal.') 
+    );
+    $valid->set_rules(
+      'pertanyaan',
+      'pertanyaan',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Pertanyaam.')
+    );
+    $valid->set_rules(
+      'jawaban_d',
+      'jawaban_d',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban D.')
+    );
+    $valid->set_rules(
+      'jawaban_c',
+      'jawaban_c',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban C')
+    );
+    $valid->set_rules(
+      'jawaban_b',
+      'jawaban_b',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban B.')
+    );
+    $valid->set_rules(
+      'jawaban_a',
+      'jawaban_a',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Jawban A.')
+    );
+
+    if ($valid->run()===false) {
+      $data = array(
+        'title' => 'Dasboard Admin Ukai - Ubah BAB Booster',  
+        'edit'  => $edit,  
+        'bab_booster' => $bab_booster, 
+        'isi'   => 'admin/paket_booster_soal_e'
+      );
+      $this->load->view("admin/layout/wrapper", $data, false);
+
+    }else{
+        $i  = $this->input;
+        $data = array(  
+          'kode_soal'            =>  $i->post('kode_soal'),
+          'pertanyaan'       =>  $i->post('pertanyaan'),
+          'jawaban_a'       =>  $i->post('jawaban_a'),
+          'jawaban_b'       =>  $i->post('jawaban_b'),
+          'jawaban_c'      =>  $i->post('jawaban_c'),
+          'jawaban_d'      =>  $i->post('jawaban_d'),
+          'kunci_soal'      =>  $i->post('kunci_soal'),
+          'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
+
+        $this->M_soal->edit($data,$id_soal);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Soal Reguler </strong></center>');
+        redirect('/admin/paket_booster/edit_bab/'.$edit->id_bab_booster);
+      }
+    }
+
+    public function delete_soal($id) {
+    $soal  = $this->M_soal->detail($id); 
+    $data = array(
+      'id'  =>  $id,
+      'soal'=>  $soal);
+    $this->M_paket_bab_booster->delete($data);
+    $this->M_soal->delete($data);
+    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
+    redirect('admin/paket_bab_booster/edit/'.$soal->id_bab_booster);
   }
 
 

@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/media.css">
-    <link rel="icon" href="assets/images/favicon-laut-tawar.png">
+    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
     <title>Teman UKAI</title>
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="<?php echo $title; ?>" />
+<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 </head>
 <body>
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="landingpage">
     <a class="navbar-brand" href="index.html">
-      <img class="img-fluid logo" src="assets/images/logo-perusahaan.png" alt="logo-perusahaan">
+      <img class="img-fluid logo" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,105 +36,95 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profil.html">Profil</a>
+          <a class="nav-link" href="<?php echo base_url('profil'); ?>">Profil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="paket.html">Paket Soal</a>
+          <a class="nav-link" href="<?php echo base_url('paket'); ?>">Paket Soal</a>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a href="index.html"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
+        <a href="<?php echo base_url().'Login_user/logout' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
       </div>
     </div>
   </nav>
 
-  <section id="pembayaran">
+  <!-- dasbor user -->
+  <div id="dashboard">
     <div class="container">
-      <div class="row wrap">
-        <h2 class="title-pembayaran">Informasi Pembayaran</h2>
-        <hr class="line-pembayaran">
-        <table class="table pembayaran">
-          <tbody>
-            <tr>
-              <td>Kode Transaksi</td>
-              <td class="r">@TU20049</td>
-            </tr>
-            <tr>
-              <td>Nominal Transfer</td>
-              <td class="r">Rp50.000</td>
-            </tr>
-            <tr>
-              <td>Nama Rekening Tujuan</td>
-              <td class="r">Teman Ukai</td>
-            </tr>
-            <tr>
-              <td>Nama Paket</td>
-              <td class="r">Paket soal reguler</td>
-            </tr>
-            <tr>
-              <td>Rekening Bank</td>
-              <td class="r">801254649</td>
-            </tr>
-            <tr>
-              <td>Harga Paket</td>
-              <td class="r">Rp50.000</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="row">
+        <div class="col-md-3 dash">
+          <p class="title-dash">Your Profile</p>
+          <hr class="line-dash">
+          <img class="img-fluid rounded-circle dash" src="https://image.ibb.co/iN3qES/pexels_photo_324658.jpg" alt="profil-user">
+          <p class="description-dash">
+            <b>Andin Fathiannisa</b><br>
+            Universitas Amikom Yogyakarta
+          </p>
+        </div>
 
-      <div class="row wrap">
-        <h2 class="title-pembayaran">
-          Konfirmasi Pembayaran
-          <div class="float-right pembayaran">Kode Transaksi: TU 20049</div>
-        </h2>
-        <hr class="line-pembayaran">
-          <form class="form-wrap" action="informasi.html">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <span>Nama Pembayar</span>
-                <input type="text" class="form-control" id="">
-              </div>
-              <div class="form-group col-md-6">
-                <span>a/n Rekening Pembayar</span>
-                <input type="text" class="form-control" id="">
+        <div class="col-md-9 dash">
+          <div class="wrap">
+            <div class="row dash-banner">
+              <div class="col-md-12">
+                <h5 class="dash-nama">Andin Fathiannisa</h5>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <span>Bank</span>
-                <input type="text" class="form-control" id="">
-              </div>
-              <div class="form-group col-md-6">
-                <span>Jumlah Pembayaran</span>
-                <input type="text" class="form-control" id="">
+
+            <div class="row dash-informasi">
+              <div class="col-md-12">
+                <form action="edit-profil.html">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <span>Nama Lengkap</span>
+                      <input type="text" class="form-control" id="" value="Andin Fathiannisa">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <span>Jenis Kelamin</span>
+                      <input type="text" class="form-control" id="" value="Perempuan">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <span>Nomor Hp</span>
+                      <input type="number" class="form-control" id="" value="082213458889">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <span>Asal Universitas</span>
+                      <input type="text" class="form-control" id="" value="Universitas Amikom Yogyakarta">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <span>Email</span>
+                      <input type="email" class="form-control" id="" value="andin@sevenpion.com">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <span>Password</span>
+                      <input type="password" class="form-control" id="" value="********">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <span>Ganti Foto</span>
+                    <input type="file" class="form-control-file ganti-foto" id="">
+                  </div>
+                  <button type="submit" class="btn btn-danger color login pl-5 pr-5">Simpan</button>
+                </form>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <span>Tanggal Bayar</span>
-                <input type="date" class="form-control" id="">
-              </div>
-              <div class="form-group col-md-6">
-                <span>Bukti Transfer</span>
-                <input type="file" class="form-control-file pembayaran" id="">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-danger color login pl-5 pr-5">Konfirmasi Pembayaran</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <footer id="footer">
     <div class="container">
       <div class="row">
         <div class="col-md-5">
-          <img class="image-footer" src="assets/images/logo-perusahaan.png" alt="logo-perusahaan">
+          <img class="img-fluid logo" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
           <p class="description-footer">Media belajar berbasis teknologi yang terfokus pada kemampuan menjawab soal untuk persiapan ujian UKAImu yang lebih baik. Dengan sistem yang selalu berkambang sesuai kebutuhan, Teman UKAI hadir sebagai solusi belajarmu untuk menjadi teman berjuang menuju perjalanan impianmu.</p>
         </div>
         <div class="col-md-1 ipad">
@@ -144,16 +134,16 @@
             <h5 class="widget-title">Menu</h5>
             <ul>
               <li>
-                  <a href="#booster">Paket Booster</a>
+                  <a href="<?php echo base_url('home'); ?>#booster">Paket Booster</a>
               </li>
               <li>
-                  <a href="#reguler">Paket Reguler</a>
+                  <a href="<?php echo base_url('home'); ?>#reguler">Paket Reguler</a>
               </li>
               <li>
-                  <a href="#klien">Klien Kami</a>
+                  <a href="<?php echo base_url('home'); ?>#klien">Klien Kami</a>
               </li>
               <li>
-                  <a href="#testimoni">Testimoni</a>
+                  <a href="<?php echo base_url('home'); ?>#testimoni">Testimoni</a>
               </li>
             </ul>
           </div>

@@ -17,9 +17,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
-
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
-
     <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
 
     <title>Teman UKAI</title>
@@ -29,7 +27,7 @@
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
-
+<!-- 
     <meta name="twitter:description" content="<?php echo $title; ?>" />
 
     <meta name="twitter:title" content="<?php echo $title; ?>" />
@@ -44,7 +42,7 @@
 
     <meta name="twitter:description" content="<?php echo $metades; ?>">
 
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 
 </head>
 
@@ -55,9 +53,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="landingpage">
 
     <a class="navbar-brand" href="<?php echo base_url('home'); ?>">
-
       <img class="img-fluid logo" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
-
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,9 +102,17 @@
 
       <div class="form-inline my-2 my-lg-0">
 
-        <a class="mr-3" data-toggle="modal" data-target="#login-start"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
-
-        <a href="<?php echo base_url('daftar'); ?>"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
+        <?php if($this->session->userdata('online')==false):?>
+            <a class="mr-3" data-toggle="modal" data-target="#login-start" href="<?php echo base_url().'Login_user' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
+        <?php else:?>
+            <a href="<?php echo base_url().'Login_user/logout' ?>" class="mr-3"><i class="fa fa-user" style="color: #9E1F63"></i> Log Out</a>
+        <?php endif;?>
+   
+        <?php if($this->session->userdata('online')==false):?>
+         <a href="<?php echo base_url('daftar'); ?>"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
+         <?php else:?>
+          <a href="<?php echo base_url().'paket' ?>"> <button class="btn btn-danger color my-2 my-sm-0">Dashboard</button></a></a>
+        <?php endif;?>
 
       </div>
 
@@ -150,13 +154,13 @@
 
               <p class="description-login">Selamat datang kembali, silahkan masuk</p>
 
-              <form action="profil.html">
+              <form action="<?php echo base_url('Login_user') ?>" method="post">
 
                 <div class="form-group">
 
                   <label for="">Email</label>
 
-                  <input type="email" class="form-control" id="" placeholder="Isikan email anda">
+                  <input type="email" class="form-control" id="" name="email" placeholder="Isikan email anda">
 
                 </div>
 
@@ -164,7 +168,7 @@
 
                   <label for="">Password</label>
 
-                  <input type="password" class="form-control" id="" placeholder="Isikan password anda">
+                  <input type="password" class="form-control" id="" name="password" placeholder="Isikan password anda">
 
                 </div>
 
@@ -174,9 +178,9 @@
 
               <div class="link login">
 
-                <p>Lupa password? <a href="reset-password.html">Reset</a></p>
+                <p>Lupa password? <a href="<?php echo base_url('reset_password'); ?>">Reset</a></p>
 
-                <p>Belum punya akun? <a href="daftar.html">Daftar</a></p>
+                <p>Belum punya akun? <a href="<?php echo base_url('daftar'); ?>">Daftar</a></p>
 
               </div>
 
@@ -199,7 +203,11 @@
   <section id="home">
 
     <div class="container">
-
+            <?php
+            if ($this->session->flashdata('pesan')) {
+              ?>
+              <p style="text-align: center; color: red;"><b><?php echo $this->session->flashdata('pesan'); ?></b></p>  
+            <?php } ?>
       <div class="row">
 
         <h1 class="title-header">Platform Penyedia Layanan <br class="enter"> Latihan Soal UKAI Berbasis Teknologi</h1>
@@ -444,7 +452,7 @@
 
       <center>
 
-        <a href="daftar.html"><button class="btn btn-danger color" type="submit">Daftar Sekarang</button></a>
+        <a href="<?php echo base_url('daftar'); ?>"><button class="btn btn-danger color" type="submit">Daftar Sekarang</button></a>
 
       </center>
 
@@ -482,25 +490,25 @@
 
               <li>
 
-                  <a href="#booster">Paket Booster</a>
+                  <a href="<?php echo base_url('home'); ?>#booster">Paket Booster</a>
 
               </li>
 
               <li>
 
-                  <a href="#reguler">Paket Reguler</a>
+                  <a href="<?php echo base_url('home'); ?>#reguler">Paket Reguler</a>
 
               </li>
 
               <li>
 
-                  <a href="#klien">Klien Kami</a>
+                  <a href="<?php echo base_url('home'); ?>#klien">Klien Kami</a>
 
               </li>
 
               <li>
 
-                  <a href="#testimoni">Testimoni</a>
+                  <a href="<?php echo base_url('home'); ?>#testimoni">Testimoni</a>
 
               </li>
 

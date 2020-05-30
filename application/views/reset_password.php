@@ -11,23 +11,25 @@
     <link rel="stylesheet" href="assets/css/media.css">
     <link rel="icon" href="assets/images/favicon-laut-tawar.png">
     <title>Teman UKAI</title>
-    <meta property="og:locale" content="id_ID" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="<?php echo $title; ?>" />
+    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
+
+    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
+
+    <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
+<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 </head>
 <body>
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="landingpage">
     <a class="navbar-brand" href="index.html">
-      <img class="img-fluid logo" src="assets/images/logo-perusahaan.png" alt="logo-perusahaan">
+      <img class="img-fluid logo" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,55 +38,86 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profil.html">Profil</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#booster">Paket Booster</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="paket.html">Paket Soal</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#reguler">Paket Reguler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#klien">Klien Kami</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#testimoni">Testimoni</a>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a href="index.html"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
+        <a class="mr-3" data-toggle="modal" data-target="#login-start"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
+        <a href="<?php echo base_url('daftar'); ?>#"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
       </div>
     </div>
   </nav>
 
-  <section id="soal">
-    <div class="container">
-      <div class="row wrap">
-        <div class="card">
-          <div class="card-header">Informasi Soal</div>
-          <div class="card-body">
-            <table class="table soal">
-              <tbody>
-                <tr class="t">
-                  <td>Nama:</td>
-                  <td>Kode soal:</td>
-                </tr>
-                <tr>
-                  <td>Andin Fathiannisa</td>
-                  <td>TU 200497</td>
-                </tr>
-                <tr class="t">
-                  <td>ID:</td>
-                  <td>Waktu pengerjaan:</td>
-                </tr>
-                <tr>
-                  <td>200497</td>
-                  <td>120 menit</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="card-text">Nama paket:</p>
-            <p class="card-description">Paket reguler</p>
-            <p class="card-text">Deskripsi soal:</p>
-            <p class="card-description">Apoteker di industri farmasi akan melakukan sebuah pembelian mesin cetak tablet. Ketika mesin datang ke industri tersebut, dilakukan kualifikasi untuk melihat bagaimana kinerja mesin pertama kali sesuai standar protokol yang berlaku dari vendor/supplier. Kualifikasi apakah yang dilakukan oleh industri farmas</p>
-            <a href="pengerjaan.html" class="btn btn-danger color login">Mulai</a>
+  <!-- popup login -->
+  <div class="modal fade" id="login-start" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body login">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <img class="img-fluid login" src="<?php echo base_url(); ?>assets/frontend/images/login.png" alt="daftar">
+            </div>
+            <div class="col-lg-6 col-12">
+              <h3 class="title-login">Login Sekarang</h3>
+              <hr class="line-login">
+              <p class="description-login">Selamat datang kembali, silahkan masuk</p>
+              <form action="<?php echo base_url('Login_user') ?>" method="post">
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input type="email" class="form-control" id="" placeholder="Isikan email Anda">
+                </div>
+                <div class="form-group">
+                  <label for="">Password</label>
+                  <input type="password" class="form-control" id="" placeholder="Isikan password Anda">
+                </div>
+                <button type="submit" class="btn btn-danger color login pl-5 pr-5">Login</button>
+              </form>
+              <div class="link login">
+                 <p>Lupa password? <a href="<?php echo base_url('reset_password') ?>">Reset</a></p>
+                <p>Belum punya akun? <a href="<?php echo base_url('daftar') ?>">Daftar</a></p>
+              </div>
+            </div>
+
           </div>
         </div>
-        
+      </div>
+    </div>
+  </div>
+
+  <section id="wrapping">
+    <div class="container">   
+      <div class="row wrap">
+        <div class="col-12">
+          <h3 class="title-wrapping">Reset Password</h3>
+          <hr class="line-wrapping">
+          <p class="description-wrapping">Kami akan mengirimkan link untuk mereset password ke email Anda</p>
+          <form>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input type="email" class="form-control" id="" placeholder="Isikan email Anda">
+            </div>
+            <button type="submit" class="btn btn-danger color login pl-5 pr-5">Reset Password</button>
+          </form>
+          <div class="link login">
+            <p>Sudah punya akun? <a data-toggle="modal" data-target="#login-start">Login</a></p>
+            <p>Belum punya akun? <a href="<?php echo base_url('daftar') ?>">Daftar</a></p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -93,7 +126,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5">
-          <img class="image-footer" src="assets/images/logo-perusahaan.png" alt="logo-perusahaan">
+          <img class="image-footer" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
           <p class="description-footer">Media belajar berbasis teknologi yang terfokus pada kemampuan menjawab soal untuk persiapan ujian UKAImu yang lebih baik. Dengan sistem yang selalu berkambang sesuai kebutuhan, Teman UKAI hadir sebagai solusi belajarmu untuk menjadi teman berjuang menuju perjalanan impianmu.</p>
         </div>
         <div class="col-md-1 ipad">
@@ -103,16 +136,16 @@
             <h5 class="widget-title">Menu</h5>
             <ul>
               <li>
-                  <a href="#booster">Paket Booster</a>
+                  <a href="<?php echo base_url('home'); ?>#booster">Paket Booster</a>
               </li>
               <li>
-                  <a href="#reguler">Paket Reguler</a>
+                  <a href="<?php echo base_url('home'); ?>#reguler">Paket Reguler</a>
               </li>
               <li>
-                  <a href="#klien">Klien Kami</a>
+                  <a href="<?php echo base_url('home'); ?>#klien">Klien Kami</a>
               </li>
               <li>
-                  <a href="#testimoni">Testimoni</a>
+                  <a href="<?php echo base_url('home'); ?>#testimoni">Testimoni</a>
               </li>
             </ul>
           </div>

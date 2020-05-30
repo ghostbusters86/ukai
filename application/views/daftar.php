@@ -14,14 +14,14 @@
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="<?php echo $title; ?>" />
+<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 </head>
 <body>
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
@@ -36,24 +36,28 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#booster">Paket Booster</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#reguler">Paket Booster</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#reguler">Paket Reguler</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#reguler">Paket Reguler</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#klien">Klien Kami</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#klien">Klien Kami</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#testimoni">Testimoni</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>#testimoni">Testimoni</a>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a class="mr-3" data-toggle="modal" data-target="#login-start"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
-        <a href="daftar.html"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
+        <?php if($this->session->userdata('online')==false):?>
+          <a class="mr-3" data-toggle="modal" data-target="#login-start" href="<?php echo base_url().'Login_user' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
+          <?php else:?>
+            <a href="<?php echo base_url().'Login_user/logout' ?>" class="mr-3"><i class="fa fa-user" style="color: #9E1F63"></i> Log Out</a>
+          <?php endif;?>        
+        <a href="<?php echo base_url('daftar'); ?>"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
       </div>
     </div>
   </nav>
@@ -74,20 +78,30 @@
               <h3 class="title-login">Login Sekarang</h3>
               <hr class="line-login">
               <p class="description-login">Selamat datang kembali, silahkan masuk</p>
-              <form action="profil.html">
+              <form action="<?php echo base_url('Login_user') ?>" method="post">
+
                 <div class="form-group">
+
                   <label for="">Email</label>
-                  <input type="email" class="form-control" id="" placeholder="Isikan email Anda">
+
+                  <input type="email" class="form-control" id="" name="email" placeholder="Isikan email anda">
+
                 </div>
+
                 <div class="form-group">
+
                   <label for="">Password</label>
-                  <input type="password" class="form-control" id="" placeholder="Isikan password Anda">
+
+                  <input type="password" class="form-control" id="" name="password" placeholder="Isikan password anda">
+
                 </div>
+
                 <button type="submit" class="btn btn-danger color login pl-5 pr-5">Login</button>
+
               </form>
               <div class="link login">
-                <p>Lupa password? <a href="reset-password.html">Reset</a></p>
-                <p>Belum punya akun? <a href="daftar.html">Daftar</a></p>
+                <p>Lupa password? <a href="<?php echo base_url('reset_password') ?>">Reset</a></p>
+                <p>Belum punya akun? <a href="<?php echo base_url('daftar') ?>">Daftar</a></p>
               </div>
             </div>
 
@@ -104,39 +118,56 @@
           <img class="img-fluid login" src="<?php echo base_url(); ?>assets/frontend/images/daftar.png" alt="daftar">
         </div>
         <div class="col-lg-6 col-12">
+          <?php
+          if ($this->session->flashdata('notifikasi')) {
+            echo "<br>";
+            echo "<div class='alert alert-success alert-dismissible fade show'><center>";
+            echo $this->session->flashdata('notifikasi');
+            echo "</center><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+            </button></div>";
+          }
+          ?>
           <h3 class="title-login">Pendaftaran Akun</h3>
           <hr class="line-login"><br><br class="enter">
+    <?php
+    echo validation_errors('<div class="alert alert-danger">', '</div>');
+    echo form_open_multipart(site_url('daftar')) ?>
           <form>
             <div class="form-group">
               <label for="">Nama Lengkap</label>
-              <input type="text" class="form-control" id="" placeholder="Isikan nama lengkap Anda">
+              <input type="text" class="form-control" id="" name="nama_lengkap" placeholder="Isikan nama lengkap Anda">
             </div>
             <div class="form-group">
               <label for="">Jenis Kelamin</label>
-              <select class="custom-select">
+              <select class="custom-select" name="jk_user">
                 <option selected>Pilih jenis kelamin Anda</option>
-                <option value="">Laki-laki</option>
-                <option value="">Perempuan</option>
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
               </select>
             </div>
             <div class="form-group">
               <label for="">No. Handphone</label>
-              <input type="number" class="form-control" id="" placeholder="Isikan no. handphone Anda">
+              <input type="text" class="form-control" id="" name="nohp_user" placeholder="Isikan no. handphone Anda">
+            </div>
+            <div class="form-group" hidden>
+              <input type="text" class="form-control" id="user" name="akses_level" placeholder="user" value="user">
             </div>
             <div class="form-group">
               <label for="">Asal Universitas</label>
-              <input type="number" class="form-control" id="" placeholder="Isikan asal universitas Anda">
+              <input type="text" class="form-control" id="" name="universitas_user" placeholder="Isikan asal universitas Anda">
             </div>
             <div class="form-group">
               <label for="">Email</label>
-              <input type="email" class="form-control" id="" placeholder="Isikan email Anda">
+              <input type="email" class="form-control" id="" name="email" placeholder="Isikan email Anda">
             </div>
             <div class="form-group">
               <label for="">Password</label>
-              <input type="password" class="form-control" id="" placeholder="Isikan password Anda">
+              <input type="password" class="form-control" id="" name="password" placeholder="Isikan password Anda">
             </div>
             <button type="submit" class="btn btn-danger color login pl-5 pr-5">Daftar</button>
-          </form>
+          </form>          
+    <?php echo form_close(); ?>
           <div class="link login">
             <p>Sudah punya akun? <a data-toggle="modal" data-target="#login-start">Login</a></p>
           </div>
@@ -159,16 +190,16 @@
             <h5 class="widget-title">Menu</h5>
             <ul>
               <li>
-                  <a href="#booster">Paket Booster</a>
+                  <a href="<?php echo base_url('home'); ?>#booster">Paket Booster</a>
               </li>
               <li>
-                  <a href="#reguler">Paket Reguler</a>
+                  <a href="<?php echo base_url('home'); ?>#reguler">Paket Reguler</a>
               </li>
               <li>
-                  <a href="#klien">Klien Kami</a>
+                  <a href="<?php echo base_url('home'); ?>#klien">Klien Kami</a>
               </li>
               <li>
-                  <a href="#testimoni">Testimoni</a>
+                  <a href="<?php echo base_url('home'); ?>#testimoni">Testimoni</a>
               </li>
             </ul>
           </div>

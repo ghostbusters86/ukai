@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/media.css">
-    <link rel="icon" href="assets/images/favicon-laut-tawar.png">
+    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
     <title>Teman UKAI</title>
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="<?php echo $title; ?>" />
+<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 </head>
 <body>
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="landingpage">
-    <a class="navbar-brand" href="index.html">
-      <img class="img-fluid logo" src="assets/images/logo-perusahaan.png" alt="logo-perusahaan">
+    <a class="navbar-brand" href="<?php echo base_url('home'); ?>">
+      <img class="img-fluid logo" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,17 +36,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profil.html">Profil</a>
+          <a class="nav-link" href="<?php echo base_url('profil'); ?>">Profil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="paket.html">Paket Soal</a>
+          <a class="nav-link" href="<?php echo base_url('paket'); ?>">Paket Soal</a>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a href="index.html"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
+        <a href="<?php echo base_url().'Login_user/logout' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
       </div>
     </div>
   </nav>
@@ -73,14 +73,14 @@
                     Paket A
                   </div>
                   <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-reguler.png" alt="icon-reguler">
+                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
                     <p class="card-text">Spesifikasi 1</p>
                     <p class="card-text">Spesifikasi 2</p>
                     <p class="card-text">Spesifikasi 3</p>
                     <p class="card-text">Spesifikasi 4</p>
                     <p class="card-text">Spesifikasi 5</p>
                     <h5 class="card-price">Rp100.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
+                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
                   </div>
                 </div>
               </div>
@@ -90,14 +90,14 @@
                     Paket B
                   </div>
                   <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-reguler.png" alt="icon-reguler">
+                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
                     <p class="card-text">Spesifikasi 1</p>
                     <p class="card-text">Spesifikasi 2</p>
                     <p class="card-text">Spesifikasi 3</p>
                     <p class="card-text">Spesifikasi 4</p>
                     <p class="card-text">Spesifikasi 5</p>
                     <h5 class="card-price">Rp100.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
+                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
                   </div>
                 </div>
               </div>
@@ -107,14 +107,14 @@
                     Paket C
                   </div>
                   <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-reguler.png" alt="icon-reguler">
+                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
                     <p class="card-text">Spesifikasi 1</p>
                     <p class="card-text">Spesifikasi 2</p>
                     <p class="card-text">Spesifikasi 3</p>
                     <p class="card-text">Spesifikasi 4</p>
                     <p class="card-text">Spesifikasi 5</p>
                     <h5 class="card-price">Rp100.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
+                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
                   </div>
                 </div>
               </div>
@@ -128,14 +128,14 @@
                     BAB 1
                   </div>
                   <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-booster.png" alt="icon-booster">
+                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-booster.png" alt="icon-booster">
                     <p class="card-text">Spesifikasi 1</p>
                     <p class="card-text">Spesifikasi 2</p>
                     <p class="card-text">Spesifikasi 3</p>
                     <p class="card-text">Spesifikasi 4</p>
                     <p class="card-text">Spesifikasi 5</p>
                     <h5 class="card-price">Rp200.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
+                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
                   </div>
                 </div>
               </div>
@@ -145,14 +145,14 @@
                     BAB 2
                   </div>
                   <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-booster.png" alt="icon-booster">
+                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-booster.png" alt="icon-booster">
                     <p class="card-text">Spesifikasi 1</p>
                     <p class="card-text">Spesifikasi 2</p>
                     <p class="card-text">Spesifikasi 3</p>
                     <p class="card-text">Spesifikasi 4</p>
                     <p class="card-text">Spesifikasi 5</p>
                     <h5 class="card-price">Rp200.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
+                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
                   </div>
                 </div>
               </div>
@@ -162,48 +162,14 @@
                     BAB 3
                   </div>
                   <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-booster.png" alt="icon-booster">
+                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-booster.png" alt="icon-booster">
                     <p class="card-text">Spesifikasi 1</p>
                     <p class="card-text">Spesifikasi 2</p>
                     <p class="card-text">Spesifikasi 3</p>
                     <p class="card-text">Spesifikasi 4</p>
                     <p class="card-text">Spesifikasi 5</p>
                     <h5 class="card-price">Rp200.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-12">
-                <div class="card">
-                  <div class="card-header">
-                    BAB 4
-                  </div>
-                  <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-booster.png" alt="icon-booster">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp200.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-12">
-                <div class="card">
-                  <div class="card-header">
-                    BAB 5
-                  </div>
-                  <div class="card-body">
-                    <img class="img-fluid paket" src="assets/images/dashboard/icon-booster.png" alt="icon-booster">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp200.000</h5>
-                    <a href="pembayaran.html" class="btn btn-danger paket">Beli Paket</a>
+                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
                   </div>
                 </div>
               </div>
@@ -220,7 +186,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5">
-          <img class="image-footer" src="assets/images/logo-perusahaan.png" alt="logo-perusahaan">
+          <img class="image-footer" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
           <p class="description-footer">Media belajar berbasis teknologi yang terfokus pada kemampuan menjawab soal untuk persiapan ujian UKAImu yang lebih baik. Dengan sistem yang selalu berkambang sesuai kebutuhan, Teman UKAI hadir sebagai solusi belajarmu untuk menjadi teman berjuang menuju perjalanan impianmu.</p>
         </div>
         <div class="col-md-1 ipad">
@@ -230,16 +196,16 @@
             <h5 class="widget-title">Menu</h5>
             <ul>
               <li>
-                  <a href="#booster">Paket Booster</a>
+                  <a href="<?php echo base_url('home'); ?>#booster">Paket Booster</a>
               </li>
               <li>
-                  <a href="#reguler">Paket Reguler</a>
+                  <a href="<?php echo base_url('home'); ?>#reguler">Paket Reguler</a>
               </li>
               <li>
-                  <a href="#klien">Klien Kami</a>
+                  <a href="<?php echo base_url('home'); ?>#klien">Klien Kami</a>
               </li>
               <li>
-                  <a href="#testimoni">Testimoni</a>
+                  <a href="<?php echo base_url('home'); ?>#testimoni">Testimoni</a>
               </li>
             </ul>
           </div>

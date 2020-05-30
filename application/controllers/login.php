@@ -27,7 +27,7 @@ class Login extends CI_Controller{
       array('required'  =>  'Password harus diisi',
         'min_length' =>  'Password minimal 6 karakter')
     );
-  
+    
     if ($valid->run() == false) {
       $data = array('title' => 'Login Ukai' );
       $this->load->view('v_login', $data, false);

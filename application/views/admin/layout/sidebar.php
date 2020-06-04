@@ -28,9 +28,6 @@
         <a href="<?php echo base_url('admin/paket_booster'); ?>"><i class="fas fa-bookmark pr-3"></i>Paket Booster</a>
       </li>
       <li>
-        <a href="<?php echo base_url('admin/soal'); ?>"><i class="far fa-edit pr-3"></i>Soal</a>
-      </li>
-      <li>
         <a href="<?php echo base_url('admin/ambil_soal'); ?>"><i class="far fa-file-alt pr-3"></i>Ambil Soal</a>
       </li>
        

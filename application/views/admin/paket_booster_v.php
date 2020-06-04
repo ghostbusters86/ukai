@@ -45,11 +45,11 @@
                   <th>Aksi</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody>   
                 <?php
                 $no = 1;
                 foreach ($select_paket as $select_paket):
-                  ?>
+                  ?>  
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $select_paket->nama_booster; ?></td>
@@ -65,7 +65,7 @@
                     </td>
                     <td><?php echo $select_paket->created; ?></td>
                     <td>
-                      <a href="<?php echo site_url('admin/paket_booster/edit/'.$select_paket->id_booster); ?>">
+                      <a href="<?php echo site_url('admin/paket_booster/edit/'.$select_paket->slug); ?>">
                         <button class="btn btn-sm btn-outline-success">Edit</button>
                       </a>
 

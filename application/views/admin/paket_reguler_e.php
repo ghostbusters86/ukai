@@ -11,7 +11,7 @@
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/paket_reguler/edit/'.$edit->id_reguler)) ?>
+    echo form_open_multipart(site_url('admin/paket_reguler/edit/'.$edit->slug)) ?>
 
 <div class="row my-4">
 
@@ -89,7 +89,7 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Soal Paket Reguler</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/paket_reguler/add_soal/'.$edit->id_reguler); ?>">
+      <a href="<?php echo site_url('admin/paket_reguler/add_soal/'.$edit->slug); ?>">
         <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
       </div>
   </div>
@@ -118,6 +118,7 @@
               <th>B</th>
               <th>C</th>
               <th>D</th>
+              <th>E</th>
               <th>Kunci Soal</th>  
               <th>Pembahasan Soal</th>
               <th>Aksi</th>
@@ -126,7 +127,7 @@
           <tbody>
             <?php
             $no = 1;
-            foreach ($soal as $soal):
+            foreach ($soal as $soal):   
               ?>
               <tr>
                 <td><?php echo $no; ?></td>
@@ -136,6 +137,7 @@
                 <td><?php echo $soal->jawaban_b; ?></td>
                 <td><?php echo $soal->jawaban_c; ?></td>
                 <td><?php echo $soal->jawaban_d; ?></td>
+                <td><?php echo $soal->jawaban_e; ?></td>
                 <td><?php echo $soal->kunci_soal; ?></td>
                 <td><?php echo $soal->pembahasan_soal; ?></td>
                 <td>

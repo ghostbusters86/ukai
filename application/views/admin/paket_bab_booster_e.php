@@ -11,7 +11,7 @@
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/bab_booster/edit/'.$edit->id_bab_booster)) ?>
+    echo form_open_multipart(site_url('admin/paket_booster/edit_bab/'.$edit->id_bab_booster)) ?>
 
 <div class="row my-4">
 
@@ -95,7 +95,7 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Soal BAB Booster</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/paket_booster/add_soal/'.$edit->id_bab_booster); ?>">
+      <a href="<?php echo site_url('admin/paket_booster/add_soal/'.$edit->slug); ?>">
         <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
       </div>
   </div>  

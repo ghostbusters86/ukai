@@ -11,54 +11,46 @@ class Login_user extends CI_Controller {
 
 	public function index()
 	{
+  	
+		$email = $this->input->post('email');
+        $password = $this->input->post('password');
 
-		$this->form_validation->set_rules('email', 'Email', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
 
-                //cek validasi
-		if ($this->form_validation->run() == TRUE) {
+        $this->db->select('*');
+        $this->db->from('user'); 
+        $this->db->where('email', $email);
+        $this->db->where('password', md5($password));
+        $query = $this->db->get();  
+        $result = $query->result_array(); 
 
-                //get data dari FORM
-			$email = $this->input->post("email", TRUE);
-			$password = MD5($this->input->post('password', TRUE));
+		if ($this->form_validation->run() === FALSE) { 
+            redirect('home');
+        } else {
+            $login_user   = $this->M_user->login_user();  
 
-                //checking data via model
-			$checking = $this->M_user->check_login('user', array('email' => $email), array('password' => $password));
+            if ($login_user) {    
+                $this->session->set_userdata('online',true);
+                $get_user = $this->M_user->get_login();
+                $row_user = $get_user->row();
 
-                //jika ditemukan, maka create session
-			if ($checking != FALSE) {
-				 $this->session->set_userdata('online',true);
-				foreach ($checking as $apps) {
+                $session_user = array( 'hak'          => 'user',
+                                       'id_user' 	  => $query-> row('id_user'),
+                                       'nama_lengkap' => $query->row('nama_lengkap'));
 
-					$session_data = array(
-						'id_user_'   => $apps->id_user,
-						'email' => $apps->email,
-						'password' => $apps->password,
-						'nama_user' => $apps->nama_user,
-						'akses_level'      => $apps->akses_level
-					);
-                        //set session userdata
-					$this->session->set_userdata($session_data,'online',true);
+                $this->session->set_userdata($session_user);
+                redirect('paket');
+                }else{
+                    $this->session->set_userdata('online',false); }
+                    
+            if (!$login_user) {
+              $this->session->set_flashdata('pesan', 'Email atau Password Anda Salah...!');
+              redirect('home');
+            }
+        }
+         
 
-                        //redirect berdasarkan level user
-					if($this->session->userdata("akses_level") == "user"){
-						redirect('paket');
-					}else{
-						$this->session->set_userdata('online',false);
-						$this->session->set_flashdata('pesan', 'Akses di Tolak...!');
-						redirect('home');
-					}
-
-				}
-			}else{
-				$this->session->set_flashdata('pesan', 'Email atau Password Anda Salah...!');
-				redirect('home');
-			}
-
-		}else{
-
-			redirect('home');
-		}
     } 
 
     public function logout() {

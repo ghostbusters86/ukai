@@ -150,11 +150,11 @@
 
               <h3 class="title-login">Login Sekarang</h3>
 
-              <hr class="line-login">
+              <hr class="line-login">   
 
               <p class="description-login">Selamat datang kembali, silahkan masuk</p>
 
-              <form action="<?php echo base_url('Login_user') ?>" method="post">
+              <form action="<?php echo base_url('Login') ?>" method="post">
 
                 <div class="form-group">
 
@@ -202,11 +202,11 @@
 
   <section id="home">
 
-    <div class="container">
+    <div class="container"> 
             <?php
-            if ($this->session->flashdata('pesan')) {
+            if ($this->session->flashdata('notifikasi')) {
               ?>
-              <p style="text-align: center; color: red;"><b><?php echo $this->session->flashdata('pesan'); ?></b></p>  
+              <p style="text-align: center; color: red;"><b><?php echo $this->session->flashdata('notifikasi'); ?></b></p>  
             <?php } ?>
       <div class="row">
 

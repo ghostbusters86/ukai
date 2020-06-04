@@ -35,7 +35,7 @@
        	<table id="example" class="table table-striped table-bordered" style="width:100%">
        		<thead>
        			<tr>
-       				<th>No</th>
+       				<th>No</th>   
        				<th>Nama</th>
        				<th>Kode Paket</th>
               <th>Kode Soal</th>
@@ -63,14 +63,14 @@
                 <td>
                   <?php if ($paket_reguler->status_reguler == '1'){
                     echo "Published";
-                  } else{
+                  } else{  
                     echo "Pending";
                   } ?>
 
                 </td>
        					<td><?php echo $paket_reguler->created; ?></td>
        					<td>
-       						<a href="<?php echo site_url('admin/paket_reguler/edit/'.$paket_reguler->id_reguler); ?>">
+       						<a href="<?php echo site_url('admin/paket_reguler/edit/'.$paket_reguler->slug); ?>">
        							<button class="btn btn-sm btn-outline-success">Edit</button>
        						</a>
 

@@ -14,14 +14,14 @@
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
+    <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
 </head>
 <body>
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
@@ -61,120 +61,63 @@
           <li class="nav-item">
             <a class="nav-link booster" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Paket soal booster</a>
           </li>
-        </ul>
+        </ul>   
       </div>
       <div class="row">
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div class="row">
+              <?php  
+              foreach ($paket_reguler as $paket_reguler):
+                ?>
               <div class="col-lg-4 col-md-6 col-12">
                 <div class="card">
                   <div class="card-header">
-                    Paket A
+                    <?php echo $paket_reguler->nama_reguler ?>
                   </div>
                   <div class="card-body">
                     <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
+                    <p class="card-text">Waktu <?php echo $paket_reguler->time_reguler;?><b> Menit</b></p>
                     <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp100.000</h5>
+                    <h5 class="card-price">Rp. <?php echo number_format($paket_reguler->harga_reguler,'0','.','.') ?></h5>
                     <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-6 col-12">
-                <div class="card">
-                  <div class="card-header">
-                    Paket B
-                  </div>
-                  <div class="card-body">
-                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp100.000</h5>
-                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-12">
-                <div class="card">
-                  <div class="card-header">
-                    Paket C
-                  </div>
-                  <div class="card-body">
-                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp100.000</h5>
-                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <div class="row">
+              <?php 
+              for ($paket_booster=1; $paket_booster < 20; $paket_booster++) { 
+                $paket_booster->nama_booster;
+               } 
+               ?>
+              <?php  
+              foreach ($paket_booster as $paket_booster):
+                ?>
               <div class="col-lg-4 col-md-6 col-12">
                 <div class="card">
                   <div class="card-header">
-                    BAB 1
+                    <?php echo $paket_booster->nama_booster ?>
                   </div>
                   <div class="card-body">
                     <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-booster.png" alt="icon-booster">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp200.000</h5>
-                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-12">
-                <div class="card">
-                  <div class="card-header">
-                    BAB 2
-                  </div>
-                  <div class="card-body">
-                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-booster.png" alt="icon-booster">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp200.000</h5>
-                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-12">
-                <div class="card">
-                  <div class="card-header">
-                    BAB 3
-                  </div>
-                  <div class="card-body">
-                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-booster.png" alt="icon-booster">
-                    <p class="card-text">Spesifikasi 1</p>
-                    <p class="card-text">Spesifikasi 2</p>
-                    <p class="card-text">Spesifikasi 3</p>
-                    <p class="card-text">Spesifikasi 4</p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp200.000</h5>
-                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>
+                    <?php 
 
-
+                     ?>
+                    <p class="card-text">Spesifikasi 1</p>
+                    <p class="card-text">Spesifikasi 2</p>
+                    <p class="card-text">Spesifikasi 3</p>
+                    <p class="card-text">Spesifikasi 4</p>
+                    <p class="card-text">Spesifikasi 5</p>
+                    <h5 class="card-price">Rp. <?php echo number_format($paket_booster->harga_booster,'0','.','.') ?></h5>
+                    <a href="<?php echo base_url('Pembayaran'); ?>" class="btn btn-danger paket">Beli Paket</a>
+                  </div>
+                </div>
+              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>

@@ -5,13 +5,13 @@
     <div class="btn-toolbar mb-2 mb-md-0">
       <a href="<?php echo base_url(); ?>admin/paket_reguler">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
-        
-      </div>  
+           
+      </div>   
 
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/paket_reguler/add_soal/'.$soal_reguler->id_reguler)) ?>
+    echo form_open_multipart(site_url('admin/paket_reguler/add_soal/'.$soal_reguler->slug)) ?>
       
     <div class="row my-4">
 
@@ -19,26 +19,21 @@
 
         <div class="card"> 
           <div class="card-header">
-            <h6>Tambah Soal Baru</h6> 
+            <h6>Tambah Soal Baru</h6>    
           </div>
           <div class="card-body">  
 
             <div class="form-group">
-              <label>Pertanyaan :</label>
-              <input type="text" class="form-control" placeholder="Masukkan Pertanyaan " name="pertanyaan" required>
+              <label>Pertanyaan :</label>  
+              <br><textarea rows="2" cols="90" name="pertanyaan" placeholder="Masukkan Pertanyaan" required ></textarea>
             </div>
-              <label>Kode Soal:</label>
-               <select class="custom-select form-control" name="kode_soal">
-                <?php foreach ($paket_reguler as $paket_reguler) { ?>
-                  <option value="<?php echo $paket_reguler->kode_soal ?>">
-                    <?php echo $paket_reguler->kode_soal ?> -
-                    <?php echo $paket_reguler->kode_paket ?>
-                  </option>                   
-                <?php } ?> 
-              </select>                      
             <div class="form-group">
+              <label>Kode Soal:</label>
+            <input type="text" class="form-control" value="<?php echo $paket_reguler->kode_soal ?>" name="kode_soal" required readonly> 
+            </div>                     
+            <div class="form-group" >
               <label>Kunci Soal :</label>
-              <br><textarea rows="2" cols="91" name="kunci_soal" placeholder="Masukkan Kunci Soal" required ></textarea>
+              <input type="text" class="form-control" name="kunci_soal" name="kunci_soal" placeholder="Masukkan Kunci Soal" required>
             </div>            
             <div class="form-group">
               <label>Pembahasan Soal :</label>
@@ -73,6 +68,10 @@
             <div class="form-group">
               <label>Jawban D :</label>
               <textarea rows="3" cols="40"  name="jawaban_d" placeholder="Masukkan Jawaban D" required></textarea>
+            </div> 
+            <div class="form-group">
+              <label>Jawban E :</label>
+              <textarea rows="3" cols="40"  name="jawaban_e" placeholder="Masukkan Jawaban E" required></textarea>
             </div>  
 
             <button type="submit" class="btn btn-primary">Submit</button>

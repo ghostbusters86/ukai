@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="in">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -9,14 +9,14 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
-    <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/  favicon-laut-tawar.png">
     <title>Teman UKAI</title>
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 <!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
-    <meta name="twitter:site" content="@hairil_sp" />
+    <meta name="twitter:site"   content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
@@ -142,8 +142,8 @@
               <label for="">Jenis Kelamin</label>
               <select class="custom-select" name="jk_user">
                 <option selected>Pilih jenis kelamin Anda</option>
-                <option value="L">Laki-laki</option>
-                <option value="P">Perempuan</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
               </select>
             </div>
             <div class="form-group">

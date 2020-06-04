@@ -87,10 +87,10 @@ class Transaksi extends CI_Controller {
 
     $valid = $this->form_validation;
     $valid->set_rules(
-      'id_user',
-      'id_user',  
+      'id_transaksi',
+      'id_transaksi',  
       'required',  
-      array(
+      array(    
         'required'  =>  'Anda belum mengisikan Kode Bank.') 
     );
     
@@ -134,7 +134,6 @@ class Transaksi extends CI_Controller {
     }else{
         $i  = $this->input;
         $data = array(
-          'id_user'         =>  $i->post('id_user'),
           'kode_transaksi'  =>  $i->post('kode_transaksi'),
           'kode_bank'       =>  $i->post('kode_bank'),
           'an_rekening'     =>  $i->post('an_rekening'),

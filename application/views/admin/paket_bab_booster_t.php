@@ -11,7 +11,7 @@
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/bab_booster/add')) ?>
+    echo form_open_multipart(site_url('admin/paket_booster/add_bab/'.$add_bab->slug)) ?>
     <div class="row my-4">
 
 
@@ -49,14 +49,7 @@
           <div class="card-body">
             <div class="form-group">
               <label>Nama Paket Booster :</label>
-               <select class="custom-select form-control" name="id_booster">
-                <?php foreach ($paket_booster as $paket_booster) { ?>
-                  <option value="<?php echo $paket_booster->id_booster ?>">
-                    <?php echo $paket_booster->nama_booster ?>
-                    <?php echo $paket_booster->kode_paket ?>
-                  </option>                   
-                <?php } ?> 
-              </select>             
+               <input type="text" class="form-control" value="<?php echo $paket->id_booster ?>" <?php echo $paket->kode_paket ?> name="id_booster" required readonly>              
             </div>
             <div class="form-group">
               <label>Kode Soal :</label>
@@ -71,7 +64,7 @@
             </div>
             <div class="form-group">
               <label>Waktu Bab :</label>
-              <input type="text" class="form-control" placeholder="Masukkan Waktu Bab Booster" name="time_bab_booster" required>
+              <input type="number" class="form-control" placeholder="Masukkan Waktu Bab Booster" name="time_bab_booster" required>
             </div>
           </div>
         </div>

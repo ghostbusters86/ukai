@@ -11,15 +11,15 @@
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/paket_booster/edit_bab/'.$edit->id_soal)) ?>
+    echo form_open_multipart(site_url('admin/paket_booster/edit_soal/'.$edit->id_soal)) ?>
 
     <div class="row my-4">
    
-      <div class="col-md-8">
+      <div class="col-md-8">   
 
         <div class="card">
           <div class="card-header">
-            <h6>Tambah Soal Baru</h6>
+            <h6>Tambah Soal Baru</h6>    
           </div>
           <div class="card-body">
 

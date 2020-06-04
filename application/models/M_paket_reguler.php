@@ -28,7 +28,7 @@ class M_paket_reguler extends CI_Model {
     {
       $this->db->select('*');
       $this->db->from('paket_reguler');
-      $this->db->where('status_reguler', '1');
+      $this->db->where('status_reguler', '1');  
       $publish =   $this->db->count_all_results();
       return $publish;  
     }
@@ -39,15 +39,16 @@ class M_paket_reguler extends CI_Model {
       $this->db->where('status_reguler', '0');
       $pending  =   $this->db->count_all_results();
       return $pending;
-    }
+    }  
+
     public function select_published()
-    {
+    { 
       $this->db->select('*');
       $this->db->from('paket_reguler');
-      $this->db->where('status_reguler', '1');
+      $this->db->where('status_reguler', '1');  
       $this->db->order_by('id_reguler', 'DESC');
       $query  = $this->db->get();  
-      return $query->result();
+      return $query->row();
     }
     public function select_pending()
     {
@@ -57,7 +58,7 @@ class M_paket_reguler extends CI_Model {
       $this->db->order_by('id_reguler', 'DESC');
       $query  = $this->db->get();
       return $query->result();
-    }
+    }  
 
     public function soal_reguler($id_reguler) {
       $this->db->select('*');
@@ -66,8 +67,19 @@ class M_paket_reguler extends CI_Model {
       $query = $this->db->get();
       return $query->row();  
     } 
+    
+    public function select_soal($id_reguler)
+    { 
+      $this->db->select('*');
+      $this->db->from('paket_reguler');
+      $this->db->where('status_reguler', '1');  
+      $this->db->where('id_reguler', $id_reguler);  
+      $this->db->order_by('id_reguler', 'DESC');
+      $query  = $this->db->get();  
+      return $query->row();
+    }
    
-    public function delete($data)
+    public function delete($data)   
     {
       $this->db->where('id_reguler',$data['id']);
       $this->db->delete('paket_reguler');
@@ -82,20 +94,19 @@ class M_paket_reguler extends CI_Model {
     //   return $query->row();
     // }
 
-    public function detail($id_reguler)
+    public function detail($slug)
     {
       $this->db->select('paket_reguler.*');
       $this->db->from('paket_reguler');  
-
-      $this->db->where('id_reguler',$id_reguler);
+      $this->db->where('slug',$slug);
       $query  = $this->db->get();
       return $query->row();
     }
 
 
 
-    public function edit($data,$id_reguler){
-      $this->db->where('id_reguler',$id_reguler);
+    public function edit($data,$slug){
+      $this->db->where('slug',$slug);
       $this->db->update('paket_reguler',$data);
     }
 

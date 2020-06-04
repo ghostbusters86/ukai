@@ -18,7 +18,7 @@ class Login extends CI_Controller{
       'email',
       'required',
       array('required'  =>  'Email harus diisi')
-    );
+    );  
 
     $valid->set_rules(
       'password',
@@ -29,8 +29,8 @@ class Login extends CI_Controller{
     );
     
     if ($valid->run() == false) {
-      $data = array('title' => 'Login Ukai' );
-      $this->load->view('v_login', $data, false);
+      $data = array('title' => 'Login Ukai' );  
+      $this->load->view('index', $data, false);
     } else {  
       $i            = $this->input;
       $email        = $i->post('email');     
@@ -38,6 +38,7 @@ class Login extends CI_Controller{
       $check_login  = $this->M_login->login($email, $password);
 
       if ($check_login) {
+        $this->session->set_userdata('online',true);
         $this->session->set_userdata('email', $email);
         $this->session->set_userdata('nama_lengkap', $check_login->nama_lengkap);
         $this->session->set_userdata('akses_level', $check_login->akses_level);
@@ -45,12 +46,13 @@ class Login extends CI_Controller{
         if($this->session->userdata('akses_level') == 'admin'){
           redirect(site_url('admin/dasboard'), 'refresh');
         }else if($this->session->userdata('akses_level') == 'user'){
-          redirect(site_url('user/dasboard'), 'refresh');
+          redirect(site_url('paket'), 'refresh');
         }
-        
+          
       } else {
-        $this->session->set_flashdata('notifikasi', '<center>Email dan password tidak cocok</center>');
-        redirect(site_url('index.php/login'), 'refresh');
+        $this->session->set_userdata('online',false);
+        $this->session->set_flashdata('notifikasi', '<center>Email dan password tidak cocok... !</center>');
+        redirect(site_url('home'), 'refresh');
       }
     }
   }

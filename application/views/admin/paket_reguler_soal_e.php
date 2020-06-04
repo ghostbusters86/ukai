@@ -20,23 +20,16 @@
         <div class="card">
           <div class="card-header">
             <h6>Tambah Soal Baru</h6>
-          </div>
+          </div>    
           <div class="card-body">
 
             <div class="form-group">
               <label>Pertanyaan :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->pertanyaan ?>" name="pertanyaan" required>
+              <br><textarea rows="2" cols="90" name="pertanyaan" r0equired ><?php echo $edit->pertanyaan ?></textarea>
             </div> 
             <div class="form-group">
-              <label>Soal :</label>
-              <select class="custom-select form-control" name="kode_soal">
-                <?php foreach ($paket_reguler as $paket_reguler) { ?>
-                  <option value="<?php echo $paket_reguler->kode_soal ?>">
-                    <?php echo $paket_reguler->kode_soal ?> -
-                    <?php echo $paket_reguler->kode_paket ?>
-                  </option>                   
-                <?php } ?> 
-              </select>             
+              <label>Kode Soal :</label>
+                <input type="text" class="form-control" value="<?php echo $paket_reguler->kode_soal ?>" name="kode_soal" required readonly>   
             </div>                
             <div class="form-group">
               <label>Kunci Soal :</label>
@@ -62,19 +55,23 @@
           <div class="card-body">
             <div class="form-group">
               <label>Jawaban A :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_a ?>"  name="jawaban_a" required>
+              <textarea rows="3" cols="40" name="jawaban_a" required><?php echo $edit->jawaban_a ?></textarea>
             </div>
             <div class="form-group">
               <label>Jawaban B :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_b ?>"  name="jawaban_b" required>
+              <textarea rows="3" cols="40" name="jawaban_b"  required ><?php echo $edit->jawaban_b ?></textarea>
             </div>
             <div class="form-group">
               <label>Jawaban C :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_c ?>"  name="jawaban_c" required>
+              <textarea rows="3" cols="40" name="jawaban_c" required> <?php echo $edit->jawaban_c ?></textarea>
             </div>
             <div class="form-group">
               <label>Jawban D :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_d ?>"  name="jawaban_d" required>
+              <textarea rows="3" cols="40"  name="jawaban_d"  required><?php echo $edit->jawaban_d ?></textarea>
+            </div>  
+            <div class="form-group">
+              <label>Jawban E :</label>
+              <textarea rows="3" cols="40"  name="jawaban_e" required><?php echo $edit->jawaban_e ?></textarea>
             </div>  
 
             <button type="submit" class="btn btn-primary">Submit</button>

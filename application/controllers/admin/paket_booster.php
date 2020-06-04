@@ -9,18 +9,18 @@ class Paket_booster extends CI_Controller {
     parent::__construct();
     $this->load->model('M_paket_booster');
     $this->load->model('M_bab_booster');
-    $this->load->model('M_soal');
+    $this->load->model('M_soal');  
     $this->load->helper('text');   
   }
 
-  public function index() {   
-
+  public function index() {     
+  
     $select_paket  = $this->M_paket_booster->select_paket_booster();
     $semua  = $this->M_paket_booster->count_semua();
     $publish  = $this->M_paket_booster->count_published();
     $pending  = $this->M_paket_booster->count_pending();
     $paket_booster_published = $this->M_paket_booster->select_published();
-    $paket_booster_pending = $this->M_paket_booster->select_pending();
+    $paket_booster_pending = $this->M_paket_booster->select_pending();  
 
     $data = array(  
       'title' => 'Dasboard Admin UKAI',
@@ -83,37 +83,38 @@ class Paket_booster extends CI_Controller {
 
     }else{
         $i  = $this->input;
+        $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
         $data = array(
           'nama_booster'         =>  $i->post('nama_booster'),
           'desk_booster'            =>  $i->post('desk_booster'),
           'harga_booster'       =>  $i->post('harga_booster'),
           'kode_paket'       =>  $i->post('kode_paket'),
           'created'       =>  $i->post('created'),
-          'status_booster'      =>  $i->post('status_booster'));
+          'status_booster'      =>  $i->post('status_booster'),
+          'slug'      =>  $slug);
 
         $this->M_paket_booster->add($data);
         $this->session->set_flashdata('notifikasi', '<center>Berhasil menambahkan data <strong> Paket Boster Baru</strong></center>');
         redirect('/admin/paket_booster');
       }
-    }
+    }       
+  
+  public function edit($slug) {          
+    $edit  = $this->M_paket_booster->detail($slug);
 
-  public function edit($id_booster) {    
-    $edit  = $this->M_paket_booster->detail($id_booster);
-
-
-    $bab_booster = $this->M_bab_booster->select_bab_booster();
-    $semua  = $this->M_bab_booster->count_semua();
-    $publish  = $this->M_bab_booster->count_published();
-    $pending  = $this->M_bab_booster->count_pending();
-    $bab_publish = $this->M_bab_booster->select_bab_published();
-    $bab_pending = $this->M_bab_booster->select_bab_pending();
- 
-
-       $valid = $this->form_validation;
+    $bab_booster = $this->M_bab_booster->select_bab_booster($edit->id_booster);
+    $semua  = $this->M_bab_booster->count_semua($edit->id_booster);
+    $publish  = $this->M_bab_booster->count_published($edit->id_booster);
+    $pending  = $this->M_bab_booster->count_pending($edit->id_booster);
+    $bab_publish = $this->M_bab_booster->select_bab_published($edit->id_booster);
+    $bab_pending = $this->M_bab_booster->select_bab_pending($edit->id_booster);
+     
+  
+       $valid = $this->form_validation;   
     $valid->set_rules(
       'nama_booster',
       'nama_booster',
-      'required',
+      'required',  
       array(
         'required'  =>  'Anda belum mengisikan Nama Booster.') 
     );
@@ -155,25 +156,28 @@ class Paket_booster extends CI_Controller {
         'bab_booster' => $bab_booster,
         'semua' =>  $semua,
         'publish' =>  $publish,  
-        'pending' =>  $pending,
+        'pending' =>  $pending,   
         'bab_publish' =>  $bab_publish,
         'bab_pending' =>  $bab_pending,  
         'isi'   => 'admin/paket_booster_E'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
+      
 
     }else{
         $i  = $this->input;
+        $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
         $data = array(
           'nama_booster'         =>  $i->post('nama_booster'),
           'desk_booster'            =>  $i->post('desk_booster'),
           'harga_booster'       =>  $i->post('harga_booster'),
           'kode_paket'       =>  $i->post('kode_paket'),
           'created'       =>  $i->post('created'),
-          'status_booster'      =>  $i->post('status_booster'));
+          'status_booster'      =>  $i->post('status_booster'),
+          'slug'      =>  $slug);
 
-        $this->M_paket_booster->edit($data,$id_booster);
-        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Paket Boster Baru</strong></center>');
+        $this->M_paket_booster->edit($data,$slug);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Paket Boster </strong></center>');
         redirect('/admin/paket_booster');
       }
     }
@@ -185,8 +189,13 @@ class Paket_booster extends CI_Controller {
     redirect('admin/paket_booster');
   }
 
-   public function add_bab() {  
-    $paket_booster = $this->M_paket_booster->select_published();
+   public function add_bab($slug) {    
+    
+    $add_bab = $this->M_paket_booster->detail($slug);
+    $paket = $this->M_paket_booster->select_bab($add_bab->id_booster);
+      // echo "<pre>";
+      // print_r($paket);
+      // exit();
 
     $valid = $this->form_validation;
     $valid->set_rules(
@@ -229,33 +238,38 @@ class Paket_booster extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai - Ubah BAB Booster',  
-        'paket_booster' => $paket_booster, 
+        'paket' => $paket, 
+        'add_bab' => $add_bab, 
         'isi' => 'admin/paket_bab_booster_t'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
-    }else{
+    }else{   
         $i  = $this->input;
+        $slug = url_title($this->input->post('kode_soal'), 'dash', TRUE);
         $data = array(
           'id_booster'            =>  $i->post('id_booster'),
           'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
           'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
           'time_bab_booster'       =>  $i->post('time_bab_booster'),
           'status_bab_booster'      =>  $i->post('status_bab_booster'),
-          'kode_soal'=>  $i->post('kode_soal'));
+          'kode_soal'             =>  $i->post('kode_soal'),
+          'slug'      =>  $slug);
 
         $this->M_bab_booster->add($data);
         $this->session->set_flashdata('notifikasi', '<center>Berhasil menambahkan data <strong> BAB Booster Baru</strong></center>');
-        redirect('/admin/paket_booster');
-      }
+        redirect('/admin/paket_booster/edit/'.$add_bab->slug);
+      }   
     }
 
-     public function edit_bab($id_bab_booster) {  
-    $paket_booster = $this->M_paket_booster->select_paket_booster();  
-    $edit  = $this->M_bab_booster->detail($id_bab_booster); 
+     public function edit_bab($slug) {  
+    $edit  = $this->M_bab_booster->detail($slug); 
+    $paket_booster = $this->M_paket_booster->select_paket_booster($edit->id_booster);  
 
     $soal = $this->M_soal->listing();
-
+    // echo "<pre>";
+    // print_r($paket_booster);
+    // exit();
     $valid = $this->form_validation;
     $valid->set_rules(
       'id_booster',  
@@ -306,17 +320,19 @@ class Paket_booster extends CI_Controller {
 
     }else{
         $i  = $this->input;
+        $slug = url_title($this->input->post('kode_soal'), 'dash', TRUE);
         $data = array(  
           'id_booster'             =>  $i->post('id_booster'),
           'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
           'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
           'time_bab_booster'       =>  $i->post('time_bab_booster'),
           'status_bab_booster'     =>  $i->post('status_bab_booster'),
-          'kode_soal'              =>  $i->post('kode_soal'));
+          'kode_soal'              =>  $i->post('kode_soal'),
+          'slug'      =>  $slug);
 
-        $this->M_bab_booster->edit($data,$id_bab_booster);
+        $this->M_bab_booster->edit($data,$slug);
         $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Bab Booster Baru</strong></center>');
-        redirect('/admin/bab_booster');
+        redirect('/admin/paket_booster/edit/'.$edit->slug);
       }
     }
 

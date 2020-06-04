@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="<?php echo $metades; ?>">
     <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 </head>
-<body>
+<body>   
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="landingpage">
     <a class="navbar-brand" href="index.html">
@@ -60,58 +60,65 @@
           <hr class="line-dash">
           <img class="img-fluid rounded-circle dash" src="https://image.ibb.co/iN3qES/pexels_photo_324658.jpg" alt="profil-user">
           <p class="description-dash">
-            <b>Andin Fathiannisa</b><br>
-            Universitas Amikom Yogyakarta
+            <b><?php echo $edit->nama_lengkap ?></b><br>
+            <?php echo $edit->universitas_user ?>
           </p>
-        </div>
+        </div>   
 
         <div class="col-md-9 dash">
           <div class="wrap">
             <div class="row dash-banner">
               <div class="col-md-12">
-                <h5 class="dash-nama">Andin Fathiannisa</h5>
+                <h5 class="dash-nama"><?php echo $edit->nama_lengkap ?></h5>
               </div>
             </div>
 
             <div class="row dash-informasi">
               <div class="col-md-12">
+
+    <?php
+    echo validation_errors('<div class="alert alert-danger">', '</div>');
+    echo form_open_multipart(site_url('profil/edit_profil/'.$edit->id_user)) ?>
+
                 <form action="edit-profil.html">
-                  <div class="form-row">
+                  <div class="form-row">   
                     <div class="form-group col-md-6">
                       <span>Nama Lengkap</span>
-                      <input type="text" class="form-control" id="" value="Andin Fathiannisa">
+                      <input type="text" class="form-control" name="nama_lengkap" value="<?php echo $edit->nama_lengkap ?>">
                     </div>
                     <div class="form-group col-md-6">
                       <span>Jenis Kelamin</span>
-                      <input type="text" class="form-control" id="" value="Perempuan">
+                      <input type="text" class="form-control" name="jk_user"value="<?php echo $edit->jk_user ?>">
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <span>Nomor Hp</span>
-                      <input type="number" class="form-control" id="" value="082213458889">
+                      <input type="number" class="form-control" name="nohp_user" value="<?php echo $edit->nohp_user ?>">
                     </div>
                     <div class="form-group col-md-6">
                       <span>Asal Universitas</span>
-                      <input type="text" class="form-control" id="" value="Universitas Amikom Yogyakarta">
+                      <input type="text" class="form-control" name="universitas_user" value="<?php echo $edit->universitas_user ?>">
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <span>Email</span>
-                      <input type="email" class="form-control" id="" value="andin@sevenpion.com">
+                      <input type="email" class="form-control" name="email" value="<?php echo $edit->email ?>">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" required>
                       <span>Password</span>
-                      <input type="password" class="form-control" id="" value="********">
+                      <input type="password" class="form-control" id="" value="<?php echo $edit->password ?>" >
                     </div>
                   </div>
                   <div class="form-group">
                     <span>Ganti Foto</span>
-                    <input type="file" class="form-control-file ganti-foto" id="">
+                    <input type="file" class="form-control-file ganti-foto" name="foto">
                   </div>
                   <button type="submit" class="btn btn-danger color login pl-5 pr-5">Simpan</button>
                 </form>
+
+                <?php echo form_close(); ?>
               </div>
             </div>
           </div>

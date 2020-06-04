@@ -6,55 +6,61 @@ class M_bab_booster extends CI_Model {
 	 Public function __construct()
     {
       parent::__construct();
-      $this->load->database();
+      $this->load->database();    
     }
-    public function select_bab_booster()
+    public function select_bab_booster($id_booster)
     {
       $this->db->select('bab_booster.*, paket_booster.*');
       $this->db->from('bab_booster');
+      $this->db->where('bab_booster.id_booster', $id_booster);
       $this->db->join('paket_booster', 'paket_booster.id_booster = bab_booster.id_booster', 'left');
       $this->db->order_by('id_bab_booster', 'DESC');  
       $query  = $this->db->get();
       return $query->result();
     }
-     
-      public function count_semua()  
+         
+      public function count_semua($id_booster)  
     {      
-      $this->db->select('*');
+      $this->db->select('*'); 
       $this->db->from('bab_booster');
+      $this->db->where('bab_booster.id_booster', $id_booster);
       $publish  =   $this->db->count_all_results();
-      return $publish;
+      return $publish;  
     }
-    public function count_published()
+    public function count_published($id_booster)
     {
       $this->db->select('*');
       $this->db->from('bab_booster');
+      $this->db->where('bab_booster.id_booster', $id_booster);
       $this->db->where('status_bab_booster', '1');
       $publish  =   $this->db->count_all_results();
       return $publish;
     }   
-    public function count_pending()
+    public function count_pending($id_booster)   
     {
       $this->db->select('*');     
       $this->db->from('bab_booster');
+      $this->db->where('bab_booster.id_booster', $id_booster);
       $this->db->where('status_bab_booster', '0');
       $pending  =   $this->db->count_all_results();
       return $pending;
     }
-    public function select_bab_published()
+    public function select_bab_published($id_booster)
     {
       $this->db->select('bab_booster.*, paket_booster.*');
       $this->db->from('bab_booster');
-      $this->db->join('paket_booster', 'paket_booster.id_booster = bab_booster.id_booster', 'left');
+      $this->db->where('bab_booster.id_booster', $id_booster);
+      $this->db->join('paket_booster', 'paket_booster.id_booster = bab_booster.id_booster', 'left');   
       $this->db->where('status_bab_booster', '1');
       $this->db->order_by('id_bab_booster', 'DESC');
       $query  = $this->db->get();
       return $query->result();  
-    }
-    public function select_bab_pending()
+    }   
+    public function select_bab_pending($id_booster)
     {
       $this->db->select('bab_booster.*, paket_booster.*');
       $this->db->from('bab_booster');
+      $this->db->where('bab_booster.id_booster', $id_booster);
       $this->db->join('paket_booster', 'paket_booster.id_booster = bab_booster.id_booster', 'left');
       $this->db->where('status_bab_booster', '0');
       $this->db->order_by('id_bab_booster', 'DESC');
@@ -72,8 +78,22 @@ class M_bab_booster extends CI_Model {
         $this->db->insert('bab_booster', $data);
     }
 
-    public function detail($id_bab_booster){
-      $query = $this->db->get_where('bab_booster',array('id_bab_booster'=> $id_bab_booster));
+    public function det($slug)
+    {
+      $this->db->select('bab_booster.*');
+      $this->db->from('bab_booster');  
+      $this->db->where('slug',$slug);
+      $query  = $this->db->get();
+      return $query->row();
+    }
+
+    public function detail($slug)
+    {
+      $this->db->select('bab_booster.*');
+      $this->db->from('bab_booster');  
+
+      $this->db->where('slug',$slug);
+      $query  = $this->db->get();
       return $query->row();
     }
 

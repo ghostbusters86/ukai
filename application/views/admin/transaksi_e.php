@@ -8,17 +8,17 @@
         
       </div>
 
-    </div>
+    </div>  
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
     echo form_open_multipart(site_url('admin/transaksi/edit/'.$edit->id_transaksi)) ?>
     <div class="row my-4">
 
 
-      <div class="col-md-6">
+      <div class="col-md-6">  
 
         <div class="card">
-          <div class="card-body">
+          <div class="card-body">   
             <div class="form-group">
               <label>Nama User</label>
               <input type="text" class="form-control" value="<?php echo $edit->id_transaksi ?>" name="id_user" required>

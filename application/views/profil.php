@@ -62,15 +62,25 @@
 
   <!-- dasbor user -->
   <div id="dashboard">
+      <?php
+  if ($this->session->flashdata('notifikasi')) {
+    echo "<br>";
+    echo "<div class='alert alert-success alert-dismissible fade show'><center>";
+    echo $this->session->flashdata('notifikasi');
+    echo "</center><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
+    </button></div>";
+  }
+  ?>
     <div class="container">
       <div class="row">
         <div class="col-md-3 dash">
           <p class="title-dash">Your Profile</p>
           <hr class="line-dash">
-          <img class="img-fluid rounded-circle dash" src="https://image.ibb.co/iN3qES/pexels_photo_324658.jpg" alt="profil-user">
+          <img class="img-fluid rounded-circle dash" src="<?php echo base_url(); ?>img/img_artikel/<?php echo $get_user['foto']; ?>" alt="profil-user">
           <p class="description-dash">
-            <b>Andin Fathiannisa</b><br>
-            Universitas Amikom Yogyakarta
+            <b><?php echo $get_user['nama_lengkap']?> </b><br>
+            <?php echo $get_user['universitas_user']?> 
           </p>
         </div>
 
@@ -78,41 +88,41 @@
           <div class="wrap">
             <div class="row dash-banner">
               <div class="col-md-12">
-                <h5 class="dash-nama">Andin Fathiannisa</h5>
-              </div>
+                <h5 class="dash-nama"><?php echo $get_user['nama_lengkap']?> </h5>
+              </div>   
             </div>
 
             <div class="row dash-informasi">
               <div class="col-md-12">
-                <form action="<?php echo base_url('edit_profil'); ?>">
+                <form action="<?php echo site_url('/profil/edit_profil/').$get_user['id_user']; ?>">
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <span>Nama Lengkap</span>
-                      <input type="text" class="form-control" id="" value="Andin Fathiannisa">
+                      <input type="text" class="form-control" id="" value="<?php echo $get_user['nama_lengkap']?> "> 
                     </div>
                     <div class="form-group col-md-6">
                       <span>Jenis Kelamin</span>
-                      <input type="text" class="form-control" id="" value="Perempuan">
+                      <input type="text" class="form-control" id="" value="<?php echo $get_user['jk_user']?> ">
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <span>Nomor Hp</span>
-                      <input type="number" class="form-control" id="" value="082213458889">
+                      <input type="text" class="form-control" id="" value="<?php echo $get_user['nohp_user']?> ">
                     </div>
                     <div class="form-group col-md-6">
                       <span>Asal Universitas</span>
-                      <input type="text" class="form-control" id="" value="Universitas Amikom Yogyakarta">
+                      <input type="text" class="form-control" id="" value="<?php echo $get_user['universitas_user']?> ">
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <span>Email</span>
-                      <input type="email" class="form-control" id="" value="andin@sevenpion.com">
+                      <input type="email" class="form-control" id="" value="<?php echo $get_user['email']?> ">
                     </div>
                     <div class="form-group col-md-6">
                       <span>Password</span>
-                      <input type="password" class="form-control" id="" value="********">
+                      <input type="password" class="form-control" id="" value="<?php echo $get_user['password'] ?> ">
                     </div>
                     <button type="submit" class="btn btn-danger color login pl-5 pr-5">Ganti Informasi</button>
                   </div>
@@ -129,7 +139,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5">
-          <img class="image-footer" src="assets/images/logo-perusahaan.png" alt="logo-perusahaan">
+          <img class="image-footer" src="<?php echo base_url(); ?>assets/frontend/images/logo-perusahaan.png" alt="logo-perusahaan">
           <p class="description-footer">Media belajar berbasis teknologi yang terfokus pada kemampuan menjawab soal untuk persiapan ujian UKAImu yang lebih baik. Dengan sistem yang selalu berkambang sesuai kebutuhan, Teman UKAI hadir sebagai solusi belajarmu untuk menjadi teman berjuang menuju perjalanan impianmu.</p>
         </div>
         <div class="col-md-1 ipad">

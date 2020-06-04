@@ -21,10 +21,11 @@ class M_soal extends CI_Model {
       return $query->result();
     }
 
-    public function select_soal_reguler()
+    public function select_soal_reguler($id_reguler)
     {
       $this->db->select('soal.*, paket_reguler.*');
       $this->db->from('soal');  
+      $this->db->where('paket_reguler.id_reguler', $id_reguler);
       $this->db->join('paket_reguler', 'paket_reguler.kode_soal = soal.kode_soal', 'inner');
       $this->db->order_by('id_soal', 'DESC');  
       $query  = $this->db->get();
@@ -47,14 +48,10 @@ class M_soal extends CI_Model {
     }
     
     public function add($data)
-    {
+    {   
         $this->db->insert('soal', $data);
     }
 
-    // public function detail($id_soal){
-    //   $query=$this->db->get_where('soal',array('id_soal'=> $id_soal));
-    //   return $query->row();
-    // }
     public function detail($id_soal)
     {
       $this->db->select('soal.*, paket_reguler.*');

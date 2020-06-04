@@ -24,7 +24,7 @@
     				</div>
     				<div class="form-group">
     					<label>Kode Transaksi :</label>
-    					<input type="text" class="form-control" placeholder="Masukkan Kode Transaksi" name="kode_transaksi" required>
+    					<input type="text" class="form-control" placeholder="Masukkan Kode Transaksi" name="kode_transaksi" required>  
     				</div>
     				<div class="form-group">
     					<label>Kode Bank :</label>

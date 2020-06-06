@@ -48,7 +48,7 @@ class M_paket_reguler extends CI_Model {
       $this->db->where('status_reguler', '1');  
       $this->db->order_by('id_reguler', 'DESC');
       $query  = $this->db->get();  
-      return $query->row();
+      return $query->result();
     }
     public function select_pending()
     {

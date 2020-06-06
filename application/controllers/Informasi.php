@@ -17,11 +17,11 @@ class Informasi extends CI_Controller {
 	public function soal($slug) {
 		$get_user = $this->M_user->get_user($this->session->userdata('id_user'));
 		$paket_r  = $this->M_paket_reguler->detail($slug); 
-		// $soal  = $this->M_soal->detail(); 
+		// $soal  = $this->M_bab_booster->detail($slug); 
 		$paket_b  = $this->M_paket_booster->detail($slug); 
-		echo "<pre>";
-		print_r($paket_b);
-		exit();
+		// echo "<pre>";
+		// print_r($paket_b);
+		// exit();
 
 		$data = array(	'paket_r' => $paket_r, 
 						'paket_b' => $paket_b,

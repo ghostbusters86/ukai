@@ -124,10 +124,10 @@
               <th>Waktu</th>
               <th>Status</th>
               <th>Created</th>
-              <th>Aksi</th>
+              <th>Aksi</th>   
             </tr>
-          </thead>
-          <tbody>
+          </thead>   
+          <tbody>  
             <?php
             $no = 1;
             foreach ($paket_reguler_published as $paket_reguler_published):

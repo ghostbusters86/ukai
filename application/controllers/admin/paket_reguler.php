@@ -19,7 +19,7 @@ class Paket_reguler extends CI_Controller {
     $pending  = $this->M_paket_reguler->count_pending();
     $paket_reguler_published = $this->M_paket_reguler->select_published();
     $paket_reguler_pending = $this->M_paket_reguler->select_pending();
-
+   
     $data = array(      
       'title' => 'Dasboard Admin UKAI',
       'paket_reguler' => $paket_reguler,

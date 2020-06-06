@@ -59,7 +59,7 @@
               <input type="text" class="form-control" placeholder="Masukkan Harga Paket " name="harga_booster" required>
             </div>
             <div class="form-group">
-              <label>Status Paket Booster :</label>
+              <label>Status Paket Booster :</label>   
               <select class="custom-select form-control" name="status_booster">
                 <option selected value="1">Published</option>
                 <option value="0">Pending</option>

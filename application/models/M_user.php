@@ -9,7 +9,6 @@ class M_user extends CI_Model {
   }   
 
   public function get_user($id_user){
-    $id_user = $this->session->userdata('id_user');
     $this->db->where('id_user',$id_user);
     $this->db->select('*');
     $this->db->from('user');

@@ -36,7 +36,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
-
+   
       </div>
 
       <div class="col-md-4">
@@ -49,7 +49,7 @@
           <div class="card-body">
             <div class="form-group">
               <label>Nama Paket Booster :</label>
-               <input type="text" class="form-control" value="<?php echo $paket->id_booster ?>" <?php echo $paket->kode_paket ?> name="id_booster" required readonly>              
+               <input type="text" class="form-control" value="<?php echo $add_bab->kode_paket?>"  name="id_booster" required readonly>              
             </div>
             <div class="form-group">
               <label>Kode Soal :</label>

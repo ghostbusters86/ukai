@@ -179,7 +179,7 @@ class Paket_reguler extends CI_Controller {
         'title' => 'Dasboard Admin Ukai- Ubah Paket reguler',  
         'edit'  => $edit,  
         'soal' => $soal,
-        'isi'   => 'admin/paket_reguler_E'
+        'isi'   => 'admin/paket_reguler_e'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
            

@@ -3,10 +3,10 @@
     <h1 class="h2">Form BAB Booster</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url(); ?>admin/bab_booster">
+      <a href="<?php echo base_url('admin/paket_booster/edit/'.$paket_booster->slug); ?>">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
         
-      </div>
+      </div>  
 
     </div>
     <?php
@@ -22,7 +22,7 @@
 
         </div>
         <div class="card">
-          <div class="card-header">  
+          <div class="card-header">     
             <h6>Ubah BAB Booster</h6>
           </div>
           <div class="card-body">
@@ -53,14 +53,7 @@
           <div class="card-body">
             <div class="form-group">
               <label>Nama Paket Booster :</label>
-              <select class="custom-select form-control" name="id_booster">
-                <?php foreach ($paket_booster as $paket_booster) { ?>
-                  <option value="<?php echo $paket_booster->id_booster ?>"
-                    <?php if($edit->id_booster == $paket_booster->id_booster) { echo "selected"; } ?>>
-                    <?php echo $paket_booster->kode_paket ?>
-                  </option>                   
-                <?php } ?> 
-              </select>             
+              <input type="text" class="form-control" value="<?php echo $edit->kode_soal ?>" name="id_booster" required readonly>          
             </div>
             <div class="form-group">
               <label>Kode Soal :</label>
@@ -85,7 +78,7 @@
             </div>
           </div>
         </div>
-
+ 
       </div>
 
 </div>
@@ -95,7 +88,7 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Soal BAB Booster</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/paket_booster/add_soal/'.$edit->slug); ?>">
+      <a href="<?php echo site_url('admin/paket_booster/add_soal/'.$edit->id_bab_booster); ?>">
         <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
       </div>
   </div>  
@@ -124,6 +117,7 @@
               <th>B</th>
               <th>C</th>
               <th>D</th>
+              <th>E</th>
               <th>Kunci Soal</th>
               <th>Pembahasan Soal</th>
               <th>Aksi</th>
@@ -142,6 +136,7 @@
                 <td><?php echo $soal->jawaban_b; ?></td>
                 <td><?php echo $soal->jawaban_c; ?></td>
                 <td><?php echo $soal->jawaban_d; ?></td>
+                <td><?php echo $soal->jawaban_e; ?></td>
                 <td><?php echo $soal->kunci_soal; ?></td>
                 <td><?php echo $soal->pembahasan_soal; ?></td>
                 <td>

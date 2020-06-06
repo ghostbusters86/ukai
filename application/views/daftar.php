@@ -53,10 +53,10 @@
       </ul>
       <div class="form-inline my-2 my-lg-0">
         <?php if($this->session->userdata('online')==false):?>
-          <a class="mr-3" data-toggle="modal" data-target="#login-start" href="<?php echo base_url().'Login_user' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
-          <?php else:?>
-            <a href="<?php echo base_url().'Login_user/logout' ?>" class="mr-3"><i class="fa fa-user" style="color: #9E1F63"></i> Log Out</a>
-          <?php endif;?>        
+            <a class="mr-3" data-toggle="modal" data-target="#login-start" href="<?php echo base_url().'login' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
+        <?php else:?>
+            <a href="<?php echo base_url().'login/logout' ?>" class="mr-3"><i class="fa fa-user" style="color: #9E1F63"></i> Log Out</a>
+        <?php endif;?>
         <a href="<?php echo base_url('daftar'); ?>"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
       </div>
     </div>

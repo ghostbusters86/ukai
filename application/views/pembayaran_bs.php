@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="<?php echo $metades; ?>">
     <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 </head>
-<body>
+<body>    
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="landingpage">
     <a class="navbar-brand" href="<?php echo base_url('home'); ?>">
@@ -31,7 +31,7 @@
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button>  
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -46,7 +46,7 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a href="<?php echo base_url().'Login_user/logout' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
+        <a href="<?php echo base_url().'login/logout' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
       </div>
     </div>
   </nav>
@@ -60,11 +60,13 @@
           <tbody>
             <tr>
               <td>Kode Transaksi</td>
-              <td class="r">@TU20049</td>
+              <td class="r"><?php echo $invoice?></td>   
             </tr>
             <tr>
               <td>Nominal Transfer</td>
-              <td class="r">Rp50.000</td>
+              <td class="r">Rp. <?php echo number_format($paket_b->harga_booster,'0','.','.');?>
+                
+              </td>
             </tr>
             <tr>
               <td>Nama Rekening Tujuan</td>
@@ -80,52 +82,60 @@
             </tr>
             <tr>
               <td>Harga Paket</td>
-              <td class="r">Rp50.000</td>
+              <td class="r">Rp. <?php echo number_format($paket_b->harga_booster,'0','.','.') ?></td>
             </tr>
           </tbody>
         </table>
       </div>
-
+  
       <div class="row wrap">
-        <h2 class="title-pembayaran">
-          Konfirmasi Pembayaran
-          <div class="float-right pembayaran">Kode Transaksi: TU 20049</div>
+        <h2 class="title-pembayaran">   
+          Konfirmasi Pembayaran  
+          <div class="float-right pembayaran"><?php echo $invoice?></div>
         </h2>
         <hr class="line-pembayaran">
-          <form class="form-wrap" action="<?php echo base_url('informasi'); ?>">
+            <div class="col-md-12">          
+        <?php echo validation_errors('<div class="alert alert-danger"> ','</div>');?>
+            <?php echo form_open_multipart(site_url('pembayaran/paket_bs/'.$paket_b->slug)); ?>  
+          <form class="form-wrap"> 
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6">  
                 <span>Nama Pembayar</span>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" value="<?php echo $get_user['nama_lengkap']?>" name="id_user" id="" readonly>
               </div>
               <div class="form-group col-md-6">
                 <span>a/n Rekening Pembayar</span>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" id="" placeholder="Masukkan a/n Nama Pembayar" name="an_rekening">
               </div>
+                <input type="text" class="form-control" value="<?php echo $invoice?>" name="kode_transaksi" id="" hidden>
+                <input type="text" class="form-control" value="<?php echo $paket_b->kode_paket?>" name="kode_paket" id="" hidden>
+                <input type="text" class="form-control" value="1" name="status_transaksi" id="" hidden>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <span>Bank</span>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" id="" placeholder="Masukkan Bank" name="kode_bank">
               </div>
               <div class="form-group col-md-6">
                 <span>Jumlah Pembayaran</span>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" id="" placeholder="Masukkan Jumlah Pembayaran" name="nominal_transfer" >
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6"> 
                 <span>Tanggal Bayar</span>
-                <input type="date" class="form-control" id="">
+                <input type="date" class="form-control" name="tanggal" >
               </div>
               <div class="form-group col-md-6">
                 <span>Bukti Transfer</span>
-                <input type="file" class="form-control-file pembayaran" id="">
+                <input type="file" class="form-control-file pembayaran" name="bukti_transfer" >
               </div>
             </div>
             <button type="submit" class="btn btn-danger color login pl-5 pr-5">Konfirmasi Pembayaran</button>
           </form>
+          <?php echo form_close(); ?>
         </div>
+      </div>          
       </div>
     </div>
   </section>

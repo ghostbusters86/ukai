@@ -148,7 +148,7 @@
                   } ?>
                 </td>
                 <td>
-                  <a href="<?php echo site_url('admin/paket_booster/edit_bab/'.$bab_booster->slug); ?>">
+                  <a href="<?php echo site_url('admin/paket_booster/edit_bab/'.$bab_booster->id_bab_booster); ?>">
                     <button class="btn btn-sm btn-outline-success">Edit</button>
                   </a>
 

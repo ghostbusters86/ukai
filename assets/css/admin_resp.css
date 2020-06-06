@@ -8,7 +8,7 @@ body {
 p {
   font-family: 'Poppins', sans-serif;
   line-height: 1.7em;
-  color: #999;
+  /*color: #999;*/
 }
 .content-header {
   position: relative;

@@ -45,7 +45,7 @@
                   <th>Aksi</th>
                 </tr>
               </thead>
-              <tbody>   
+              <tbody>     
                 <?php
                 $no = 1;
                 foreach ($select_paket as $select_paket):
@@ -61,7 +61,7 @@
                         echo "Published";
                       } else{
                         echo "Pending";
-                      } ?>
+                      } ?>  
                     </td>
                     <td><?php echo $select_paket->created; ?></td>
                     <td>

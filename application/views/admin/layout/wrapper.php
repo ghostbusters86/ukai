@@ -9,11 +9,8 @@ if ($this->session->userdata('username') == "" && $this->session->userdata('akse
     require_once('main.php');
     require_once('footer.php');
 } elseif ($this->session->userdata('akses_level') == "user") {
-    require_once('head.php');
-    require_once('sidebar_user.php');
-    require_once('header.php');
-    require_once('main.php');
-    require_once('footer.php');
+    $this->session->set_flashdata('notifikasi', 'Silahkan login sebagai admin terlebih dahulu');
+    redirect(site_url('Login'));
 } else {
     $this->session->set_flashdata('notifikasi', 'Silahkan login sebagai admin terlebih dahulu');
     redirect(site_url('login'));

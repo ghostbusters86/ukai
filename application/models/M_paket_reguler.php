@@ -16,8 +16,8 @@ class M_paket_reguler extends CI_Model {
       $query  = $this->db->get();
       return $query->result();
     }
-       
-      public function count_semua()  
+                 
+    public function count_semua()  
     {
       $this->db->select('*');
       $this->db->from('paket_reguler');

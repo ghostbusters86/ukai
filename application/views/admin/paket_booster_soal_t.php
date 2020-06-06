@@ -1,6 +1,6 @@
 <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-    <h1 class="h2">Form Tambah Soal Paket Reguler</h1>
+    <h1 class="h2">Form Tambah Soal Paket Booster</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
       <a href="<?php echo base_url(); ?>admin/paket_booster">
@@ -9,13 +9,16 @@
       </div>  
 
     </div>
-    <?php
+
+        <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/paket_booster/add_soal/'.$soal_bab_booster->id_bab_booster)) ?>
+    echo form_open_multipart(site_url('admin/paket_booster/add_soal/'.$bab_booster->id_bab_booster)) ?>
+      
+
       
     <div class="row my-4">
 
-      <div class="col-md-8">
+      <div class="col-md-8">  
 
         <div class="card"> 
           <div class="card-header">
@@ -25,20 +28,13 @@
 
             <div class="form-group">
               <label>Pertanyaan :</label>
-              <input type="text" class="form-control" placeholder="Masukkan Pertanyaan " name="pertanyaan" required>
+              <br><textarea rows="2" cols="91" name="pertanyaan" class="form-control" placeholder="Masukkan Soal Pertanyaan" required ></textarea>
             </div>
               <label>Kode Soal:</label>
-               <select class="custom-select form-control" name="kode_soal">
-                <?php foreach ($paket_bab_booster as $paket_bab_booster) { ?>
-                  <option value="<?php echo $paket_bab_booster->kode_soal ?>">
-                    <?php echo $paket_bab_booster->kode_soal ?> -
-                    <?php echo $paket_bab_booster->kode_paket ?>
-                  </option>                   
-                <?php } ?> 
-              </select>                      
+              <input type="text" class="form-control" value="<?php echo $bab_booster->kode_soal ?>" name="kode_soal" required readonly>       
             <div class="form-group">
-              <label>Kunci Soal :</label>
-              <br><textarea rows="2" cols="91" name="kunci_soal" placeholder="Masukkan Kunci Soal" required ></textarea>
+              <br><label>Kunci Soal :</label>
+              <br><textarea rows="2" cols="91" name="kunci_soal" class="form-control" placeholder="Masukkan Kunci Soal" required ></textarea>
             </div>            
             <div class="form-group">
               <label>Pembahasan Soal :</label>
@@ -60,20 +56,24 @@
           <div class="card-body">
             <div class="form-group">
               <label>Jawaban A :</label>
-              <textarea rows="3" cols="40" name="jawaban_a" placeholder="Masukkan Jawaban A" required></textarea>
+              <textarea rows="3" cols="40" name="jawaban_a" class="form-control" placeholder="Masukkan Jawaban A" required></textarea>
             </div>
             <div class="form-group">
               <label>Jawaban B :</label>
-              <textarea rows="3" cols="40" name="jawaban_b" placeholder="Masukkan Jawaban B" required ></textarea>
+              <textarea rows="3" cols="40" name="jawaban_b" class="form-control" placeholder="Masukkan Jawaban B" required ></textarea>
             </div>
             <div class="form-group">
               <label>Jawaban C :</label>
-              <textarea rows="3" cols="40" name="jawaban_c" placeholder="Masukkan Jawaban C" required ></textarea>
+              <textarea rows="3" cols="40" name="jawaban_c" class="form-control" placeholder="Masukkan Jawaban C" required ></textarea>
             </div>
             <div class="form-group">
               <label>Jawban D :</label>
-              <textarea rows="3" cols="40"  name="jawaban_d" placeholder="Masukkan Jawaban D" required></textarea>
-            </div>  
+              <textarea rows="3" cols="40"  name="jawaban_d" class="form-control" placeholder="Masukkan Jawaban D" required></textarea>
+            </div> 
+            <div class="form-group">
+              <label>Jawban E :</label>
+              <textarea rows="3" cols="40"  name="jawaban_e" class="form-control" placeholder="Masukkan Jawaban E" required></textarea>
+            </div>   
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
@@ -82,5 +82,5 @@
       </div>
       
     </div>
-    <?php echo form_close(); ?>
+ <?php echo form_close(); ?>
   </main>

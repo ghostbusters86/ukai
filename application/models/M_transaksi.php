@@ -8,6 +8,21 @@ class M_transaksi extends CI_Model {
       parent::__construct();
       $this->load->database();
     }
+
+    public function get_no_inv() {
+      $q = $this->db->query("SELECT MAX(RIGHT(kode_transaksi,4)) AS kd_max FROM transaksi");
+      $kd = "";
+      if($q->num_rows()>0){
+        foreach($q->result() as $k){
+          $tmp = ((int)$k->kd_max)+1;
+          $kd = sprintf("%04s", $tmp);
+        }
+      }else{
+        $kd = "0001";
+      }        
+      $tp = '@TU2';
+      return $tp . $kd;  
+    }
     public function select_transaksi()
     {
       $this->db->select('*');

@@ -31,7 +31,7 @@ class Login extends CI_Controller{
     if ($valid->run() == false) {
       $data = array('title' => 'Login Ukai' );  
       $this->load->view('index', $data, false);
-    } else {  
+    } else {   
       $i            = $this->input;
       $email        = $i->post('email');     
       $password     = md5($i->post('password'));
@@ -42,6 +42,7 @@ class Login extends CI_Controller{
         $this->session->set_userdata('email', $email);
         $this->session->set_userdata('nama_lengkap', $check_login->nama_lengkap);
         $this->session->set_userdata('akses_level', $check_login->akses_level);
+        $this->session->set_userdata('id_user', $check_login->id_user);
 
         if($this->session->userdata('akses_level') == 'admin'){
           redirect(site_url('admin/dasboard'), 'refresh');
@@ -61,8 +62,10 @@ class Login extends CI_Controller{
     $this->session->unset_userdata('akses_level');
     $this->session->unset_userdata('id_user');
     $this->session->unset_userdata('nama_lengkap');
+    $this->session->sess_destroy();
     $this->session->set_flashdata('notifikasi', '<center>Anda berhasil logout</center>');
     redirect(site_url('index.php/login'),'refresh');
   }
 
 }
+  

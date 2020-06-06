@@ -73,7 +73,7 @@ class M_bab_booster extends CI_Model {
       $this->db->where('id_bab_booster',$data['id']);
       $this->db->delete('bab_booster');
     }
-    public function add($data)  
+    public function add($data)   
     {  
         $this->db->insert('bab_booster', $data);
     }
@@ -83,16 +83,15 @@ class M_bab_booster extends CI_Model {
       $this->db->select('bab_booster.*');
       $this->db->from('bab_booster');  
       $this->db->where('slug',$slug);
-      $query  = $this->db->get();
+      $query  = $this->db->get();  
       return $query->row();
     }
 
-    public function detail($slug)
+    public function detail($id_bab_booster)
     {
       $this->db->select('bab_booster.*');
       $this->db->from('bab_booster');  
-
-      $this->db->where('slug',$slug);
+      $this->db->where('id_bab_booster',$id_bab_booster);
       $query  = $this->db->get();
       return $query->row();
     }
@@ -105,4 +104,4 @@ class M_bab_booster extends CI_Model {
 }  
 
 /* End of file M_bab_booster.php */
-/* Location: ./application/models/M_bab_booster.php */
+/* Location: ./application/models/M_bab_booster.php */      

@@ -46,7 +46,7 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a href="<?php echo base_url().'Login_user/logout' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
+        <a href="<?php echo base_url().'login/logout' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>
       </div>
     </div>
   </nav>
@@ -58,7 +58,7 @@
         <div class="col-md-3 dash">
           <p class="title-dash">Your Profile</p>
           <hr class="line-dash">
-          <img class="img-fluid rounded-circle dash" src="https://image.ibb.co/iN3qES/pexels_photo_324658.jpg" alt="profil-user">
+          <img class="img-fluid rounded-circle dash" src="<?php echo base_url(); ?>img/img_user/<?php echo $edit->foto; ?>" alt="profil-user">
           <p class="description-dash">
             <b><?php echo $edit->nama_lengkap ?></b><br>
             <?php echo $edit->universitas_user ?>
@@ -80,7 +80,7 @@
     echo validation_errors('<div class="alert alert-danger">', '</div>');
     echo form_open_multipart(site_url('profil/edit_profil/'.$edit->id_user)) ?>
 
-                <form action="edit-profil.html">
+                <form action="">
                   <div class="form-row">   
                     <div class="form-group col-md-6">
                       <span>Nama Lengkap</span>

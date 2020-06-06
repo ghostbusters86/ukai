@@ -51,9 +51,9 @@
       <div class="form-inline my-2 my-lg-0">
 
         <?php if($this->session->userdata('online')==false):?>
-          <a class="mr-3" data-toggle="modal" data-target="#login-start" href="<?php echo base_url().'Login_user' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
+          <a class="mr-3" data-toggle="modal" data-target="#login-start" href="<?php echo base_url().'login' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
           <?php else:?>
-            <a href="<?php echo base_url().'Login_user/logout' ?>" class="mr-3"><i class="fa fa-user" style="color: #9E1F63"></i> Log Out</a>
+            <a href="<?php echo base_url().'login/logout' ?>" class="mr-3"><i class="fa fa-user" style="color: #9E1F63"></i> Log Out</a>
           <?php endif;?>
 
       </div>
@@ -77,7 +77,7 @@
         <div class="col-md-3 dash">
           <p class="title-dash">Your Profile</p>
           <hr class="line-dash">
-          <img class="img-fluid rounded-circle dash" src="<?php echo base_url(); ?>img/img_artikel/<?php echo $get_user['foto']; ?>" alt="profil-user">
+          <img class="img-fluid rounded-circle dash" src="<?php echo base_url(); ?>img/img_user/<?php echo $get_user['foto']; ?>" alt="profil-user">
           <p class="description-dash">
             <b><?php echo $get_user['nama_lengkap']?> </b><br>
             <?php echo $get_user['universitas_user']?> 

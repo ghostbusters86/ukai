@@ -27,7 +27,7 @@ class M_paket_booster extends CI_Model {
     public function count_published()      
     {  
       $this->db->select('*');
-      $this->db->from('paket_booster');
+      $this->db->from('paket_booster');  
       $this->db->where('status_booster', '1');
       $publish = $this->db->count_all_results();
       return $publish;

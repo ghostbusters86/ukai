@@ -7,23 +7,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/media.css">
+    <link rel="icon" href="assets/images/favicon-laut-tawar.png">
+    <title>Teman UKAI</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
     <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
-    <title>Teman UKAI</title>
-    <meta property="og:locale" content="id_ID" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="<?php echo $title; ?>" />
+<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
 </head>
-<body>
+<body>    
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="landingpage">
     <a class="navbar-brand" href="<?php echo base_url('home'); ?>">
@@ -36,13 +36,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
+          <a class="nav-link" href="<?php echo base_url('home') ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('profil'); ?>">Profil</a>
+          <a class="nav-link" href="<?php echo base_url('profil') ?>">Profil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('paket'); ?>">Paket Soal</a>
+          <a class="nav-link" href="<?php echo base_url('paket') ?>">Paket Soal</a>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
@@ -51,62 +51,91 @@
     </div>
   </nav>
 
-  <section id="paket">
-    <div class="container">   
-      <div class="row justify-content-center">
-        <ul class="nav nav-pills paket" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Paket soal reguler</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link booster" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Paket soal booster</a>
-          </li>
-        </ul>   
+  <section id="pembayaran">
+    <div class="container">
+      <div class="row wrap">
+        <h2 class="title-pembayaran">Informasi Pembayaran</h2>
+        <hr class="line-pembayaran">
+        <table class="table pembayaran">
+          <tbody>
+            <tr>
+              <td>Kode Transaksi</td>
+              <td class="r"><?php echo $invoice?></td>   
+            </tr>
+            <tr>
+              <td>Nominal Transfer</td>
+              <td class="r">Rp. <?php echo number_format($paket_r->harga_reguler,'0','.','.');?>
+                
+              </td>
+            </tr>
+            <tr>
+              <td>Nama Rekening Tujuan</td>
+              <td class="r">Teman Ukai</td>
+            </tr>
+            <tr>
+              <td>Nama Paket</td>
+              <td class="r">Paket soal reguler</td>
+            </tr>
+            <tr>
+              <td>Rekening Bank</td>
+              <td class="r">801254649</td>
+            </tr>
+            <tr>
+              <td>Harga Paket</td>
+              <td class="r">Rp. <?php echo number_format($paket_r->harga_reguler,'0','.','.') ?></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="row">
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="row">
-              <?php  
-              foreach ($paket_reguler as $paket_reguler):
-                ?>
-              <div class="col-lg-4 col-md-6 col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <?php echo $paket_reguler->nama_reguler ?>
-                  </div>  
-                  <div class="card-body">
-                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
-                    <p class="card-text">Waktu <?php echo $paket_reguler->time_reguler;?><b> Menit</b></p>
-                    <p class="card-text">Spesifikasi 5</p>
-                    <h5 class="card-price">Rp. <?php echo number_format($paket_reguler->harga_reguler,'0','.','.') ?></h5>
-                    <a href="<?php echo base_url('/pembayaran/paket_reg/'.$paket_reguler->slug); ?>" class="btn btn-danger paket">Beli Paket</a>
-                  </div>
-                </div>
-              </div>   
-              <?php endforeach; ?>
+  
+      <div class="row wrap">
+        <h2 class="title-pembayaran">   
+          Konfirmasi Pembayaran  
+          <div class="float-right pembayaran"><?php echo $invoice?></div>
+        </h2>
+        <hr class="line-pembayaran">
+            <div class="col-md-12">          
+        <?php echo validation_errors('<div class="alert alert-danger"> ','</div>');?>
+            <?php echo form_open_multipart(site_url('pembayaran/paket_reg/'.$paket_r->slug)); ?>  
+          <form class="form-wrap"> 
+            <div class="form-row">
+              <div class="form-group col-md-6">  
+                <span>Nama Pembayar</span>
+                <input type="text" class="form-control" value="<?php echo $get_user['nama_lengkap']?>" name="id_user" id="" readonly>
+              </div>
+              <div class="form-group col-md-6">
+                <span>a/n Rekening Pembayar</span>
+                <input type="text" class="form-control" id="" placeholder="Masukkan a/n Nama Pembayar" name="an_rekening">
+              </div>
+                <input type="text" class="form-control" value="<?php echo $invoice?>" name="kode_transaksi" id="" hidden>
+                <input type="text" class="form-control" value="<?php echo $paket_r->kode_paket?>" name="kode_paket" id="" hidden>
+                <input type="text" class="form-control" value="1" name="status_transaksi" id="" hidden>
             </div>
-          </div>
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <div class="row">
-              <?php for ($i=0; $i < $no_paket ; $i++) { ?>
-                <div class="col-lg-4 col-md-6 col-12">
-                  <div class="card">
-                    <div class="card-header">                    
-                      <?php echo $paket[$i]['nama_booster']; ?>
-                    </div>                
-                    <div class="card-body">
-                      <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-booster.png" alt="icon-booster">
-                      <?php for ($j=0; $j < $paket[$i]['jumlah'] ; $j++) { ?>
-                        <p class="card-text"><?php  echo $paket[$i]['bab'][$j]['nama_bab'] ?></p>
-                      <?php } ?>
-                      <h5 class="card-price">Rp. <?php echo number_format($paket[$i]['harga_booster'],'0','.','.') ?></h5>
-                      <a href="<?php echo base_url('/pembayaran/paket_bs/'.$paket[$i]['slug']); ?>" class="btn btn-danger paket">Beli Paket</a>
-                    </div>
-                  </div>
-                </div>
-              <?php } ?>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <span>Bank</span>
+                <input type="text" class="form-control" id="" placeholder="Masukkan Bank" name="kode_bank">
+              </div>
+              <div class="form-group col-md-6">
+                <span>Jumlah Pembayaran</span>
+                <input type="text" class="form-control" id="" placeholder="Masukkan Jumlah Pembayaran" name="nominal_transfer" >
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6"> 
+                <span>Tanggal Bayar</span>
+                <input type="date" class="form-control" name="tanggal" >
+              </div>
+              <div class="form-group col-md-6">
+                <span>Bukti Transfer</span>
+                <input type="file" class="form-control-file pembayaran" name="bukti_transfer" >
+              </div>
+            </div>
+            <button type="submit" class="btn btn-danger color login pl-5 pr-5">Konfirmasi Pembayaran</button>
+          </form>
+          <?php echo form_close(); ?>
         </div>
+      </div>          
       </div>
     </div>
   </section>

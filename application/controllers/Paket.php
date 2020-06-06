@@ -22,6 +22,7 @@ class Paket extends CI_Controller {
 	foreach ($paket_booster as $paket_booster){
 		$paket [$no_paket] ['nama_booster'] = $paket_booster->nama_booster;
 		$paket [$no_paket] ['harga_booster'] = $paket_booster->harga_booster;
+		$paket [$no_paket] ['slug'] = $paket_booster->slug;
 		$bab_booster = $this->M_bab_booster->select_bab_booster($paket_booster->id_booster);
 
 		$no = 0;
@@ -35,24 +36,26 @@ class Paket extends CI_Controller {
 		$no_paket++;
 	}
 	
-	
+	  
 	$data = array(  
 			'title'	=> 'Paket Soal',
 			'metades' => 'Paket Soal',
 			'paket_reguler' => $paket_reguler,
 			'bab_booster' => $bab_booster,
+			'no_paket' => $no_paket,
+			'paket' => $paket,
 			'paket_booster' => $paket_booster
 			);    
-	echo '<pre>';
-	for ($i=0; $i < $no_paket ; $i++) { 
-		echo $paket[$i]['nama_booster']."<br>";
-		echo $paket[$i]['harga_booster']."<br><ul>";
-		for ($j=0; $j < $paket[$i]['jumlah'] ; $j++) { 
-			echo "<li>".$paket[$i]['bab'][$j]['nama_bab']."</li>";
-		}
-		echo "</ul>";
-	}
-	exit();
+	// echo '<pre>';
+	// for ($i=0; $i < $no_paket ; $i++) { 
+	// 	echo $paket[$i]['nama_booster']."<br>";
+	// 	for ($j=0; $j < $paket[$i]['jumlah'] ; $j++) { 
+	// 		echo "<li>".$paket[$i]['bab'][$j]['nama_bab']."</li>";
+	// 	}
+	// 	echo $paket[$i]['harga_booster']."<br><ul>";
+	// 	echo "</ul>";
+	// }
+	// exit();
 		$this->load->view('paket', $data, false);
 	}
 

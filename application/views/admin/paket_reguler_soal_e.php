@@ -3,7 +3,7 @@
     <h1 class="h2">Form Ubah Soal</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url(); ?>admin/soal">
+      <a href="<?php echo base_url('admin/paket_reguler/edit/'.$edit->slug); ?>">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
         
       </div>

@@ -13,7 +13,7 @@ class Profil extends CI_Controller {
 	}  
    
 	public function index() {
-	$get_user = $this->M_user->get_user($this->session->userdata('hak'));
+	$get_user = $this->M_user->get_user($this->session->userdata('id_user'));
 
 	$data = array('get_user' => $get_user);
 	$this->load->view('profil', $data);
@@ -27,7 +27,7 @@ class Profil extends CI_Controller {
       'nohp_user',
       'nohp_user',  
       'required',  
-      array(    
+      array(         
         'required'  =>  'Anda belum mengisikan Nomer Handphone.') 
     );
     
@@ -56,37 +56,37 @@ class Profil extends CI_Controller {
     $this->load->library('upload', $config);
     $i  = $this->input;
     if ($valid->run()===false) {  
-	$data = array('edit'     => $edit );
-
+	$data = array('edit'     => $edit );   
 	$this->load->view('edit_profil',$data);
+
 	}else{
 		if ( ! $this->upload->do_upload('foto'))
-      {
+      {   
         $data = array(
-          'nama_lengkap'         =>  $i->post('nama_lengkap'),
-          'jk_user'  =>  $i->post('jk_user'),
-          'email'       =>  $i->post('email'),
-          'foto'     =>  $i->post('foto'),
-          'universitas_user'      =>  $i->post('universitas_user'),
-          'nohp_user'=>  $i->post('nohp_user'));
+          'nama_lengkap'    =>  $i->post('nama_lengkap'),
+          'jk_user'         =>  $i->post('jk_user'),
+          'email'           =>  $i->post('email'),
+          'foto'            =>  $i->post('foto'),
+          'universitas_user'=>  $i->post('universitas_user'),
+          'nohp_user'       =>  $i->post('nohp_user'));
 
         $this->M_user->edit($data,$id_user);
         $this->session->set_flashdata('notifikasi', '<center>Data berhasil di update');
-        redirect('/profil');
+        redirect('/profil/');
       }
-      else
+      else   
       {
       	$data = array(
-          'nama_lengkap'         =>  $i->post('nama_lengkap'),
-          'jk_user'  =>  $i->post('jk_user'),
+          'nama_lengkap'=>  $i->post('nama_lengkap'),
+          'jk_user'     =>  $i->post('jk_user'),
           'email'       =>  $i->post('email'),
-          'foto'     =>   $this->upload->data('file_name'),
-          'universitas_user'      =>  $i->post('universitas_user'),
-          'nohp_user'=>  $i->post('nohp_user'));
+          'foto'        =>   $this->upload->data('file_name'),
+          'universitas_user' =>  $i->post('universitas_user'),
+          'nohp_user'   =>  $i->post('nohp_user'));
 
         $this->M_user->edit($data,$id_user);
         $this->session->set_flashdata('notifikasi', '<center>Data berhasil di update');
-        redirect('/profil');
+        redirect('/profil/');
    	 	}
 	}
 	}	

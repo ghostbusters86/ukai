@@ -28,16 +28,8 @@
               <input type="text" class="form-control" value="<?php echo $edit->pertanyaan ?>" name="pertanyaan" required>
             </div> 
             <div class="form-group">
-              <label>Soal :</label>
-              <select class="custom-select form-control" name="kode_soal">
-                <?php foreach ($bab_booster as $bab_booster) { ?>
-                  <option value="<?php echo $bab_booster->kode_soal ?>"
-                    <?php if($edit->kode_soal == $bab_booster->kode_soal) { echo "selected"; } ?>>
-                    <?php echo $bab_booster->kode_soal ?> -
-                    <?php echo $bab_booster->kode_paket ?>
-                  </option>                   
-                <?php } ?> 
-              </select>             
+              <label>Kode Soal :</label>
+                <input type="text" class="form-control" value="<?php echo $edit->kode_soal ?>"  name="kode_soal" required readonly>           
             </div>                
             <div class="form-group">
               <label>Kunci Soal :</label>
@@ -76,6 +68,10 @@
             <div class="form-group">
               <label>Jawban D :</label>
               <input type="text" class="form-control" value="<?php echo $edit->jawaban_d ?>"  name="jawaban_d" required>
+            </div>  
+            <div class="form-group">
+              <label>Jawban E :</label>
+              <input type="text" class="form-control" value="<?php echo $edit->jawaban_e ?>"  name="jawaban_e" required>
             </div>  
 
             <button type="submit" class="btn btn-primary">Submit</button>

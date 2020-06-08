@@ -18,8 +18,8 @@
 
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
-    <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
-
+    <link id="favicon" rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.png') ?>" type="image/png" />
+  <link rel="apple-touch-icon" sizes="194x194" href="<?php echo base_url('assets/images/favicon.png') ?>" type="image/png" />
     <title>Teman UKAI</title>
 
     <meta property="og:locale" content="id_ID" />

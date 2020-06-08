@@ -22,4 +22,34 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+	public function send_email($register_id,$register_email)
+	{
+		$data['id_registar'] = $register_id;
+		$this->load->view('email/email_register', $data);
+		$subject 	= "Pendaftaran Akun Teman Ukai";
+		$message	= $this->load->view('email/email_register',$data,true);
+		$config 	= array(
+			'protocol'  	=> 'smtp',
+			'smtp_host' 	=> 'ssl://mail.temanukai.com',
+			'smtp_port' 	=> '465',
+			'smtp_user'  	=> 'info@temanukai.com',
+			'smtp_pass'  	=> '@temanukai123',
+			'mailtype'  	=> 'html',
+			'charset'    	=> 'utf-8',
+			'wordwrap'   	=> TRUE
+		);
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+		$this->email->from('info@temanukai.com','Teman Ukai');
+		$this->email->to($register_email);
+		$this->email->subject($subject);
+		$this->email->message($message);
+		if($this->email->send()){
+			
+		} else {
+			# code...
+			echo $this->email->print_debugger();
+			exit();  
+		}
+	}
 }

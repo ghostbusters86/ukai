@@ -51,7 +51,48 @@
     </div>
   </nav>
 
-  <section id="paket">
+    <section id="paket">
+      <?php
+      if ($this->session->flashdata('notifikasi')) {
+        echo "<br>";
+        echo "<div class='alert alert-success alert-dismissible fade show'><center>";
+        echo $this->session->flashdata('notifikasi');
+        echo "</center><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+        </button></div>";
+      }
+      ?>
+    <div class="container"> 
+      <div class="row justify-content-center">
+        <ul class="nav nav-pills paket" id="pills-tab" role="tablist">
+          <li class="nav-link">Paket Pengguna</li>
+        </ul>   
+      </div>  
+      <div class="row">
+        <div class="tab-content" id="pills-tabContent">
+            <div class="row">
+              <?php  
+              foreach ($transaksi as $transaksi):
+                ?>
+              <div class="col-lg-4 col-md-6 col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <?php echo $transaksi->nama_reguler ?>
+                  </div>  
+                  <div class="card-body" align="center">
+                    <img class="img-fluid paket" src="<?php echo base_url(); ?>assets/frontend/images/dashboard/icon-reguler.png" alt="icon-reguler">
+                    <p class="card-text">Waktu <?php echo $transaksi->time_reguler;?><b> Menit</b></p>
+                    <p class="card-text">Spesifikasi 5</p>
+                    <h5 class="card-price">Rp. <?php echo number_format($transaksi->harga_reguler,'0','.','.') ?></h5>
+                    <a href="<?php echo base_url('/pembayaran/paket_reg/'.$transaksi->slug); ?>" class="btn btn-secondary">Menunggu Konfirmasi</a>
+                  </div>
+                </div>
+              </div>   
+              <?php endforeach; ?>
+            </div>
+          </div>
+      </div>
+    </div>
     <div class="container">   
       <div class="row justify-content-center">
         <ul class="nav nav-pills paket" id="pills-tab" role="tablist">

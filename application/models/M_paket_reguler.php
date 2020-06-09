@@ -16,6 +16,15 @@ class M_paket_reguler extends CI_Model {
       $query  = $this->db->get();
       return $query->result();
     }
+
+    public function paket_user()
+    {
+      $this->db->select('*');
+      $this->db->from('paket_reguler');  
+      $this->db->order_by('id_reguler', 'DESC');
+      $query  = $this->db->get();
+      return $query->result();
+    }
                  
     public function count_semua()  
     {
@@ -72,15 +81,14 @@ class M_paket_reguler extends CI_Model {
     { 
       $this->db->select('*');
       $this->db->from('paket_reguler');
-      $this->db->where('status_reguler', '1');  
       $this->db->where('id_reguler', $id_reguler);  
       $this->db->order_by('id_reguler', 'DESC');
       $query  = $this->db->get();  
       return $query->row();
-    }
-   
+    }  
+     
     public function delete($data)   
-    {
+    {  
       $this->db->where('id_reguler',$data['id']);
       $this->db->delete('paket_reguler');
     }     
@@ -94,7 +102,16 @@ class M_paket_reguler extends CI_Model {
     //   return $query->row();
     // }
 
-    public function detail($slug)
+    public function detail($id_reguler)   
+    {
+      $this->db->select('paket_reguler.*');
+      $this->db->from('paket_reguler');  
+      $this->db->where('id_reguler',$id_reguler);
+      $query  = $this->db->get();
+      return $query->row();
+    }
+
+    public function get_frontend($slug)   
     {
       $this->db->select('paket_reguler.*');
       $this->db->from('paket_reguler');  
@@ -102,11 +119,9 @@ class M_paket_reguler extends CI_Model {
       $query  = $this->db->get();
       return $query->row();
     }
-
-
-
-    public function edit($data,$slug){
-      $this->db->where('slug',$slug);
+  
+    public function edit($data,$id_reguler){
+      $this->db->where('id_reguler',$id_reguler);
       $this->db->update('paket_reguler',$data);
     }
 

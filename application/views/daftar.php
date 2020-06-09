@@ -148,7 +148,7 @@
             </div>
             <div class="form-group">
               <label for="">No. Handphone</label>
-              <input type="text" class="form-control" id="" name="nohp_user" placeholder="Isikan no. handphone Anda">
+              <input type="number" class="form-control" id="" name="nohp_user" placeholder="Isikan no. handphone Anda">
             </div>
             <div class="form-group" hidden>
               <input type="text" class="form-control" id="user" name="akses_level" placeholder="user" value="user">
@@ -164,6 +164,10 @@
             <div class="form-group">
               <label for="">Password</label>
               <input type="password" class="form-control" id="" name="password" placeholder="Isikan password Anda">
+            </div>
+            <div class="form-group">
+              <span>Upload Foto</span>
+              <input type="file" class="form-control-file ganti-foto" name="foto">
             </div>
             <button type="submit" class="btn btn-danger color login pl-5 pr-5">Daftar</button>
           </form>          

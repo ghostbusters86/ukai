@@ -44,7 +44,7 @@ class Profil extends CI_Controller {
       'required',
       array(
         'required'  =>  'Anda belum mengisikan Nama Universitas.')
-    );
+    );    
 
     $config['upload_path']          = './img/img_user/';
     $config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -66,14 +66,15 @@ class Profil extends CI_Controller {
           'nama_lengkap'    =>  $i->post('nama_lengkap'),
           'jk_user'         =>  $i->post('jk_user'),
           'email'           =>  $i->post('email'),
-          'foto'            =>  $i->post('foto'),
+          'foto'            =>  $i->post('foto'),  
           'universitas_user'=>  $i->post('universitas_user'),
-          'nohp_user'       =>  $i->post('nohp_user'));
+          'nohp_user'       =>  $i->post('nohp_user'),
+          'foto'      =>  $i->post('gambar_lama'));
 
         $this->M_user->edit($data,$id_user);
-        $this->session->set_flashdata('notifikasi', '<center>Data berhasil di update');
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong>Profil</strong>');
         redirect('/profil/');
-      }
+      }      
       else   
       {
       	$data = array(
@@ -85,11 +86,37 @@ class Profil extends CI_Controller {
           'nohp_user'   =>  $i->post('nohp_user'));
 
         $this->M_user->edit($data,$id_user);
-        $this->session->set_flashdata('notifikasi', '<center>Data berhasil di update');
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong>Profil</strong>');
         redirect('/profil/');
    	 	}
 	}
 	}	
+
+  public function ubah_password($id_user){
+  $password  = $this->M_user->detail($id_user); 
+  // echo "<pre>";
+  // print_r($password);
+  // exit();
+   $valid = $this->form_validation;
+    $valid->set_rules(
+      'password',
+      'password',  
+      'required',  
+      array(         
+        'required'  =>  'Anda belum mengisikan Password.') 
+    );
+    
+    if ($valid->run()===false) {  
+      $data = array('password'     => $password );   
+      $this->load->view('edit_profil',$data);
+
+    }else{
+        $data = array('password'       =>  md5($i->post('password')));
+        $this->M_user->edit($data,$id_user);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong>Password</strong></center>');
+        redirect('/profil/edit_profil/'.$edit->id_user);
+      }
+    } 
 
 }
 

@@ -9,23 +9,26 @@
     <title><?php echo $title; ?></title>
 
     <!-- Bootstrap CSS CDN --> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+  
     <link href="https://getbootstrap.com/docs/4.0/examples/dashboard/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin_main.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin_resp.css') ?>">
     <!-- datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <!--  tag input -->
+    <!--  tag input -->       
     <link href="<?php echo base_url(); ?>assets/css/tagsinput.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/js_tag/jquery.tagsinput.min.css" />
+    <!-- Popup Gambar -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/poup_gambar/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/poup_gambar/source/helpers/jquery.fancybox-buttons.css?v=1.0.5">
+
     <!-- favicon --> 
-    
-    <link rel="icon" href="<?php echo base_url(); ?>assets/images/logo.png">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?php echo base_url('assets/img/favicon') ?>/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">

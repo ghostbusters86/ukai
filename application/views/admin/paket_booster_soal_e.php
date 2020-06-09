@@ -3,7 +3,7 @@
     <h1 class="h2">Form Ubah Soal</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url(); ?>admin/soal">
+      <a href="<?php echo base_url('admin/paket_booster/edit_bab/'.$edit->id_booster); ?>">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
         
       </div>
@@ -25,15 +25,7 @@
 
             <div class="form-group">
               <label>Pertanyaan :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->pertanyaan ?>" name="pertanyaan" required>
-            </div> 
-            <div class="form-group">
-              <label>Kode Soal :</label>
-                <input type="text" class="form-control" value="<?php echo $edit->kode_soal ?>"  name="kode_soal" required readonly>           
-            </div>                
-            <div class="form-group">
-              <label>Kunci Soal :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->kunci_soal ?>"  name="kunci_soal" required>
+              <textarea name="pembahasan_soal" id="editor1"><?php echo $edit->pertanyaan ?> </textarea>
             </div>            
             <div class="form-group">
               <label>Pembahasan Soal :</label>
@@ -54,25 +46,72 @@
           </div>
           <div class="card-body">
             <div class="form-group">
+              <label>Kode Soal :</label>
+                <input type="text" class="form-control" value="<?php echo $edit->kode_soal ?>"  name="kode_soal" required readonly>           
+            </div>                
+            <div class="form-group">
+              <label>Kunci Soal :</label>
+              <select class="custom-select form-control" name="kunci_soal">
+              <?php                    
+              if ($edit->kunci_soal ==A) { ?>
+                <option selected value="A">A</option>                
+                <option value="B" >B</option>
+                <option value="C" >C</option>
+                <option value="D" >D</option>
+                <option value="E" >E</option>
+              <?php } elseif ($edit->kunci_soal ==B) { ?>
+                <option selected value="B">B</option>
+                <option value="A" >A</option>
+                <option value="C" >C</option>
+                <option value="D" >D</option>
+                <option value="E" >E</option>
+              <?php } elseif ($edit->kunci_soal ==C) { ?>
+                <option selected value="C">C</option>
+                <option value="A" >A</option>
+                <option value="B" >B</option>
+                <option value="D" >D</option>
+                <option value="E" >E</option>
+              <?php } elseif ($edit->kunci_soal ==D) { ?>
+                <option selected value="D">D</option>
+                <option value="B" >B</option>
+                <option value="C" >C</option>
+                <option value="D" >D</option>
+                <option value="E" >E</option>
+              <?php } elseif ($edit->kunci_soal ==E) { ?>
+                <option selected value="E">E</option>
+                <option value="A" >A</option>
+                <option value="B" >B</option>
+                <option value="C" >C</option>
+                <option value="D" >D</option>
+              <?php } else { ?>
+                <option selected value="A">A</option>
+                <option value="B" >B</option>
+                <option value="C" >C</option>
+                <option value="D" >D</option>
+                <option value="E" >E</option>
+              <?php  } ?>
+            </select>
+            </div> 
+            <div class="form-group">
               <label>Jawaban A :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_a ?>"  name="jawaban_a" required>
+              <textarea rows="3" cols="40" name="jawaban_a" class="form-control" required><?php echo $edit->jawaban_a ?></textarea>
             </div>
             <div class="form-group">
               <label>Jawaban B :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_b ?>"  name="jawaban_b" required>
+              <textarea rows="3" cols="40" name="jawaban_b" class="form-control" required ><?php echo $edit->jawaban_b ?></textarea>
             </div>
             <div class="form-group">
               <label>Jawaban C :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_c ?>"  name="jawaban_c" required>
+              <textarea rows="3" cols="40" name="jawaban_c" class="form-control" required> <?php echo $edit->jawaban_c ?></textarea>
             </div>
             <div class="form-group">
               <label>Jawban D :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_d ?>"  name="jawaban_d" required>
+              <textarea rows="3" cols="40"  name="jawaban_d"  class="form-control" required><?php echo $edit->jawaban_d ?></textarea>
             </div>  
             <div class="form-group">
               <label>Jawban E :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->jawaban_e ?>"  name="jawaban_e" required>
-            </div>  
+              <textarea rows="3" cols="40"  name="jawaban_e" class="form-control" required><?php echo $edit->jawaban_e ?></textarea>
+            </div>   
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>

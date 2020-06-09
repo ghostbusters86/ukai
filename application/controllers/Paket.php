@@ -11,16 +11,19 @@ class Paket extends CI_Controller {
 	$this->load->model('M_paket_reguler');
 	$this->load->model('M_paket_booster');
     $this->load->model('M_bab_booster');
+    $this->load->model('M_transaksi');
 	}
     
-	public function index() {    
+	public function index(	) {    
 
 	$paket_reguler = $this->M_paket_reguler->select_paket_reguler();
-	$paket_booster = $this->M_paket_booster->select_paket_booster();
+	$paket_user = $this->M_paket_reguler->paket_user();
+	$paket_booster = $this->M_paket_booster->select_paket_booster();    
+	$transaksi = $this->M_transaksi->transaksi_user();
 
 	$no_paket = 0;
 	foreach ($paket_booster as $paket_booster){
-		$paket [$no_paket] ['nama_booster'] = $paket_booster->nama_booster;
+		$paket [$no_paket] ['nama_booster'] = $paket_booster->nama_booster;  
 		$paket [$no_paket] ['harga_booster'] = $paket_booster->harga_booster;
 		$paket [$no_paket] ['slug'] = $paket_booster->slug;
 		$bab_booster = $this->M_bab_booster->select_bab_booster($paket_booster->id_booster);
@@ -29,7 +32,7 @@ class Paket extends CI_Controller {
 		foreach ($bab_booster as $bab_booster)	{
 			$paket [$no_paket] ['bab'] [$no] ['nama_bab']=$bab_booster->nama_bab_booster;
 
-		$no++;
+		$no++;              
 		}
 
 		$paket [$no_paket] ['jumlah'] = $no;
@@ -41,14 +44,16 @@ class Paket extends CI_Controller {
 			'title'	=> 'Paket Soal',
 			'metades' => 'Paket Soal',
 			'paket_reguler' => $paket_reguler,
+			'paket_user' => $paket_user,
 			'bab_booster' => $bab_booster,
 			'no_paket' => $no_paket,
+			'transaksi' => $transaksi,
 			'paket' => $paket,
 			'paket_booster' => $paket_booster
 			);    
 	// echo '<pre>';
 	// for ($i=0; $i < $no_paket ; $i++) { 
-	// 	echo $paket[$i]['nama_booster']."<br>";
+	// echo $paket[$i]['nama_booster']."<br>";
 	// 	for ($j=0; $j < $paket[$i]['jumlah'] ; $j++) { 
 	// 		echo "<li>".$paket[$i]['bab'][$j]['nama_bab']."</li>";
 	// 	}

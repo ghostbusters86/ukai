@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
               <label>Harga :</label>
-              <input type="text" class="form-control" placeholder="Masukkan Harga" name="harga_reguler" required>
+              <input type="number" class="form-control" placeholder="Masukkan Harga" name="harga_reguler" required>
             </div>
             <div class="form-group">
               <label>Status Paket :</label>
@@ -72,7 +72,7 @@
             </div>
             <div class="form-group">
               <label>Waktu :</label>
-              <input type="text" class="form-control" placeholder="Masukkan Waktu" name="time_reguler" required>
+              <input type="number" class="form-control" placeholder="Masukkan Waktu" name="time_reguler" required>
             </div>
           </div>
         </div>

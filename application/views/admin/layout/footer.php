@@ -47,28 +47,46 @@
           }
           $('#produk-form').html(html);
           
-        }
+        }  
       });
     });
   });
 </script>
+<!-- Popup Gambar -->
+<script type="text/javascript" src="<?php echo base_url() ?>assets/poup_gambar/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.zoom').fancybox();
+      });
+  </script>
+  
 <!-- ckeditor -->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/ckfinder/ckfinder.js"></script>
 <script type="text/javascript">
-   
-            CKEDITOR.replace( 'editor',
-            {
-              toolbar : 'MyToolbar',
-              width:"100%",
-              filebrowserBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html',
-              filebrowserImageBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html?type=Images',
-              filebrowserFlashBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html?type=Flash',
-            });
-            
-            //]]>
-          </script>
 
+  CKEDITOR.replace( 'editor',
+  {
+    toolbar : 'MyToolbar',
+    width:"100%",
+    filebrowserBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html?type=Images',
+    filebrowserFlashBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html?type=Flash',
+  });
+
+</script>
+<script type="text/javascript">
+
+  CKEDITOR.replace( 'editor1',
+  {
+    toolbar : 'MyToolbar',
+    width:"100%",
+    filebrowserBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html?type=Images',
+    filebrowserFlashBrowseUrl : '<?php echo base_url();?>assets/ckfinder/ckfinder.html?type=Flash',
+  });
+
+</script>
           <script type="text/javascript">
   $(document).ready(function () {
   

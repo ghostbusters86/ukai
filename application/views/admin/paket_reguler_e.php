@@ -11,7 +11,7 @@
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/paket_reguler/edit/'.$edit->slug)) ?>
+    echo form_open_multipart(site_url('admin/paket_reguler/edit/'.$edit->id_reguler)) ?>
 
 <div class="row my-4">
 
@@ -80,7 +80,7 @@
               <label>Waktu :</label>
               <input type="text" class="form-control" value="<?php echo $edit->time_reguler ?>" name="time_reguler" required>
             </div>
-          </div>
+          </div>   
         </div>
       </div>
 </div>
@@ -89,7 +89,7 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Soal Paket Reguler</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/paket_reguler/add_soal/'.$edit->slug); ?>">
+      <a href="<?php echo site_url('admin/paket_reguler/add_soal/'.$edit->id_reguler); ?>">
         <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
       </div>
   </div>

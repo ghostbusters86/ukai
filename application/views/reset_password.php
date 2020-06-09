@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
 
     <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
-<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
+    <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
 </head>
 <body>
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
@@ -54,8 +54,19 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a class="mr-3" data-toggle="modal" data-target="#login-start"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
-        <a href="<?php echo base_url('daftar'); ?>#"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
+
+        <?php if($this->session->userdata('online')==false):?>
+            <a class="mr-3" data-toggle="modal" data-target="#login-start" href="<?php echo base_url().'login' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Login</a>
+        <?php else:?>
+            <a href="<?php echo base_url().'login/logout' ?>" class="mr-3"><i class="fa fa-user" style="color: #9E1F63"></i> Log Out</a>
+        <?php endif;?>
+   
+        <?php if($this->session->userdata('online')==false):?>
+         <a href="<?php echo base_url('daftar'); ?>"><button class="btn btn-danger color my-2 my-sm-0">Daftar Sekarang</button></a>
+         <?php else:?>
+          <a href="<?php echo base_url().'paket' ?>"> <button class="btn btn-danger color my-2 my-sm-0">Dashboard</button></a></a>
+        <?php endif;?>
+
       </div>
     </div>
   </nav>
@@ -94,25 +105,37 @@
             </div>
 
           </div>
-        </div>
+        </div>  
       </div>
     </div>
   </div>
 
   <section id="wrapping">
     <div class="container">   
-      <div class="row wrap">
+      <div class="row wrap">  
         <div class="col-12">
+          <?php
+          if ($this->session->flashdata('sukses')) {
+            echo "<br>";
+            echo "<div class='alert alert-success alert-dismissible fade show'><center>";
+            echo $this->session->flashdata('sukses');
+            echo "</center><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+            </button></div>";
+          }
+          ?> 
           <h3 class="title-wrapping">Reset Password</h3>
           <hr class="line-wrapping">
           <p class="description-wrapping">Kami akan mengirimkan link untuk mereset password ke email Anda</p>
+          <?php echo form_open_multipart(site_url('reset_password'));?>  
           <form>
             <div class="form-group">
               <label for="">Email</label>
-              <input type="email" class="form-control" id="" placeholder="Isikan email Anda">
-            </div>
+              <input type="email" class="form-control" value="<?php echo set_value('email'); ?>" name="email" placeholder="Isikan email Anda">
+            </div> 
             <button type="submit" class="btn btn-danger color login pl-5 pr-5">Reset Password</button>
           </form>
+          <?php echo form_close(); ?>
           <div class="link login">
             <p>Sudah punya akun? <a data-toggle="modal" data-target="#login-start">Login</a></p>
             <p>Belum punya akun? <a href="<?php echo base_url('daftar') ?>">Daftar</a></p>

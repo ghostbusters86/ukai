@@ -203,6 +203,16 @@
   <section id="home">
 
     <div class="container"> 
+      <?php
+      if ($this->session->flashdata('sukses')) {
+        echo "<br>";
+        echo "<div class='alert alert-success alert-dismissible fade show'><center>";
+        echo $this->session->flashdata('sukses');
+        echo "</center><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+        </button></div>";
+      }
+      ?>
             <?php
             if ($this->session->flashdata('notifikasi')) {
               ?>

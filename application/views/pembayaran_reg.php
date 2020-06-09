@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/media.css') ?>">
     <link rel="icon" href="<?php echo base_url(); ?>assets/frontend/images/favicon-laut-tawar.png">
-<!--     <meta name="twitter:description" content="<?php echo $title; ?>" />
+    <meta name="twitter:description" content="<?php echo $title; ?>" />
     <meta name="twitter:title" content="<?php echo $title; ?>" />
     <meta name="twitter:site" content="@hairil_sp" />
     <meta name="keywords" content="<?php echo $metades; ?>">
     <meta name="description" content="<?php echo $metades; ?>">
     <meta itemprop="description" content="<?php echo $metades; ?>">
     <meta name="twitter:description" content="<?php echo $metades; ?>">
-    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>"> -->
+    <meta property="og:description" itemprop="description" content="<?php echo $metades; ?>">
 </head>
 <body>    
   <a href="https://api.whatsapp.com/send?phone=628515533724&amp;text=Hallo%20admin%20teman%20UKAI...." class="my-wa" target="_blank" title="Hubungi kami sekarang!"><i class="fa fa-whatsapp my-float"></i></a>
@@ -79,7 +79,7 @@
             <tr>
               <td>Rekening Bank</td>
               <td class="r">801254649</td>
-            </tr>
+            </tr>  
             <tr>
               <td>Harga Paket</td>
               <td class="r">Rp. <?php echo number_format($paket_r->harga_reguler,'0','.','.') ?></td>
@@ -109,7 +109,7 @@
               </div>
                 <input type="text" class="form-control" value="<?php echo $invoice?>" name="kode_transaksi" id="" hidden>
                 <input type="text" class="form-control" value="<?php echo $paket_r->kode_paket?>" name="kode_paket" id="" hidden>
-                <input type="text" class="form-control" value="1" name="status_transaksi" id="" hidden>
+                <input type="text" class="form-control" value="0" name="status_transaksi" id="" hidden>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">

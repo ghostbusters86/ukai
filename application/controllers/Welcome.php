@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		if($this->email->send()){
-			
+			  
 		} else {
 			# code...
 			echo $this->email->print_debugger();

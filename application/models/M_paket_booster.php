@@ -62,7 +62,6 @@ class M_paket_booster extends CI_Model {
     {
       $this->db->select('*');
       $this->db->from('paket_booster');
-      $this->db->where('status_booster', '1');
       $this->db->where('id_booster', $id_booster);  
       $this->db->order_by('id_booster', 'DESC');
       $query = $this->db->get();
@@ -71,7 +70,7 @@ class M_paket_booster extends CI_Model {
 
     public function delete($data)   
     {
-      $this->db->where('id_booster',$data['id']);
+      $this->db->where('id_booster',$data['id_booster']);
       $this->db->delete('paket_booster');
     }
     public function add($data)
@@ -84,8 +83,13 @@ class M_paket_booster extends CI_Model {
       return $query->row();
     }
 
-    public function edit($data,$slug){
-      $this->db->where('slug',$slug);
+    public function detail_backend($id_booster){   
+      $query=$this->db->get_where('paket_booster',array('id_booster'=> $id_booster));
+      return $query->row();
+    }
+
+    public function edit($data,$id_booster){
+      $this->db->where('id_booster',$id_booster);
       $this->db->update('paket_booster',$data);
     }
 

@@ -1,11 +1,7 @@
 <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Transaksi</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/transaksi/add'); ?>">
-        <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
-      </div>
-  </div>
+  </div>  
 
   <div class="row my-4">
   	<div class="col-12 ">
@@ -25,13 +21,14 @@
        		<thead>
        			<tr>
        				<th>No</th>
-       				<th>Nama User</th>
+       				<th>Nama</th>
        				<th>Kode</th>
        				<th>Bank</th>
        				<th>AN Rekening</th>
        				<th>Nominal TF</th>
        				<th>Kode Paket</th>
-       				<th>Status Transaksi</th>
+       				<th>Status</th>
+              <th>Bukti</th>
        				<th>Aksi</th>
        			</tr>
        		</thead>
@@ -42,14 +39,23 @@
        				?>
        				<tr>
        					<td><?php echo $no; ?></td>
-       					<td><?php echo $transaksi->id_user; ?></td>
+       					<td><?php echo $transaksi->nama_lengkap; ?></td>
        					<td><?php echo $transaksi->kode_transaksi; ?></td>
        					<td><?php echo $transaksi->kode_bank; ?></td>
        					<td><?php echo $transaksi->an_rekening; ?></td>
-       					<td>Rp. <?php echo number_format($transaksi->nominal_transfer,'0',',',',') ?>-</td>
+       					<td>Rp. <?php echo $transaksi->nominal_transfer ?></td>
        					<td><?php echo $transaksi->kode_paket; ?></td>
-       					<!-- <td><?php echo $transaksi->password; ?></td> -->
-       					<td><?php echo $transaksi->status_transaksi; ?> <br> <?php echo $transaksi->created; ?></td>
+       					<td>
+                  <?php if ($transaksi->status_transaksi == '1'){
+                    echo "Aktif";
+                  } else{
+                    echo "Tidak";
+                  } ?>                    
+                  </td>
+                  <td>
+                    
+                    <img src="<?php echo base_url(); ?>img/img_transaksi/<?php echo $transaksi->bukti_transfer; ?>" width="100" alt="<?php echo $transaksi->bukti_transfer; ?>">
+                  </td> 
        					<td>
        						<a href="<?php echo site_url('admin/transaksi/edit/'.$transaksi->id_transaksi); ?>">
        							<button class="btn btn-sm btn-outline-success">Edit</button>
@@ -70,7 +76,7 @@
        										</button>
        									</div>
        									<div class="modal-body">
-       										Apakah Anda ingin menghapus data <b><?php echo $transaksi->id_user; ?></b> ?
+       										Apakah Anda ingin menghapus Kode Transaksi <b><?php echo $transaksi->kode_transaksi; ?></b> ?
        									</div>
        									<div class="modal-footer">
        										<a href="<?php echo site_url('admin/transaksi/delete/'.$transaksi->id_transaksi)?>">

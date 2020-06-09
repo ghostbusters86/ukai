@@ -18,7 +18,7 @@ class Pembayaran extends CI_Controller {
   
 	public function paket_reg($slug) {
 		$get_user = $this->M_user->get_user($this->session->userdata('id_user'));
-		$paket_r  = $this->M_paket_reguler->detail($slug); 
+		$paket_r  = $this->M_paket_reguler->get_frontend($slug); 
 		$invoice = $this->M_transaksi->get_no_inv();
 
 		$valid = $this->form_validation;
@@ -29,7 +29,7 @@ class Pembayaran extends CI_Controller {
 			array(
 				'required'  =>  'Anda belum mengisikan Nama.') 
 		);
-
+    
 		$valid->set_rules(
 			'an_rekening',
 			'an_rekening',
@@ -87,6 +87,8 @@ class Pembayaran extends CI_Controller {
 		$data 	= array('invoice' => $invoice,
 						'paket_r' => $paket_r,
 						'get_user' => $get_user,
+						'title' => 'Pembayaran',
+						'metades' => 'Pembayaran'
 						);
 		$this->load->view("pembayaran_reg", $data);
 		} else {
@@ -109,7 +111,7 @@ class Pembayaran extends CI_Controller {
 
         $this->M_transaksi->add($data);
         $this->session->set_flashdata('notifikasi', '<center>Berhasil mengeirim Transaksi <strong> Data akan segera di Proses </strong></center>');
-        redirect('/informasi/soal/'.$paket_r->slug);
+        redirect('/paket/');
       }
 	}
 }
@@ -157,13 +159,6 @@ class Pembayaran extends CI_Controller {
 			array(
 				'required'  =>  'Anda belum mengisikan Kode Paket.')
 		);
-		// $valid->set_rules(
-		// 	'bukti_transfer',
-		// 	'bukti_transfer',
-		// 	'required',
-		// 	array(
-		// 		'required'  =>  'Anda belum mengisikan Bukti Transfer.')
-		// );
 		$valid->set_rules(
 			'kode_bank',
 			'kode_bank',
@@ -178,16 +173,18 @@ class Pembayaran extends CI_Controller {
 		$config['max_width']            = 2000;
 		$config['max_height']           = 2000;
 		$config['encrypt_name']         = TRUE;
-
+  
 		$this->load->library('upload', $config);
 		$i  = $this->input;
 		if ($valid->run()===false) {
 		$data 	= array('invoice' => $invoice,
 						'paket_b' => $paket_b,
 						'get_user' => $get_user,
+						'title' => 'Pembayaran',
+						'metades' => 'Pembayaran'
 						);
 		$this->load->view("pembayaran_bs", $data);
-		} else {
+		} else {   
 			if ( ! $this->upload->do_upload('bukti_transfer'))
 			{
 			$error = array('error' => $this->upload->display_errors());
@@ -207,7 +204,7 @@ class Pembayaran extends CI_Controller {
 
         $this->M_transaksi->add($data);
         $this->session->set_flashdata('notifikasi', '<center>Berhasil mengeirim Transaksi <strong> Data akan segera di Proses </strong></center>');
-        redirect('/informasi/soal/'.$paket_b->slug);
+        redirect('/paket/');
       }
 	}
 }

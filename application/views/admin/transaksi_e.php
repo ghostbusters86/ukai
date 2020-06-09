@@ -21,7 +21,7 @@
           <div class="card-body">   
             <div class="form-group">
               <label>Nama User</label>
-              <input type="text" class="form-control" value="<?php echo $edit->id_transaksi ?>" name="id_user" required>
+              <input type="text" class="form-control" value="<?php echo $edit->nama_lengkap ?>" name="id_user" required>
             </div>
             <div class="form-group">
               <label>Kode Transaksi</label>
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
               <label>Atas Nama</label>
-              <input type="text" class="form-control" value="<?php echo $edit->kode_paket ?>"  name="an_rekening" required>
+              <input type="text" class="form-control" value="<?php echo $edit->an_rekening ?>"  name="an_rekening" required>
             </div>
           </div>
         </div>  
@@ -53,7 +53,16 @@
           </div>
           <div class="form-group">
             <label>Status Transaksi</label>
-            <input type="text" class="form-control" value="<?php echo $edit->status_transaksi ?>"  name="status_transaksi" required>
+            <select class="custom-select form-control" name="status_transaksi">
+              <?php      
+              if ($edit->status_transaksi ==1) { ?>
+                <option selected value="1">Aktif</option>
+                <option value="0">Tidak</option>
+              <?php } else {?>
+                <option value="0" selected>Tidak</option>
+                <option value="1">Aktif</option>
+              <?php  } ?>
+            </select>
           </div>
           <br><br>
           <button type="submit" class="btn btn-primary">Submit</button>

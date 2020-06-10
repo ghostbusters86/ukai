@@ -3,7 +3,7 @@
     <h1 class="h2">Form Tambah BAB Booster</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url('admin/paket_booster/edit/'.$add_bab->id_booster); ?>">
+      <a href="<?php echo base_url(); ?>admin/bab_booster">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
         
       </div>
@@ -11,7 +11,7 @@
     </div>
     <?php
     echo validation_errors('<div class="alert alert-danger">', '</div>');
-    echo form_open_multipart(site_url('admin/paket_booster/add_bab/'.$add_bab->id_booster)) ?>
+    echo form_open_multipart(site_url('admin/paket_booster/add_bab/'.$add_bab->slug)) ?>
     <div class="row my-4">
 
 

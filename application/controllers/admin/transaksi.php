@@ -10,34 +10,34 @@ class Transaksi extends CI_Controller {
   }
 
   public function index() {
-    $transaksi = $this->M_transaksi->select_transaksi();
-    // echo "<pre>";
-    // print_r($transaksi);
-    // exit();
-    $data = array(    
+    $reguler = $this->M_transaksi->select_transaksi_reguler();
+    $booster = $this->M_transaksi->select_transaksi_booster();
+    $data = array(
       'title' => 'Dasboard Admin UKAI',
-      'transaksi' => $transaksi,
+      'reguler' => $reguler,
+      'booster' => $booster,
       'isi' => 'admin/transaksi_v'
     );
+    // echo "<pre>";
+    // print_r($data);
+    // exit();
     $this->load->view("admin/layout/wrapper", $data, false);
-  }    
+  }  
 
-  public function edit($id_transaksi) {  
-    $edit  = $this->M_transaksi->detail($id_transaksi); 
-    
+  public function add() {  
     $valid = $this->form_validation;
     $valid->set_rules(
-      'id_transaksi',
-      'id_transaksi',  
-      'required',  
-      array(    
+      'id_user',
+      'id_user',
+      'required',
+      array(
         'required'  =>  'Anda belum mengisikan Kode Bank.') 
     );
     
     $valid->set_rules(
       'kode_transaksi',
       'kode_transaksi',
-      'required',  
+      'required',
       array(
         'required'  =>  'Anda belum mengisikan Kode Transaksi.')
     );
@@ -63,23 +63,56 @@ class Transaksi extends CI_Controller {
         'required'  =>  'Anda belum mengisikan Kode Bank.')
     );
 
-    if ($valid->run()===false) {  
+    if ($valid->run()===false) {
       $data = array(
-        'title' => 'Dasboard Admin Ukai- Tambah Transaksi',  
-        'edit'  => $edit, 
-        'isi'   => 'admin/transaksi_e'
-      );      
+        'title'   => 'Dasboard Admin Ukai- Tambah Transaksi',   
+        'isi' => 'admin/transaksi_t'
+      );
       $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{
         $i  = $this->input;
         $data = array(
+          'id_user'         =>  $i->post('id_user'),
           'kode_transaksi'  =>  $i->post('kode_transaksi'),
           'kode_bank'       =>  $i->post('kode_bank'),
           'an_rekening'     =>  $i->post('an_rekening'),
           'kode_paket'      =>  $i->post('kode_paket'),
           'status_transaksi'=>  $i->post('status_transaksi'),
           'nominal_transfer'  =>  $i->post('nominal_transfer'));
+
+        $this->M_transaksi->add($data);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> Transaksi Baru</strong></center>');
+        redirect('/admin/transaksi');
+      }
+    }
+
+  public function edit($id_transaksi) {  
+    $edit  = $this->M_transaksi->detail($id_transaksi); 
+
+    $valid = $this->form_validation;
+     $valid->set_rules(
+      'status_transaksi',
+      'status_transaksi',
+      'required',
+      array(
+        'required'  =>  'Anda belum mengisikan Kode Bank.')
+    );
+
+    if ($valid->run()===false) {  
+      $data = array(
+        'title' => 'Dasboard Admin Ukai- Tambah Transaksi',  
+        'edit'  => $edit, 
+        'isi'   => 'admin/transaksi_e'
+      );
+      $this->load->view("admin/layout/wrapper", $data, false);
+
+    }else{
+        $i  = $this->input;
+        $data = array(
+          'status_transaksi'=>  $i->post('status_transaksi'),
+          'id_transaksi'=>  $id_transaksi
+        );
 
         $this->M_transaksi->edit($data,$id_transaksi);
         $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Ubah Transaksi </strong></center>');
@@ -95,7 +128,7 @@ class Transaksi extends CI_Controller {
   }  
 
 
-}  
+}
 
 /* End of file transaksi.php */
 /* Location: ./application/controllers/admin/transaksi.php */

@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
+	{      
 		$this->load->view('welcome_message');
 	}
 	public function send_email($register_id,$register_email)
@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		if($this->email->send()){
-			  
+			
 		} else {
 			# code...
 			echo $this->email->print_debugger();

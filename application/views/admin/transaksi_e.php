@@ -14,27 +14,34 @@
     echo form_open_multipart(site_url('admin/transaksi/edit/'.$edit->id_transaksi)) ?>
     <div class="row my-4">
 
-
       <div class="col-md-6">  
 
         <div class="card">
           <div class="card-body">   
             <div class="form-group">
               <label>Nama User</label>
-              <input type="text" class="form-control" value="<?php echo $edit->nama_lengkap ?>" name="id_user" required>
+              <input type="text" class="form-control" value="<?php echo $edit->nama_lengkap ?>" name="id_user" disabled>
             </div>
             <div class="form-group">
               <label>Kode Transaksi</label>
-              <input type="text" class="form-control" value="<?php echo $edit->kode_transaksi ?>"  name="kode_transaksi" required>
+              <input type="disabled" class="form-control" value="<?php echo $edit->kode_transaksi ?>" name="kode_transaksi" disabled>
             </div>
             <div class="form-group">
               <label>Kode Bank</label>
-              <input type="text" class="form-control" value="<?php echo $edit->kode_bank ?>" name="kode_bank" required>
+              <input type="disabled" class="form-control" value="<?php echo $edit->kode_bank ?>" name="kode_bank" disabled>
             </div>
             <div class="form-group">
               <label>Atas Nama</label>
-              <input type="text" class="form-control" value="<?php echo $edit->an_rekening ?>"  name="an_rekening" required>
+              <input type="disabled" class="form-control" value="<?php echo $edit->kode_paket ?>"  name="an_rekening" disabled>
             </div>
+            <div class="form-group">
+            <label>Nominal Transfer</label>
+            <input type="text" class="form-control"  value="<?php echo $edit->nominal_transfer ?>"  name="nominal_transfer" disabled>
+          </div>
+          <div class="form-group">
+            <label>Kode Paket</label>
+            <input type="text" class="form-control" value="<?php echo $edit->kode_paket ?>"  name="kode_paket" disabeld>
+          </div>
           </div>
         </div>  
 
@@ -43,26 +50,16 @@
       <div class="col-md-6">
         <div class="card">
         <div class="card-body">
-          <div class="form-group">
-            <label>Nominal Transfer</label>
-            <input type="text" class="form-control"  value="<?php echo $edit->nominal_transfer ?>"  name="nominal_transfer" required>
+          <label>Status Transaksi</label>
+          <div class="card">
+          <img src="<?php echo base_url().'img/img_transaksi/'.$edit->bukti_transfer ?>" class="img-fluid" width="300px">
           </div>
-          <div class="form-group">
-            <label>Kode Paket</label>
-            <input type="text" class="form-control" value="<?php echo $edit->kode_paket ?>"  name="kode_paket" required>
-          </div>
-          <div class="form-group">
+          <div class="form-group mt-3">
             <label>Status Transaksi</label>
-            <select class="custom-select form-control" name="status_transaksi">
-              <?php      
-              if ($edit->status_transaksi ==1) { ?>
-                <option selected value="1">Aktif</option>
-                <option value="0">Tidak</option>
-              <?php } else {?>
-                <option value="0" selected>Tidak</option>
-                <option value="1">Aktif</option>
-              <?php  } ?>
-            </select>
+           <select class="custom-select form-control" name="status_transaksi">
+                  <option value="1" <?php if ($edit->status_transaksi==1){echo "selected";} ?>>Aktif</option>
+                  <option value="0" <?php if ($edit->status_transaksi==0){echo "selected";} ?>>Pending</option>
+              </select>
           </div>
           <br><br>
           <button type="submit" class="btn btn-primary">Submit</button>

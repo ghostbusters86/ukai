@@ -2,14 +2,14 @@
   <!-- Sidebar Holder -->
   <nav id="sidebar">
     <div class="sidebar-header">
-      <center>    
-        <img src="<?php echo base_url(); ?>img/img_user/<?php echo $this->session->userdata('foto');?>" alt="Foto_Profil" class="rounded-circle coba mb-2" width="60%">
-        <br>   
+      <center> 
+        <img src="<?php echo base_url();?>img/img_user/<?php echo $this->session->userdata('foto'); ?>" alt="Foto_Profil" class="rounded-circle coba mb-2" width="60%">
+        <br>
         <span><?php echo $this->session->userdata('nama_lengkap'); ?></span> 
         <hr>
       </center>
     </div>
-   
+
     <ul class="list-unstyled components">
       <li>
         <a href="<?php echo base_url('admin/dasboard'); ?>"><i class="fas fa-tachometer-alt pr-2"></i> Dasboard</a>
@@ -26,9 +26,6 @@
       </li>
       <li>
         <a href="<?php echo base_url('admin/paket_booster'); ?>"><i class="fas fa-bookmark pr-3"></i>Paket Booster</a>
-      </li>
-      <li>
-        <a href="<?php echo base_url('admin/ambil_soal'); ?>"><i class="far fa-file-alt pr-3"></i>Ambil Soal</a>
       </li>
        
       <li>

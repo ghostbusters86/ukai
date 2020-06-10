@@ -20,7 +20,7 @@ class M_soal extends CI_Model {
       $query  = $this->db->get();
       return $query->result();
     }
-   
+
     public function select_soal_reguler($id_reguler)
     {
       $this->db->select('soal.*, paket_reguler.*');
@@ -28,7 +28,7 @@ class M_soal extends CI_Model {
       $this->db->where('paket_reguler.id_reguler', $id_reguler);
       $this->db->join('paket_reguler', 'paket_reguler.kode_soal = soal.kode_soal', 'inner');
       $this->db->order_by('id_soal', 'DESC');  
-      $query  = $this->db->get();  
+      $query  = $this->db->get();
       return $query->result();
     }
 

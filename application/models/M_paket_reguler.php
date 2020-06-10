@@ -8,16 +8,27 @@ class M_paket_reguler extends CI_Model {
       parent::__construct();
       $this->load->database();
     }
-    public function select_paket_reguler()
+    public function select_pengguna_reguler()
     {
       $this->db->select('*');
-      $this->db->from('paket_reguler');  
-      $this->db->order_by('id_reguler', 'DESC');
+      $this->db->from('transaksi');  
+      $this->db->join('paket_reguler', 'paket_reguler.kode_paket = transaksi.kode_paket');
+      $this->db->where('transaksi.id_user', $this->session->userdata('id_user'));
+      $this->db->order_by('transaksi.id_transaksi', 'DESC');
       $query  = $this->db->get();
       return $query->result();
     }
-
-    public function paket_user()
+    public function select_pengguna_booster()
+    {
+      $this->db->select('*');
+      $this->db->from('transaksi');  
+      $this->db->join('paket_booster', 'paket_booster.kode_paket = transaksi.kode_paket');
+      $this->db->where('transaksi.id_user', $this->session->userdata('id_user'));
+      $this->db->order_by('transaksi.id_transaksi', 'DESC');
+      $query  = $this->db->get();
+      return $query->result();
+    }
+    public function select_paket_reguler()
     {
       $this->db->select('*');
       $this->db->from('paket_reguler');  
@@ -81,14 +92,15 @@ class M_paket_reguler extends CI_Model {
     { 
       $this->db->select('*');
       $this->db->from('paket_reguler');
+      $this->db->where('status_reguler', '1');  
       $this->db->where('id_reguler', $id_reguler);  
       $this->db->order_by('id_reguler', 'DESC');
       $query  = $this->db->get();  
       return $query->row();
-    }  
-     
+    }
+   
     public function delete($data)   
-    {  
+    {
       $this->db->where('id_reguler',$data['id']);
       $this->db->delete('paket_reguler');
     }     
@@ -102,16 +114,7 @@ class M_paket_reguler extends CI_Model {
     //   return $query->row();
     // }
 
-    public function detail($id_reguler)   
-    {
-      $this->db->select('paket_reguler.*');
-      $this->db->from('paket_reguler');  
-      $this->db->where('id_reguler',$id_reguler);
-      $query  = $this->db->get();
-      return $query->row();
-    }
-
-    public function get_frontend($slug)   
+    public function detail($slug)
     {
       $this->db->select('paket_reguler.*');
       $this->db->from('paket_reguler');  
@@ -119,7 +122,17 @@ class M_paket_reguler extends CI_Model {
       $query  = $this->db->get();
       return $query->row();
     }
-  
+    public function detail_paket($id_reguler)
+    {
+      $this->db->select('*');
+      $this->db->from('paket_reguler');  
+      $this->db->where('id_reguler',$id_reguler);
+      $query  = $this->db->get();
+      return $query->row();
+    }
+
+
+
     public function edit($data,$id_reguler){
       $this->db->where('id_reguler',$id_reguler);
       $this->db->update('paket_reguler',$data);

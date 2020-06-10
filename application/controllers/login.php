@@ -29,19 +29,22 @@ class Login extends CI_Controller{
     );
     
     if ($valid->run() == false) {
-      $data = array('title' => 'Login Ukai' );  
-      $this->load->view('index', $data, false);
+      $data = array(
+        'title'   => 'Login Ukai',
+        'metades' => 'Platform Penyedia Layanan Latihan Soal UKAI Berbasis Teknologi Akses belajar asik dan santai dengan program kelas online untukmempersiapkan UKAI bagi calon Apoteker baru Indonesia.', 
+        'isi'     => 'index'
+      );  
+      $this->load->view('layout/wrapper', $data, false);
     } else {   
       $i            = $this->input;
       $email        = $i->post('email');     
       $password     = md5($i->post('password'));
-      $check_login  = $this->M_login->login($email, $password);    
+      $check_login  = $this->M_login->login($email, $password);
 
       if ($check_login) {
         $this->session->set_userdata('online',true);
         $this->session->set_userdata('email', $email);
         $this->session->set_userdata('nama_lengkap', $check_login->nama_lengkap);
-        $this->session->set_userdata('foto', $check_login->foto);
         $this->session->set_userdata('akses_level', $check_login->akses_level);
         $this->session->set_userdata('id_user', $check_login->id_user);
 

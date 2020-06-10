@@ -46,7 +46,7 @@ a:focus {
 }
 
 .navbar-header .btn-info {
-  background-color:  #0066cc;
+  background-color:  #9E1F63;
 }
 
 .navbar-header .btn-info:hover {
@@ -69,7 +69,7 @@ a:focus {
       top: 0;
       left: 0;
       height: 100vh;
-      background:  #0066cc;
+      background:  #9E1F63;
       color: #fff !important;
       transition: all 0.3s;
       overflow-y: auto;
@@ -83,7 +83,7 @@ a:focus {
     
     #sidebar .sidebar-header {
       padding: 20px 20px 0px ;
-      background:  #0066cc;
+      background:  #9E1F63;
     }
     
     #sidebar ul p {
@@ -98,14 +98,14 @@ a:focus {
     }
     
     #sidebar ul li a:hover {
-      color:  #0066cc;
+      color:  #9E1F63;
       background: #fff;
     }
     
     #sidebar ul li.active>a,
     a[aria-expanded="true"] {
       color: #fff;
-      background: #8c620f;
+      background: #9E1F63;
     }
     
     a[data-toggle="collapse"] {
@@ -153,7 +153,7 @@ a:focus {
       ul ul a {
         font-size: 0.9em !important;
         padding-left: 30px !important;
-        background:  #0066cc;
+        background:  #9E1F63;
       }
 
       ul.CTAs {
@@ -175,7 +175,7 @@ a:focus {
 
       a.article,
       a.article:hover {
-        background:  #0066cc !important;
+        background:  #9E1F63 !important;
         color: #fff !important;
       }
     /* ---------------------------------------------------
@@ -232,5 +232,5 @@ a:focus {
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #8c620f;    
+      background: #9E1F63;    
     }

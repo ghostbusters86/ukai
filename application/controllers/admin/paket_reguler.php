@@ -28,7 +28,7 @@ class Paket_reguler extends CI_Controller {
       'pending' => $pending,
       'paket_reguler_published' => $paket_reguler_published,
       'paket_reguler_pending' => $paket_reguler_pending,
-      'isi' => 'admin/paket_reguler_V'
+      'isi' => 'admin/paket_reguler_v'
     );
     $this->load->view("admin/layout/wrapper", $data, false);     
   }
@@ -90,14 +90,13 @@ class Paket_reguler extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai- Tambah Paket reguler',   
-        'isi' => 'admin/paket_reguler_T'
+        'isi' => 'admin/paket_reguler_t'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{
       $i = $this->input;
-      $url_akhir = $akhir->id_reguler+1;
-      $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
+      $slug = 
         $data = array(
           'nama_reguler'         =>  $i->post('nama_reguler'),
           'desk_reguler'            =>  $i->post('desk_reguler'),
@@ -107,7 +106,8 @@ class Paket_reguler extends CI_Controller {
           'time_reguler'       =>  $i->post('time_reguler'),
           'created'       =>  $i->post('created'),
           'status_reguler'      =>  $i->post('status_reguler'),
-          'slug'      =>  $slug );
+          'slug'      =>  url_title($this->input->post('nama_reguler'),'dash',TRUE)
+        );
 
         $this->M_paket_reguler->add($data);
         $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> Paket Reguler Baru</strong></center>');
@@ -116,14 +116,14 @@ class Paket_reguler extends CI_Controller {
     }
 
   public function edit($id_reguler) {    
-    $edit  = $this->M_paket_reguler->detail($id_reguler); 
+    $edit  = $this->M_paket_reguler->detail_paket($id_reguler); 
 
     $soal = $this->M_soal->select_soal_reguler($edit->id_reguler);
 
     $valid = $this->form_validation;
-    $valid->set_rules(  
+    $valid->set_rules(
       'nama_reguler',
-      'nama_reguler',    
+      'nama_reguler',  
       'required',
       array(
         'required'  =>  'Anda belum mengisikan Nama reguler.') 
@@ -186,34 +186,33 @@ class Paket_reguler extends CI_Controller {
 
     }else{
         $i  = $this->input;
-        $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
         $data = array(
           'nama_reguler'         =>  $i->post('nama_reguler'),
-          'desk_reguler'            =>  $i->post('desk_reguler'),
+          'desk_reguler'         =>  $i->post('desk_reguler'),
           'harga_reguler'       =>  $i->post('harga_reguler'),
           'kode_paket'       =>  $i->post('kode_paket'),
           'kode_soal'       =>  $i->post('kode_soal'),
           'time_reguler'       =>  $i->post('time_reguler'),
-          'created'       =>  $i->post('created'),
           'status_reguler'      =>  $i->post('status_reguler'),
-          'slug'      =>  $slug );
+          'slug'      => url_title($this->input->post('nama_reguler'), TRUE) 
+        );
 
         $this->M_paket_reguler->edit($data,$id_reguler);
-        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Paket Reguler</strong></center>');
-        redirect('/admin/paket_reguler/');
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Paket Reguler Baru</strong></center>');
+        redirect('/admin/paket_reguler');
       }   
-    }       
-  
+    }
+
   public function delete($id) { 
     $data = array('id'  =>  $id);
     $this->M_paket_reguler->delete($data);
-    $this->session->set_flashdata('notifikasi', '<center>Berhasil Menghapus data <strong> Paket Reguler</strong></center>');
+    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
     redirect('admin/paket_reguler');  
   }
 
-  public function add_soal($id_reguler) {  
+  public function add_soal($slug) {  
      
-    $soal_reguler = $this->M_paket_reguler->detail($id_reguler);
+    $soal_reguler = $this->M_paket_reguler->detail($slug);
     $paket_reguler = $this->M_paket_reguler->select_soal($soal_reguler->id_reguler);
       
 
@@ -346,7 +345,7 @@ class Paket_reguler extends CI_Controller {
         'paket_reguler' => $paket_reguler, 
         'isi'   => 'admin/paket_reguler_soal_e'
       );
-      $this->load->view("admin/layout/wrapper", $data, false);  
+      $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{
         $i  = $this->input;
@@ -371,9 +370,10 @@ class Paket_reguler extends CI_Controller {
     $soal  = $this->M_soal->detail($id); 
     $data = array(
       'id'  =>  $id,
-      'soal'=>  $soal);
+      'soal'=>  $soal
+    );
     $this->M_soal->delete($data);
-    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data <strong> Soal Reguler</strong></center>');
+    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
     redirect('admin/paket_reguler/edit/'.$soal->id_reguler);
   }
 

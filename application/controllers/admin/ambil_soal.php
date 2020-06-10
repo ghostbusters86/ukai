@@ -46,7 +46,7 @@ class Ambil_soal extends CI_Controller {
         'berakhir'      =>  $i->post('berakhir'));
 
       $this->M_ambil_soal->add($data);
-      $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> ambil soal Baru</strong></center>');
+      $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> ambil_soal Baru</strong></center>');
       redirect('/admin/ambil_soal');
     }
   }

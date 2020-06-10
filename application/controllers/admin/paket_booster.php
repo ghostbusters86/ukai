@@ -14,9 +14,9 @@ class Paket_booster extends CI_Controller {
   }
 
   public function index() {     
-
+  
     $select_paket  = $this->M_paket_booster->select_paket_booster();
-    $semua  = $this->M_paket_booster->count_semua();  
+    $semua  = $this->M_paket_booster->count_semua();
     $publish  = $this->M_paket_booster->count_published();
     $pending  = $this->M_paket_booster->count_pending();
     $paket_booster_published = $this->M_paket_booster->select_published();
@@ -30,12 +30,12 @@ class Paket_booster extends CI_Controller {
       'select_paket' => $select_paket,
       'paket_booster_published' => $paket_booster_published,
       'paket_booster_pending' => $paket_booster_pending,
-      'isi' => 'admin/paket_booster_V'
+      'isi' => 'admin/paket_booster_v'
     );
     $this->load->view("admin/layout/wrapper", $data, false);
   }
 
-  public function add() {  
+    public function add() {  
     $valid = $this->form_validation;
     $valid->set_rules(
       'nama_booster',
@@ -77,30 +77,30 @@ class Paket_booster extends CI_Controller {
     if ($valid->run()===false) {
       $data = array(
         'title'   => 'Dasboard Admin Ukai- Tambah Paket Booster',   
-        'isi' => 'admin/paket_booster_T'
+        'isi' => 'admin/paket_booster_t'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{
-      $i  = $this->input;
-      $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
-      $data = array(
-        'nama_booster'         =>  $i->post('nama_booster'),
-        'desk_booster'            =>  $i->post('desk_booster'),
-        'harga_booster'       =>  $i->post('harga_booster'),
-        'kode_paket'       =>  $i->post('kode_paket'),
-        'created'       =>  $i->post('created'),
-        'status_booster'      =>  $i->post('status_booster'),
-        'slug'      =>  $slug);
+        $i  = $this->input;
+        $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
+        $data = array(
+          'nama_booster'         =>  $i->post('nama_booster'),
+          'desk_booster'            =>  $i->post('desk_booster'),
+          'harga_booster'       =>  $i->post('harga_booster'),
+          'kode_paket'       =>  $i->post('kode_paket'),
+          'created'       =>  $i->post('created'),
+          'status_booster'      =>  $i->post('status_booster'),
+          'slug'      =>  $slug);
 
-      $this->M_paket_booster->add($data);
-      $this->session->set_flashdata('notifikasi', '<center>Berhasil menambahkan data <strong> Paket Boster Baru</strong></center>');
-      redirect('/admin/paket_booster');
-    }
-  }         
-
-  public function edit($id_booster) {          
-    $edit  = $this->M_paket_booster->detail_backend($id_booster);
+        $this->M_paket_booster->add($data);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil menambahkan data <strong> Paket Boster Baru</strong></center>');
+        redirect('/admin/paket_booster');
+      }
+    }       
+  
+  public function edit($slug) {          
+    $edit  = $this->M_paket_booster->detail($slug);
 
     $bab_booster = $this->M_bab_booster->select_bab_booster($edit->id_booster);
     $semua  = $this->M_bab_booster->count_semua($edit->id_booster);
@@ -108,9 +108,9 @@ class Paket_booster extends CI_Controller {
     $pending  = $this->M_bab_booster->count_pending($edit->id_booster);
     $bab_publish = $this->M_bab_booster->select_bab_published($edit->id_booster);
     $bab_pending = $this->M_bab_booster->select_bab_pending($edit->id_booster);
-
-
-    $valid = $this->form_validation;   
+     
+  
+       $valid = $this->form_validation;   
     $valid->set_rules(
       'nama_booster',
       'nama_booster',
@@ -159,28 +159,28 @@ class Paket_booster extends CI_Controller {
         'pending' =>  $pending,   
         'bab_publish' =>  $bab_publish,
         'bab_pending' =>  $bab_pending,  
-        'isi'   => 'admin/paket_booster_E'
+        'isi'   => 'admin/paket_booster_e'
       );
       $this->load->view("admin/layout/wrapper", $data, false);
       
 
     }else{
-      $i  = $this->input;
-      $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
-      $data = array(
-        'nama_booster'         =>  $i->post('nama_booster'),
-        'desk_booster'            =>  $i->post('desk_booster'),
-        'harga_booster'       =>  $i->post('harga_booster'),
-        'kode_paket'       =>  $i->post('kode_paket'),
-        'created'       =>  $i->post('created'),
-        'status_booster'      =>  $i->post('status_booster'),
-        'slug'      =>  $slug);
+        $i  = $this->input;
+        $slug = url_title($this->input->post('kode_paket'), 'dash', TRUE);
+        $data = array(
+          'nama_booster'         =>  $i->post('nama_booster'),
+          'desk_booster'            =>  $i->post('desk_booster'),
+          'harga_booster'       =>  $i->post('harga_booster'),
+          'kode_paket'       =>  $i->post('kode_paket'),
+          'created'       =>  $i->post('created'),
+          'status_booster'      =>  $i->post('status_booster'),
+          'slug'      =>  $slug);
 
-      $this->M_paket_booster->edit($data,$id_booster);
-      $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Paket Boster </strong></center>');
-      redirect('/admin/paket_booster');
+        $this->M_paket_booster->edit($data,$slug);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Paket Boster </strong></center>');
+        redirect('/admin/paket_booster');
+      }
     }
-  }
 
   public function delete($id) {
     $data = array('id'  =>  $id);
@@ -189,9 +189,9 @@ class Paket_booster extends CI_Controller {
     redirect('admin/paket_booster');
   }
 
-  public function add_bab($id_booster) {    
-
-    $add_bab = $this->M_paket_booster->detail_backend($id_booster);
+   public function add_bab($slug) {    
+    
+    $add_bab = $this->M_paket_booster->detail($slug);
     $paket = $this->M_paket_booster->select_bab($add_bab->id_booster);
 
     $valid = $this->form_validation;
@@ -242,31 +242,30 @@ class Paket_booster extends CI_Controller {
       $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{   
-      $i  = $this->input;
-      $slug = url_title($this->input->post('kode_soal'), 'dash', TRUE);
-      $data = array(
-        'id_booster'            =>  $add_bab->id_booster,
-        'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
-        'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
-        'time_bab_booster'       =>  $i->post('time_bab_booster'),
-        'status_bab_booster'      =>  $i->post('status_bab_booster'),
-        'kode_soal'             =>  $i->post('kode_soal'),
-        'slug'      =>  $slug);
+        $i  = $this->input;
+        $slug = url_title($this->input->post('kode_soal'), 'dash', TRUE);
+        $data = array(
+          'id_booster'            =>  $add_bab->id_booster,
+          'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
+          'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
+          'time_bab_booster'       =>  $i->post('time_bab_booster'),
+          'status_bab_booster'      =>  $i->post('status_bab_booster'),
+          'kode_soal'             =>  $i->post('kode_soal'),
+          'slug'      =>  $slug);
 
-      $this->M_bab_booster->add($data);
-      $this->session->set_flashdata('notifikasi', '<center>Berhasil menambahkan data <strong> BAB Booster Baru</strong></center>');
-      redirect('/admin/paket_booster/edit/'.$add_bab->id_booster);
+        $this->M_bab_booster->add($data);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil menambahkan data <strong> BAB Booster Baru</strong></center>');
+        redirect('/admin/paket_booster/edit/'.$add_bab->slug);
+      }   
     }   
-  }   
 
-  public function edit_bab($id_booster) {  
+     public function edit_bab($id_booster) {  
     $edit  = $this->M_bab_booster->detail($id_booster); 
     $paket_booster = $this->M_paket_booster->select_bab($edit->id_booster);
-
     $soal = $this->M_soal->select_soal($edit->id_bab_booster);
 
     // echo "<pre>";
-    // print_r($paket_booster);
+    // print_r($edit);
     // exit();  
 
     $valid = $this->form_validation;
@@ -318,38 +317,29 @@ class Paket_booster extends CI_Controller {
       $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{
-      $i  = $this->input;
-      $slug = url_title($this->input->post('kode_soal'), 'dash', TRUE);
-      $data = array(  
-        'id_booster'             =>  $edit->id_booster,
-        'id_bab_booster'             =>  $edit->id_bab_booster,
-        'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
-        'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
-        'time_bab_booster'       =>  $i->post('time_bab_booster'),
-        'status_bab_booster'     =>  $i->post('status_bab_booster'),
-        'kode_soal'              =>  $i->post('kode_soal'),
-        'slug'      =>  $slug);
+        $i  = $this->input;
+        $slug = url_title($this->input->post('kode_soal'), 'dash', TRUE);
+        $data = array(  
+          'id_booster'             =>  $edit->id_booster,
+          'id_bab_booster'             =>  $edit->id_bab_booster,
+          'nama_bab_booster'       =>  $i->post('nama_bab_booster'),
+          'desk_bab_booster'       =>  $i->post('desk_bab_booster'),
+          'time_bab_booster'       =>  $i->post('time_bab_booster'),
+          'status_bab_booster'     =>  $i->post('status_bab_booster'),
+          'kode_soal'              =>  $i->post('kode_soal'),
+          'slug'      =>  $slug);
 
-      $this->M_bab_booster->edit($data,$data['id_bab_booster']);
-      $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Bab Booster</strong></center>');
-      redirect('/admin/paket_booster/edit/'.$paket_booster->slug);
+        $this->M_bab_booster->edit($data,$data['id_bab_booster']);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Bab Booster Baru</strong></center>');
+        redirect('/admin/paket_booster/edit/'.$paket_booster->slug);
+      }
     }
-  }
 
   public function delete_bab($id) {
-    $bab  = $this->M_bab_booster->detail($id); 
-    //     echo "<pre>";
-    // print_r($bab);
-    // exit();
-    $data = array(
-      'bab'  =>  $bab,
-      'id'  =>  $id
-    );
+    $data = array('id'  =>  $id);
     $this->M_bab_booster->delete($data);
-    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data <strong> Bab Booster</strong></center>');
-    redirect('admin/paket_booster/edit/'.$bab->id_booster);
-
-
+    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
+    redirect('admin/bab_booster');
   }
 
   public function add_soal($id_bab_booster) {  
@@ -412,32 +402,32 @@ class Paket_booster extends CI_Controller {
       $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{
-      $i  = $this->input;
-      $data = array(
-        'kode_soal'         =>  $i->post('kode_soal'),
-        'pertanyaan'       =>  $i->post('pertanyaan'),
-        'jawaban_a'       =>  $i->post('jawaban_a'),
-        'jawaban_b'       =>  $i->post('jawaban_b'),
-        'jawaban_c'      =>  $i->post('jawaban_c'),
-        'jawaban_d'      =>  $i->post('jawaban_d'),
-        'jawaban_e'      =>  $i->post('jawaban_e'),
-        'kunci_soal'      =>  $i->post('kunci_soal'),
-        'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
+        $i  = $this->input;
+        $data = array(
+          'kode_soal'         =>  $i->post('kode_soal'),
+          'pertanyaan'       =>  $i->post('pertanyaan'),
+          'jawaban_a'       =>  $i->post('jawaban_a'),
+          'jawaban_b'       =>  $i->post('jawaban_b'),
+          'jawaban_c'      =>  $i->post('jawaban_c'),
+          'jawaban_d'      =>  $i->post('jawaban_d'),
+          'jawaban_e'      =>  $i->post('jawaban_e'),
+          'kunci_soal'      =>  $i->post('kunci_soal'),
+          'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
 
-      $this->M_soal->add($data);
-      $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> Soal Baru</strong></center>');
+        $this->M_soal->add($data);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Menambahkan data <strong> Soal Baru</strong></center>');
 
-      redirect('/admin/paket_booster/edit_bab/'.$bab_booster->id_bab_booster);
+        redirect('/admin/paket_booster/edit_bab/'.$bab_booster->id_bab_booster);
 
-    }   
-  }
+      }   
+    }
 
 
-  public function edit_soal($id_soal) {    
+   public function edit_soal($id_soal) {    
     $edit  = $this->M_soal->detail_booster($id_soal); 
     $bab_booster = $this->M_bab_booster->select_bab_booster($edit->id_bab_booster);
 
-    $valid = $this->form_validation;
+        $valid = $this->form_validation;
     $valid->set_rules(
       'kode_soal',
       'kode_soal',
@@ -491,33 +481,35 @@ class Paket_booster extends CI_Controller {
       $this->load->view("admin/layout/wrapper", $data, false);
 
     }else{
-      $i  = $this->input;
-      $data = array(  
-        'kode_soal'            =>  $i->post('kode_soal'),
-        'pertanyaan'       =>  $i->post('pertanyaan'),
-        'jawaban_a'       =>  $i->post('jawaban_a'),
-        'jawaban_b'       =>  $i->post('jawaban_b'),
-        'jawaban_c'      =>  $i->post('jawaban_c'),
-        'jawaban_d'      =>  $i->post('jawaban_d'),
-        'jawaban_e'      =>  $i->post('jawaban_e'),
-        'kunci_soal'      =>  $i->post('kunci_soal'),
-        'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
+        $i  = $this->input;
+        $data = array(  
+          'kode_soal'            =>  $i->post('kode_soal'),
+          'pertanyaan'       =>  $i->post('pertanyaan'),
+          'jawaban_a'       =>  $i->post('jawaban_a'),
+          'jawaban_b'       =>  $i->post('jawaban_b'),
+          'jawaban_c'      =>  $i->post('jawaban_c'),
+          'jawaban_d'      =>  $i->post('jawaban_d'),
+          'jawaban_e'      =>  $i->post('jawaban_e'),
+          'kunci_soal'      =>  $i->post('kunci_soal'),
+          'pembahasan_soal'      =>  $i->post('pembahasan_soal'));
 
-      $this->M_soal->edit($data,$id_soal);
-      $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Soal Booster </strong></center>');
-      redirect('/admin/paket_booster/edit_bab/'.$edit->id_bab_booster);
+        $this->M_soal->edit($data,$id_soal);
+        $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah data <strong> Soal Booster </strong></center>');
+        redirect('/admin/paket_booster/edit_bab/'.$edit->id_bab_booster);
+      }
     }
-  }
 
-  public function delete_soal($id) {
-    $soal  = $this->M_soal->detail_booster($id); 
+    public function delete_soal($id) {
+    $soal  = $this->M_soal->detail($id); 
     $data = array(
       'id'  =>  $id,
       'soal'=>  $soal);
+    $this->M_paket_bab_booster->delete($data);
     $this->M_soal->delete($data);
-    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data <strong> Soal</strong></center>');
-    redirect('admin/paket_booster/edit_bab/'.$soal->id_bab_booster);
+    $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
+    redirect('admin/paket_bab_booster/edit/'.$soal->id_bab_booster);
   }
+
 
 }
 

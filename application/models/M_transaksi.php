@@ -17,35 +17,32 @@ class M_transaksi extends CI_Model {
           $tmp = ((int)$k->kd_max)+1;
           $kd = sprintf("%04s", $tmp);
         }
-      }else{   
+      }else{
         $kd = "0001";
       }        
-      $tp = '@TU2';  
+      $tp = '@TU2';
       return $tp . $kd;  
     }
-    public function select_transaksi()
+    public function select_transaksi_reguler()
     {
-      $this->db->select('transaksi.*, user.*');
-      $this->db->from('transaksi');  
-      $this->db->join('user', 'user.id_user = transaksi.id_user', 'left');
-      $this->db->order_by('id_transaksi', 'DESC');  
+      $this->db->select('*');
+      $this->db->from('transaksi'); 
+      $this->db->join('paket_reguler', 'paket_reguler.kode_paket = transaksi.kode_paket'); 
+      $this->db->join('user', 'user.id_user = transaksi.id_user'); 
+      $this->db->order_by('transaksi.id_transaksi', 'DESC');  
       $query  = $this->db->get();
       return $query->result();
     }
-
-    public function transaksi_user()
+    public function select_transaksi_booster()
     {
-      $this->db->select('transaksi.*, user.*, paket_reguler.*, paket_booster.*');
-      $this->db->from('transaksi');  
-      $this->db->join('user', 'user.id_user = transaksi.id_user', 'left');
-      $this->db->join('paket_booster', 'paket_booster.kode_paket = transaksi.kode_paket', 'left');
-      $this->db->join('paket_reguler', 'paket_reguler.kode_paket = transaksi.kode_paket', 'left');
-      $this->db->where('user.id_user', $this->session->userdata('id_user'));
-      $this->db->order_by('id_transaksi', 'DESC');  
+      $this->db->select('*');
+      $this->db->from('transaksi'); 
+      $this->db->join('paket_booster', 'paket_booster.kode_paket = transaksi.kode_paket'); 
+      $this->db->join('user', 'user.id_user = transaksi.id_user'); 
+      $this->db->order_by('transaksi.id_transaksi', 'DESC');  
       $query  = $this->db->get();
       return $query->result();
     }
-
     public function delete($data)
     {
       $this->db->where('id_transaksi',$data['id']);
@@ -56,17 +53,11 @@ class M_transaksi extends CI_Model {
         $this->db->insert('transaksi', $data);
     }
 
-    // public function detail($id_transaksi){
-    //   $query=$this->db->get_where('transaksi',array('id_transaksi'=> $id_transaksi));
-    //   return $query->row();
-    // }
     public function detail($id_transaksi){
-    $this->db->select('transaksi.*, user.*, paket_reguler.*, paket_booster.*');
-      $this->db->from('transaksi');  
-      $this->db->join('user', 'user.id_user = transaksi.id_user', 'left');
-      $this->db->join('paket_booster', 'paket_booster.kode_paket = transaksi.kode_paket', 'left');
-      $this->db->join('paket_reguler', 'paket_reguler.kode_paket = transaksi.kode_paket', 'left');
-      $this->db->where('id_transaksi',$id_transaksi);
+      $this->db->select('*');
+      $this->db->from('transaksi'); 
+      $this->db->join('user', 'user.id_user = transaksi.id_user'); 
+      $this->db->where('transaksi.id_transaksi', $id_transaksi);  
       $query  = $this->db->get();
       return $query->row();
     }

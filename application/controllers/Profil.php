@@ -76,7 +76,7 @@ class Profil extends CI_Controller {
         redirect('/profil/');
       }      
       else   
-      {
+      {   
       	$data = array(
           'nama_lengkap'=>  $i->post('nama_lengkap'),
           'jk_user'     =>  $i->post('jk_user'),

@@ -21,16 +21,13 @@
             <p dir=>Jenis Kelamin : <?php echo $jk_user; ?> </p>
             </li>
             <li dir=>
+            <p dir=>No Telepone : <?php echo $nohp_user; ?> </p>
+            </li>
+            <li dir=>
             <p dir=>Universitas :<?php echo $universitas_user; ?> </p>
             </li>
             <li dir=>
             <p dir=>Email : <?php echo $email ?></p>
-            </li>
-            <li dir=>
-            <p dir=> Foto : <img width="100" src= http://demo.temanukai.com/img/img_transaksi/.<?php echo $foto ?>> </p>
-            </li>
-            <li dir=>
-            <p dir=>Password : <?php echo $password; ?></p>
             </li>
             </ul>
 

@@ -78,7 +78,7 @@
               <h3 class="title-login">Login Sekarang</h3>
               <hr class="line-login">
               <p class="description-login">Selamat datang kembali, silahkan masuk</p>
-              <form action="<?php echo base_url('Login_user') ?>" method="post">
+              <form action="<?php echo base_url('Login') ?>" method="post">
 
                 <div class="form-group">
 
@@ -164,10 +164,6 @@
             <div class="form-group">
               <label for="">Password</label>
               <input type="password" class="form-control" id="" name="password" placeholder="Isikan password Anda">
-            </div>
-            <div class="form-group">
-              <span>Upload Foto</span>
-              <input type="file" class="form-control-file ganti-foto" name="foto">
             </div>
             <button type="submit" class="btn btn-danger color login pl-5 pr-5">Daftar</button>
           </form>          

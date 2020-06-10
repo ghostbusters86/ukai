@@ -53,25 +53,12 @@ public function __construct()
       'required',
       array(
         'required'  =>  'Anda belum mengisikan Nama Universitas.')
-    );
+    );  
 
-    $config['upload_path']          = './img/img_user/';
-    $config['allowed_types']        = 'gif|jpg|png|jpeg';
-    $config['max_size']             = 3000;
-    $config['max_width']            = 2000;
-    $config['max_height']           = 2000;
-    $config['encrypt_name']         = TRUE;
-
-    $this->load->library('upload', $config);
 
     if ($valid->run()===false) {
 
       $this->load->view("daftar", false);
-    }else{
-      if ( ! $this->upload->do_upload('foto'))
-      {
-        $error = array('error' => $this->upload->display_errors());
-        print_r($error);
 
     }else{
       $nama_lengkap = $this->input->post('nama_lengkap');
@@ -80,7 +67,6 @@ public function __construct()
       $nohp_user = $this->input->post('nohp_user');
       $jk_user = $this->input->post('jk_user');
       $universitas_user = $this->input->post('universitas_user');
-      $foto = $this->upload->data('file_name');
       $akses_level = $this->input->post('akses_level');
 
       $user['email'] = $email;
@@ -89,7 +75,6 @@ public function __construct()
       $user['nohp_user'] = $nohp_user;
       $user['jk_user'] = $jk_user;
       $user['universitas_user'] = $universitas_user;
-      $user['foto'] = $foto;
       $user['akses_level'] = $akses_level;
 
       $id = $this->M_user->add($user);
@@ -126,7 +111,6 @@ public function __construct()
         redirect('/daftar');
       }
     }
-  }
 
 } 
 

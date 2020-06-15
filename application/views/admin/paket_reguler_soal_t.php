@@ -3,7 +3,7 @@
     <h1 class="h2">Form Tambah Soal Paket Reguler</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url(); ?>admin/paket_reguler">
+      <a href="<?php echo base_url(); ?>admin/paket_reguler/edit/<?php echo $soal_reguler->id_reguler ?>">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
            
       </div>   
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <label>Kode Soal:</label>
-            <input type="text" class="form-control" value="<?php echo $paket_reguler->kode_soal ?>" name="kode_soal" required readonly> 
+            <input type="text" class="form-control" value="<?php echo $soal_reguler->kode_soal ?>" name="kode_soal" required readonly> 
             </div>                     
             <div class="form-group" >
               <label>Kunci Soal :</label>

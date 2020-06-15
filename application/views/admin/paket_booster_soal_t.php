@@ -3,7 +3,7 @@
     <h1 class="h2">Form Tambah Soal Paket Booster</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url(); ?>admin/paket_booster">
+      <a href="<?php echo base_url(); ?>admin/paket_booster/edit_bab/<?php echo $bab_booster->id_bab_booster ?>">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
         
       </div>  
@@ -34,7 +34,13 @@
               <input type="text" class="form-control" value="<?php echo $bab_booster->kode_soal ?>" name="kode_soal" required readonly>       
             <div class="form-group">
               <br><label>Kunci Soal :</label>
-              <br><textarea rows="2" cols="91" name="kunci_soal" class="form-control" placeholder="Masukkan Kunci Soal" required ></textarea>
+              <select class="custom-select form-control" name="kunci_soal">
+                  <option value="A" >A</option>
+                  <option value="B" >B</option>
+                  <option value="C" >C</option>
+                  <option value="D" >D</option>
+                  <option value="E" >E</option>
+              </select>
             </div>            
             <div class="form-group">
               <label>Pembahasan Soal :</label>

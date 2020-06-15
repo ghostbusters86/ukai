@@ -31,7 +31,12 @@ class Profil extends CI_Controller {
 
  public function edit_profil($id_user){
    $edit  = $this->M_user->detail($id_user); 
-
+   if ($edit->foto == "0") {
+     $edit->foto = 'profil.png';
+   }
+   // echo "<pre>";
+   // print_r($edit);
+   // exit();
    $valid = $this->form_validation;
    $valid->set_rules(
     'nohp_user',
@@ -63,13 +68,14 @@ class Profil extends CI_Controller {
    $config['max_height']           = 2000;
    $config['encrypt_name']         = TRUE;
 
+
    $this->load->library('upload', $config);
    $i  = $this->input;
    if ($valid->run()===false) {  
      $data = array(
       'title' => 'Home Teman Ukai UKAI',
       'metades' => 'Platform Penyedia Layanan Latihan Soal UKAI Berbasis Teknologi Akses belajar asik dan santai dengan program kelas online untukmempersiapkan UKAI bagi calon Apoteker baru Indonesia.',
-      'isi'   => 'edit',
+      'isi'   => 'edit_profil',
       'edit'     => $edit 
     );   
      $this->load->view('layout/wrapper',$data);
@@ -105,6 +111,38 @@ class Profil extends CI_Controller {
    }
  }
 }	
+
+public function reset_password($id_user)  {  
+  $edit  = $this->M_user->detail($id_user); 
+
+  $valid = $this->form_validation->set_rules('password', 'Pasword', 'required');
+  $valid = $this->form_validation->set_rules('passconf', 'Password anda tidak sesuai', 'required|matches[password]');
+  $valid =         $this->form_validation->set_message('required','%s wajib diisi');
+  $valid = $this->form_validation->set_error_delimiters('<p class="alert">','</p>');
+     
+   if ($valid->run()===false) {  
+     $data = array(
+      'title' => 'Home Teman Ukai UKAI',
+      'metades' => 'Platform Penyedia Layanan Latihan Soal UKAI Berbasis Teknologi Akses belajar asik dan santai dengan program kelas online untukmempersiapkan UKAI bagi calon Apoteker baru Indonesia.',
+      'isi' => 'edit_profil',
+      'edit'     => $edit
+    );       
+    $this->load->view("layout/wrapper", $data, false);
+
+       }else{  
+        $i  = $this->input;
+        $data = array(
+                  'password'=>  md5($i->post('password'))
+                  );         
+      
+       if ( $this->M_user->updatePassword($data,$id_user)); {
+      $this->session->set_flashdata('sukses', 'Update password gagal.'); 
+       }
+       $this->session->set_flashdata('notifikasi', '<center>Berhasil Merubah <strong> Password User </strong></center>');
+       redirect('/profil');        
+       }  
+     } 
+
 
 }
 

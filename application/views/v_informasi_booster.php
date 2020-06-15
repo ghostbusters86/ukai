@@ -20,15 +20,15 @@
                 </tr>
                 <tr>
                   <td><?php echo $id; ?></td>
-                  <td><?php echo $detail->time_reguler ?> menit</td>
+                  <td><?php echo $detail->time_bab_booster ?> menit</td>
                 </tr>
               </tbody>
             </table>
             <p class="card-text">Nama paket:</p>
-            <p class="card-description"><?php echo $detail->nama_reguler ?></p>
+            <p class="card-description"><?php echo $detail->nama_bab_booster ?></p>
             <p class="card-text">Deskripsi soal:</p>
-            <p class="card-description"><?php echo $detail->desk_reguler ?></p>
-            <a href="<?php echo base_url().'jawab/ambil/'.$id.'/'.$detail->kode_paket; ?>" class="btn btn-danger color login">Mulai</a>
+            <p class="card-description"><?php echo $detail->desk_bab_booster ?></p>
+            <a href="<?php echo base_url().'jawab/ambil_booster/'.$id.'/'.$detail->kode_soal; ?>" class="btn btn-danger color login">Mulai</a>
           </div>
         </div>
         

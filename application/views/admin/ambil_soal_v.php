@@ -1,9 +1,7 @@
 <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-    <h1 class="h2">ambil_soal</h1>
+    <h1 class="h2">Hasil Latihan Peserta</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/ambil_soal/add'); ?>">
-        <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
       </div>
   </div>
 
@@ -25,8 +23,12 @@
        		<thead>
        			<tr>
        				<th>No</th>
-       				<th>User</th>
-       				<th>Kode Soal</th>
+       				<th>Nama User</th>
+       				<th>Kode Paket</th>
+              <th>Kode Soal</th>
+              <th>Benar</th>
+              <th>Salah</th>
+              <th>Score</th>
        				<th>Mulai</th>
        				<th>Berakhir</th>
        				<th>Aksi</th>
@@ -39,8 +41,12 @@
        				?>
        				<tr>
        					<td><?php echo $no; ?></td>
-       					<td><?php echo $ambil_soal->id_user; ?></td>
-       					<td><?php echo $ambil_soal->kode_soal; ?></td>
+       					<td><?php echo $ambil_soal->nama_lengkap; ?></td>
+       					<td><?php echo $ambil_soal->kode_paket; ?></td>
+                <td><?php echo $ambil_soal->kode_soal; ?></td>
+                <td><?php echo $ambil_soal->benar; ?></td>
+                <td><?php echo $ambil_soal->salah; ?></td>
+                <td><?php echo $ambil_soal->score; ?></td>
        					<td><?php echo $ambil_soal->mulai; ?></td>
        					<td><?php echo $ambil_soal->berakhir; ?></td>
        					<td>
@@ -60,10 +66,10 @@
        										</button>
        									</div>
        									<div class="modal-body">
-       										Apakah Anda ingin menghapus data <b><?php echo $ambil_soal->id_ambil_soal; ?></b> ?
+       										Apakah Anda ingin menghapus data nilai <b><?php echo $ambil_soal->nama_lengkap; ?></b> dengan kode soal <b><?php echo $ambil_soal->kode_mulai; ?></b> ?
        									</div>
        									<div class="modal-footer">
-       										<a href="<?php echo site_url('admin/ambil_soal/delete/'.$ambil_soal->id_ambil_soal)?>">
+       										<a href="<?php echo site_url('admin/hasil/delete/'.$ambil_soal->id_ambil_soal)?>">
        											<button type="button" class="btn btn-danger">Delete</button>
        										</a>
        									</div>

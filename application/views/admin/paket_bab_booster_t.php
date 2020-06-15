@@ -3,7 +3,7 @@
     <h1 class="h2">Form Tambah BAB Booster</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url(); ?>admin/bab_booster">
+      <a href="<?php echo base_url(); ?>admin/paket_booster/edit/<?php echo $add_bab->slug ?>">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
         
       </div>

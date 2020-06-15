@@ -1,160 +1,163 @@
-  <section id="latihan">
-    <div class="container">
-      <div class="row wrap">
-        <div class="col-lg-3 col-md-12">
-          <div class="card">
-            <div class="card-header">Data Peserta</div>
-            <div class="card-body">
-              <table class="table soal">
-                <tbody>
-                  <tr class="t">
-                    <td>Nama:</td>
-                  </tr>
-                  <tr>
-                    <td><?php echo $detail->nama_lengkap ?></td>
-                  </tr>
-                  <tr class="t">
-                    <td>ID:</td>
-                  </tr>
-                  <tr>
-                    <td><?php echo $detail->kode_mulai ?></td>
-                  </tr>
-                  <tr class="t">
-                    <td>Latihan:</td>
-                  </tr>
-                  <tr>
-                    <td><?php echo $detail->nama_reguler ?></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">Sisa Waktu Pembahasan</div>
-            <div class="card-body">
-              <h1 class="countdown"></h1>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">Keterangan Warna</div>
-            <div class="card-body">
-              <div class="row body">
-                <div class="ind-yakin"></div>: Jawaban yakin
-              </div>
-              <div class="row body">
-                <div class="ind-ragu"></div>: Ragu-ragu
-              </div>
-              <div class="row body">
-                <div class="ind-belum"></div>: Belum dijawab
-              </div>
-              <div class="row body">
-                <div class="ind-posisi"></div>: Posisi sekarang
+  <form id="form-jawab" action="<?php echo base_url().'jawab/soal/'.$detail->kode_mulai.'/'.$this->uri->segment(4) ?>" method="post">
+    <section id="latihan">
+      <div class="container">
+        <div class="row wrap">
+          <div class="col-lg-3 col-md-12">
+            <div class="card">
+              <div class="card-header">Data Peserta</div>
+              <div class="card-body">
+                <table class="table soal">
+                  <tbody>
+                    <tr class="t">
+                      <td>Nama:</td>
+                    </tr>
+                    <tr>
+                      <td><?php echo $detail->nama_lengkap ?></td>
+                    </tr>
+                    <tr class="t">
+                      <td>ID:</td>
+                    </tr>
+                    <tr>
+                      <td><?php echo $detail->kode_mulai ?></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-lg-6 col-md-12">
-          <div class="card">
-            <div class="card-header">Hasil Pengerjaan</div>
-            <div class="card-body">
-              <div class="row navigasi">
-                <div class="col">
-                  <a>Benar: <br> <i class="fa fa-check"><span><?php echo $penyelesaian['benar']; ?></span></i></a>
-                </div>
-                <div class="col">
-                  <a>Salah: <br> <i class="fa fa-times"> <span><?php echo $penyelesaian['salah']; ?></span></i></a>
-                </div>
-                <div class="col">
-                  <a>Skor: <br> <i class="fa fa-trophy"> <span><?php echo $penyelesaian['score']; ?></span></i></a>
-                </div>
+            <div class="card">
+              <div class="card-header">Sisa Waktu</div>
+              <div class="card-body">
+                <h1 class="countdown"></h1>
               </div>
             </div>
-          </div>
-          <div class="card soal">
-            <div class="card-header">Soal</div>
-            <div class="card-body">
-              <div class="wrap-soal">
-                <p class="nomor" id="nomor">No.<?php echo $this->uri->segment(4); ?></p>
-                <p class="description-soal" id="pertanyaan"><?php echo $soal->pertanyaan ?></p>
-                <div class="funkyradio">
-                  <div class="funkyradio-success" id="pertanyaan">
-                    <input type="radio" name="radio" id="radio1" disabled <?php if ($soal->jawaban=='A'): ?>
-                    checked
-                    <?php endif ?> />
-                    <label for="radio1" id="jawaban_a">A. <?php echo $soal->jawaban_a ?></label>
-                  </div>
-                </div>
-                <div class="funkyradio">
-                  <div class="funkyradio-success">
-                    <input type="radio" name="radio" id="radio2" disabled <?php if ($soal->jawaban=='B'): ?>
-                    checked
-                    <?php endif ?>/>
-                    <label for="radio2" id="jawaban_b">B. <?php echo $soal->jawaban_b ?></label>
-                  </div>
-                </div>
-                <div class="funkyradio">
-                  <div class="funkyradio-success">
-                    <input type="radio" name="radio" id="radio3" disabled <?php if ($soal->jawaban=='C'): ?>
-                    checked
-                    <?php endif ?>/>
-                    <label for="radio3" id="jawaban_c">C. <?php echo $soal->jawaban_c ?></label>
-                  </div>
-                </div>
-                <div class="funkyradio">
-                  <div class="funkyradio-success">
-                    <input type="radio" name="radio" id="radio4" disabled <?php if ($soal->jawaban=='D'): ?>
-                    checked
-                    <?php endif ?>/>
-                    <label for="radio4" id="jawaban_d">D. <?php echo $soal->jawaban_d ?></label>
-                  </div>
-                </div>
-                <div class="funkyradio">
-                  <div class="funkyradio-success">
-                    <input type="radio" name="radio" id="radio4" disabled <?php if ($soal->jawaban=='E'): ?>
-                    checked
-                    <?php endif ?>/>
-                    <label for="radio4" id="jawaban_e">D. <?php echo $soal->jawaban_e ?></label>
-                  </div>
-                </div>
 
-                <br>
-                <p class="nomor">Kunci: <span style="color: #777" id="kunci"><?php echo $soal->kunci_soal ?></span> 
-                </p>
-                <?php if ($soal->kunci_soal==$soal->jawaban){ ?>
-                  <button class="btn btn-sm btn-success">Benar</button>
-                <?php } else{ ?>
-                  <button class="btn btn-sm btn-danger">Salah</button>
-                <?php } ?>
-                <p class="nomor">Penjelasan:</p>
-                <p class="description-soal" id="pembahasan"><?php echo $soal->pembahasan_soal ?>.</p>
+            <div class="card">
+              <div class="card-header">Keterangan Warna</div>
+              <div class="card-body">
+                <div class="row body">
+                  <div class="ind-yakin"></div>: Jawaban yakin
+                </div>
+                <div class="row body">
+                  <div class="ind-ragu"></div>: Ragu-ragu
+                </div>
+                <div class="row body">
+                  <div class="ind-belum"></div>: Belum dijawab
+                </div>
+                <div class="row body">
+                  <div class="ind-posisi"></div>: Posisi sekarang
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-header">Indikator Soal</div>
-            <div class="card-body">
-              <div class="row wr">
-                <?php $no=1; foreach ($indikator as $key => $value): ?>
-                <a type="button" class="indikator" href="<?php echo base_url().'hasil/soal/'.$detail->kode_mulai.'/'.$no ?>" data-id="<?php echo $value->id_soal ?>" data-no="<?php echo $no ?>"><div class="ind-wrap <?php if($this->uri->segment(4)==$no){
-                  echo 'posisi';
-                  }else if($value->status_answer=='1'){
-                    echo ' ';
-                    }else if($value->status_answer=='2'){
-                      echo 'ragu';
-                      } else if($value->status_answer=='0'){ 
-                        echo 'belum';
-                      } ?>" id="<?php echo $no ?>"><h6 class="wr"><?php echo $no ?></h6></div></a>
-                      <?php $no++; endforeach ?>
+          <div class="col-lg-6 col-md-12">
+            <div class="card soal" >
+              <div class="card-header">Soal</div>
+              <div class="card-body">
+                <div class="wrap-soal">
+                  <p class="nomor" id="nomor">No.<?php echo $this->uri->segment(4); ?></p>
+                  <p class="description-soal" id="pertanyaan"><?php echo $soal->pertanyaan ?></p>
+                  <input type="hidden" name="id_soal" value="<?php echo $soal->id_soal ?>">
+                  <input type="hidden" name="kode_mulai" value="<?php echo $detail->kode_mulai ?>">
+                  <div class="funkyradio">
+                    <div class="funkyradio-success">
+                      <input type="radio" name="jawaban" id="radio1" value="A" <?php if ($list_soal[$this->uri->segment(4)]['jawaban']=='A'): ?>
+                      checked
+                      <?php endif ?> />
+                      <label for="radio1" id="jawaban_a">A. <?php echo $soal->jawaban_a ?></label>
+                    </div>
+                  </div>
+                  <div class="funkyradio">
+                    <div class="funkyradio-success">
+                      <input type="radio" name="jawaban" id="radio2" value="B" <?php if ($list_soal[$this->uri->segment(4)]['jawaban']=='B'): ?>
+                      checked
+                      <?php endif ?>/>
+                      <label for="radio2" id="jawaban_b">B. <?php echo $soal->jawaban_b ?></label>
+                    </div>
+                  </div>
+                  <div class="funkyradio">
+                    <div class="funkyradio-success">
+                      <input type="radio" name="jawaban" id="radio3" value="C" <?php if ($list_soal[$this->uri->segment(4)]['jawaban']=='C'): ?>
+                      checked
+                      <?php endif ?>/>
+                      <label for="radio3" id="jawaban_c">C. <?php echo $soal->jawaban_c ?></label>
+                    </div>
+                  </div>
+                  <div class="funkyradio">
+                    <div class="funkyradio-success">
+                      <input type="radio" name="jawaban" id="radio4" value="D" <?php if ($list_soal[$this->uri->segment(4)]['jawaban']=='D'): ?>
+                      checkedu
+                      <?php endif ?>/>
+                      <label for="radio4" id="jawaban_d">D. <?php echo $soal->jawaban_d ?></label>
+                    </div>
+                  </div>
+                  <div class="funkyradio">
+                    <div class="funkyradio-success">
+                      <input type="radio" name="jawaban" id="radio5" value="E" <?php if ($list_soal[$this->uri->segment(4)]['jawaban']=='E'): ?>
+                      checked
+                      <?php endif ?>/>
+                      <label for="radio5" id="jawaban_e">E. <?php echo $soal->jawaban_e ?></label>
                     </div>
                   </div>
                 </div>
-              </div>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input saran" id="ragu" name="status_answer" value="2" <?php if ($list_soal[$this->uri->segment(4)]['status_answer']=='2'): ?>
+                  checked
+                  <?php endif ?>>
+                  <label class="custom-control-label" for="ragu">klik Untuk Menjawab Ragu</label>
+                </div>
 
-              <div class="col-lg-3 col-md-12">
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Indikator Soal</div>
+              <div class="card-body">
+                <div class="row wr">
+                  <?php $no=1; foreach ($list_soal as $key => $value): ?>
+                  <button type="submit" class="indikator ind-wrap <?php 
+                  if ($value['no_soal']==$this->uri->segment(4)){ 
+                    echo 'posisi';
+                    }else if($value['status_answer']=='1'){
+                      echo ' ';
+                      }else if($value['status_answer']=='2'){
+                        echo 'ragu';
+                        } else if($value['status_answer']=='0'){ 
+                          echo 'belum';
+                        } ?>" data-id="<?php echo $value['id_soal'] ?>" data-no="<?php echo $no ?>" style="border:1px solid;cursor: pointer;" onclick=""><h6 class="wr" style="padding-top: 0;font-size: 0.9rem"><?php echo $no ?></h6></button>
+                        <?php $no++; endforeach ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-12">
+                  <div class="card">
+                    <div class="card-header">Navigasi Soal</div>
+                    <div class="card-body">
+                      <div class="row navigasi">
+                        <div class="col-4">
+                          <?php if ($list_soal[$this->uri->segment(4)]['no_soal']-1!=0): ?>
+                            <button class="indikator" data-id="<?php echo $list_soal[$this->uri->segment(4)]['id_soal'] ?>" data-no="<?php echo $list_soal[$this->uri->segment(4)]['no_soal']-1 ?>" style="background: none; border: 0;cursor: pointer;"><i class="fa fa-backward"></i> <br>Prev</button>
+                          <?php endif ?>
+                        </div>
+                        <div class="col-4">
+                    <!-- <button class="indikator" data-id="<?php echo $list_soal[$this->uri->segment(4)]['id_soal'] ?>" data-no="<?php echo $list_soal[$this->uri->segment(4)]['no_soal']+1 ?>" style="background: none;
+                      border: 0;cursor: pointer;"><i class="fa fa-step-forward"></i> <br>Skip</button> -->
+                    </div>
+                    <div class="col-4">
+                      <?php if ($list_soal[$this->uri->segment(4)]['no_soal']+1<=$penyelesaian['total']): ?>
+                        <button class="indikator" data-id="<?php echo $list_soal[$this->uri->segment(4)]['id_soal'] ?>" data-no="<?php echo $list_soal[$this->uri->segment(4)]['no_soal']+1 ?>" style="background: none;  border: 0;cursor: pointer;"><i class="fa fa-forward"></i> <br>Next</a>
+                        <?php endif ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="card">
-                  <div class="card-header">Normal Lab</div>
+                  <div class="card-header">Tabel Normal Lab</div>
                   <div class="card-body">
                     <div class="normal-lab">
                       <a href="" class="btn btn-danger paket" data-toggle="modal" data-target="#exampleModalCenter">Detail Normal Lab</a>
@@ -1289,7 +1292,7 @@
                 </div>
 
                 <div class="card">
-                  <div class="card-header">Peneyelesaian Soal</div>
+                  <div class="card-header">Penyelesaian Soal</div>
                   <div class="card-body">
                     <table class="table soal">
                       <tbody>
@@ -1318,10 +1321,13 @@
             </div>
           </div>
         </section>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
-        <script type="text/javascript">
-     // Set the date we're counting down to
-     var countDownDate = new Date(<?php echo '"'.date("M d, Y H:i:s", strtotime('+1 days',strtotime($detail->berakhir))).'"' ?>).getTime();
+      </form>
+
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+      <script type="text/javascript">
+        
+    // Set the date we're counting down to
+    var countDownDate = new Date(<?php echo '"'.date("M d, Y H:i:s", strtotime($detail->berakhir)).'"' ?>).getTime();
 
   // Update the count down every 1 second
   var x = setInterval(function() {
@@ -1333,19 +1339,29 @@
   var distance = countDownDate - now;
 
   // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
-  $('.countdown').html( '' + days + ':' + hours + ':' + minutes + ':' + seconds + ' ');
+  $('.countdown').html( '' + hours + ':' + minutes + ':' + seconds + ' ');
 
   // If the count down is finished, write some text 
   if (distance < 0) {
     clearInterval(x);
     $('.countdown').html( 'waktu habis ');
-    window.location.href = "<?php echo base_url().'paket/pengguna' ?>";
-  }  
+    window.location.href = "<?php echo base_url().'jawab/selesai_booster/'.$detail->kode_mulai; ?>";
+  } else if (minutes < 10 && hours < 1) {
+    $('.countdown').addClass('text-danger');
+    $('.countdown').html('' + hours + ':' + minutes + ':' + seconds + ' ');
+  } 
 }, 1000);
+  $(".indikator").click(function() {
+    let id = $(this).attr('data-id');
+    let no = $(this).attr('data-no');
+    let url = '<?php echo base_url().'jawab/soal_booster/'.$detail->kode_mulai.'/' ?>';
+    $("#form-jawab").attr("action",url+no);
+    console.log(url+no);
+  });
+
 </script>

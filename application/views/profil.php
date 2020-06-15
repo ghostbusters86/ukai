@@ -62,7 +62,7 @@
                       <span>Password</span>
                       <input type="password" class="form-control" id="" value="<?php echo $get_user['password'] ?> ">
                     </div> -->
-                    <button type="submit" class="btn btn-danger color login pl-5 pr-5">Ganti Informasi</button>
+                    <a type="button" href="<?php echo base_url().'profil/edit_profil/'.$get_user['id_user'] ?>" class="btn btn-danger color login pl-5 pr-5" onc>Ganti Informasi</a>
                   </div>
                 </form>
               </div>

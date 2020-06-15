@@ -214,7 +214,10 @@ class Paket_reguler extends CI_Controller {
      
     $soal_reguler = $this->M_paket_reguler->detail($slug);
     $paket_reguler = $this->M_paket_reguler->select_soal($soal_reguler->id_reguler);
-      
+    // echo "<pre>";
+    // print_r($soal_reguler);
+    // print_r($paket_reguler);
+    // exit();
 
     $valid = $this->form_validation;
     $valid->set_rules(     

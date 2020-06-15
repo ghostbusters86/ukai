@@ -62,7 +62,6 @@ class M_paket_booster extends CI_Model {
     {
       $this->db->select('*');
       $this->db->from('paket_booster');
-      $this->db->where('status_booster', '1');
       $this->db->where('id_booster', $id_booster);  
       $this->db->order_by('id_booster', 'DESC');
       $query = $this->db->get();

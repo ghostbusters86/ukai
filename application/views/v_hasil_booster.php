@@ -23,7 +23,7 @@
                     <td>Latihan:</td>
                   </tr>
                   <tr>
-                    <td><?php echo $detail->nama_reguler ?></td>
+                    <td><?php echo $detail->nama_bab_booster ?></td>
                   </tr>
                 </tbody>
               </table>
@@ -137,7 +137,7 @@
             <div class="card-body">
               <div class="row wr">
                 <?php $no=1; foreach ($indikator as $key => $value): ?>
-                <a type="button" class="indikator" href="<?php echo base_url().'hasil/soal/'.$detail->kode_mulai.'/'.$no ?>" data-id="<?php echo $value->id_soal ?>" data-no="<?php echo $no ?>"><div class="ind-wrap <?php if($this->uri->segment(4)==$no){
+                <a type="button" class="indikator" href="<?php echo base_url().'hasil/soal_booster/'.$detail->kode_mulai.'/'.$no ?>" data-id="<?php echo $value->id_soal ?>" data-no="<?php echo $no ?>"><div class="ind-wrap <?php if($this->uri->segment(4)==$no){
                   echo 'posisi';
                   }else if($value->status_answer=='1'){
                     echo ' ';

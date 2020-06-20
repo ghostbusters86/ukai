@@ -2,8 +2,6 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <h1 class="h2">Transaksi</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo site_url('admin/transaksi/add'); ?>">
-        <button class="btn btn-sm btn-outline-primary">Tambah</button></a>
       </div>
     </div>
 
@@ -83,7 +81,7 @@
                 </button>
               </div>
               <div class="modal-body">
-               Apakah Anda ingin menghapus data <b><?php echo $reguler->id_user; ?></b> ?
+               Apakah Anda ingin menghapus data <b><?php echo $reguler->nama_lengkap; ?></b> ?
              </div>
              <div class="modal-footer">
                <a href="<?php echo site_url('admin/transaksi/delete/'.$reguler->id_transaksi)?>">
@@ -158,7 +156,7 @@ endforeach;
         </button>
       </div>
       <div class="modal-body">
-       Apakah Anda ingin menghapus data <b><?php echo $booster->id_user; ?></b> ?
+       Apakah Anda ingin menghapus data <b><?php echo $booster->nama_lengkap; ?></b> ?
      </div>
      <div class="modal-footer">
        <a href="<?php echo site_url('admin/transaksi/delete/'.$booster->id_transaksi)?>">

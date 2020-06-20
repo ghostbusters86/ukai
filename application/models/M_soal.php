@@ -58,7 +58,7 @@ class M_soal extends CI_Model {
       $this->db->select('soal.*, paket_reguler.*');
       $this->db->from('soal');  
       $this->db->join('paket_reguler', 'paket_reguler.kode_soal = soal.kode_soal', 'inner');
-      $this->db->where('id_soal',$id_soal);
+      $this->db->where('soal.id_soal',$id_soal);
       $query  = $this->db->get();
       return $query->row();
     }  
@@ -69,7 +69,7 @@ class M_soal extends CI_Model {
       $this->db->from('soal'); 
       $this->db->join('bab_booster', 'bab_booster.kode_soal = soal.kode_soal', 'left');
       $this->db->join('paket_booster', 'paket_booster.id_booster = bab_booster.id_booster', 'left');
-      $this->db->where('id_soal',$id_soal);
+      $this->db->where('soal.id_soal',$id_soal);
       $query  = $this->db->get();
       return $query->row();
     }

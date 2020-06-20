@@ -139,7 +139,7 @@
                 </td>
                 <td><?php echo $paket_booster_published->created; ?></td>
                 <td>
-                  <a href="<?php echo site_url('admin/paket_booster/edit/'.$paket_booster_published->id_booster); ?>">
+                  <a href="<?php echo site_url('admin/paket_booster/edit/'.$paket_booster_published->slug); ?>">
                     <button class="btn btn-sm btn-outline-success">Detail</button>
                   </a>
 
@@ -213,7 +213,7 @@
                 </td>
                 <td><?php echo $paket_booster_pending->created; ?></td>
                 <td>
-                  <a href="<?php echo site_url('admin/paket_booster/edit/'.$paket_booster_pending->id_booster); ?>">
+                  <a href="<?php echo site_url('admin/paket_booster/edit/'.$paket_booster_pending->slug); ?>">
                     <button class="btn btn-sm btn-outline-success">Detail</button>
                   </a>
 

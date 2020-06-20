@@ -67,10 +67,10 @@
        										</button>
        									</div>
        									<div class="modal-body">
-       										Apakah Anda ingin menghapus data <b><?php echo $user->judul_artikel; ?></b> ?
+       										Apakah Anda ingin menghapus data <b><?php echo $user->nama_lengkap; ?></b> ?
        									</div>
        									<div class="modal-footer">
-       										<a href="<?php echo site_url('admin/artikel/delete/'.$user->id_user)?>">
+       										<a href="<?php echo site_url('admin/user/delete/'.$user->id_user)?>">
        											<button type="button" class="btn btn-danger">Delete</button>
        										</a>
        									</div>

@@ -10,7 +10,7 @@ a:hover {
 	background-color: #f2f2f2;
 }
 .navbar-hijau{
-	background-color: #8c620f;
+	background-color: #90014e;
 }
 
 .logoadmin{ 
@@ -19,7 +19,7 @@ a:hover {
 }
 
 .sidebaradmin .nav-link.active {
-  color: #8c620f;
+  color: #90014e;
 }
 
 .card-hover a{
@@ -27,7 +27,7 @@ a:hover {
 	text-decoration: none;
 }
 .card-hover a:hover{
-	color: #8c620f;
+	color: #90014e;
 	text-decoration: none;
 }
 .baner .text {
@@ -64,7 +64,7 @@ a:hover {
 .hrprofil {
   width: 50%; 
   height:1px; 
-  background-color:#8c620f;
+  background-color:#90014e;
   margin-bottom: 40px;
 }
 
@@ -146,7 +146,7 @@ a:hover {
   float: right;
   font-size: 12px;
   font-weight: bold;
-  color: #8c620f;
+  color: #90014e;
 }
 /*video selesai*/
 
@@ -154,15 +154,15 @@ a:hover {
 /*footer mulai*/
 #btn-footer {
   padding: 8px;
-  color: #8c620f;
+  color: #90014e;
   background-color: transparent;
-  border-color: #8c620f;
+  border-color: #90014e;
   margin: 5px;
 }
 
 #btn-footer:hover {
   color: #fff;
-  border-color: #8c620f;
+  border-color: #90014e;
 }
 
 #pembungkus {
@@ -182,7 +182,7 @@ h5.footer {
 }
 
 .footer h5 {
-  color: #8c620f;
+  color: #90014e;
 }
 
 /*select*/
@@ -245,7 +245,7 @@ li#footerul {
 
 
 .footerartikel a:hover{
-  color: #8c620f;
+  color: #90014e;
 }
 
 .footerartikel h5 {
@@ -268,7 +268,7 @@ li#footerul {
 }
 
 #padding-footer .tags a:hover{
-  color: #8c620f;
+  color: #90014e;
 }
 
 a.call {
@@ -294,8 +294,8 @@ a.fb-footer {
 
 .footer .sosmed a {
   border-radius: 5px;
-  color: #8c620f;
-  border: 1px solid #8c620f;
+  color: #90014e;
+  border: 1px solid #90014e;
   font-size: 12px;
   margin-top: 10px;
   margin-right: 3px;
@@ -318,7 +318,7 @@ a.fb-footer {
 }
 
 #copyright a:hover{
-  color: #8c620f;
+  color: #90014e;
 }
 
 #copyright a.khusus {
@@ -417,7 +417,7 @@ a.fb-footer {
   }
 
   #modal-permohonan .border-permohonan {
-    border : 3px solid #8c620f;
+    border : 3px solid #90014e;
     padding-top: 50px;
     padding-bottom: 50px;
     padding-left: 20px;
@@ -472,8 +472,8 @@ a.fb-footer {
   }
 
   .footer .sosmed a {
-    color: #8c620f;
-    border: 1px solid #8c620f;
+    color: #90014e;
+    border: 1px solid #90014e;
     padding: 5px;
     border-radius: 5px;
     font-size: 12px;
@@ -544,11 +544,11 @@ a.fb-footer {
 
   /*slider tutup*/
   .bawahsliderdeks {
-    background-color: #8c620f;
+    background-color: #90014e;
   }
 
   .bawahslider {
-    background-color:#8c620f;
+    background-color:#90014e;
   }
 
 
@@ -582,7 +582,7 @@ a.fb-footer {
   /*bawah slider tutup*/
 
   .produk {
-    background-color: #8c620f;
+    background-color: #90014e;
     height: 140px;
   }
 
@@ -633,13 +633,13 @@ a.fb-footer {
 
   .katamereka .card .kota {
     font-size: 14px;
-    color: #8c620f;
+    color: #90014e;
     margin-top: -20px;
   }
 
   .katamereka .card .petik {
     font-size: 54px;
-    color: #8c620f;
+    color: #90014e;
     text-align: left;
     font-family: arial;
   }
@@ -713,7 +713,7 @@ a.fb-footer {
     float: right;
     font-size: 12px;
     font-weight: bold;
-    color: #8c620f;
+    color: #90014e;
   }
   /*galeri 1 tutup*/
 
@@ -765,7 +765,7 @@ a.fb-footer {
     float: right;
     font-size: 12px;
     font-weight: bold;
-    color: #8c620f;
+    color: #90014e;
   }
   /*galeri 2 tutup*/
 
@@ -823,7 +823,7 @@ a.fb-footer {
     float: right;
     font-size: 12px;
     font-weight: bold;
-    color: #8c620f;
+    color: #90014e;
   }
   /*galeri 3 tutup*/
   /*galeri album selesai*/
@@ -938,7 +938,7 @@ a.fb-footer {
     float: right;
     font-size: 12px;
     font-weight: bold;
-    color: #8c620f;
+    color: #90014e;
   }
   /*galeri 2 tutup*/
   /*galeri aktivitas selesai*/
@@ -956,7 +956,7 @@ a.fb-footer {
     font-weight: bold;
   }
   .halo .col-md-7 h5 {
-    color: #8c620f;
+    color: #90014e;
     font-weight: bold;
     margin-bottom: 0px;
   }
@@ -972,7 +972,7 @@ a.fb-footer {
       margin-top: 0px;
     }
     .halo .col-md-7 h5 {
-      color: #8c620f;
+      color: #90014e;
       font-weight: bold;
       margin-bottom: 0px;
     }

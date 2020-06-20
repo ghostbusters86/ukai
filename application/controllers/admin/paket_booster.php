@@ -337,9 +337,11 @@ class Paket_booster extends CI_Controller {
 
   public function delete_bab($id) {
     $data = array('id'  =>  $id);
+    $edit  = $this->M_bab_booster->detail($id); 
+    $paket_booster = $this->M_paket_booster->select_bab($edit->id_booster);
     $this->M_bab_booster->delete($data);
     $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
-    redirect('admin/bab_booster');
+    redirect('admin/paket_booster/edit/'.$paket_booster->slug);
   }
 
   public function add_soal($id_bab_booster) {  
@@ -426,7 +428,9 @@ class Paket_booster extends CI_Controller {
    public function edit_soal($id_soal) {    
     $edit  = $this->M_soal->detail_booster($id_soal); 
     $bab_booster = $this->M_bab_booster->select_bab_booster($edit->id_bab_booster);
-
+    // echo "<pre>";
+    // print_r($bab_booster);
+    // exit();
         $valid = $this->form_validation;
     $valid->set_rules(
       'kode_soal',
@@ -500,14 +504,16 @@ class Paket_booster extends CI_Controller {
     }
 
     public function delete_soal($id) {
-    $soal  = $this->M_soal->detail($id); 
+    $soal  = $this->M_soal->detail_booster($id);
+    // echo "<pre>";
+    // print_r($soal);
+    // exit();
     $data = array(
       'id'  =>  $id,
       'soal'=>  $soal);
-    $this->M_paket_bab_booster->delete($data);
     $this->M_soal->delete($data);
     $this->session->set_flashdata('notifikasi', '<center>Berhasil menghapus data');
-    redirect('admin/paket_bab_booster/edit/'.$soal->id_bab_booster);
+    redirect('/admin/paket_booster/edit_bab/'.$soal->id_bab_booster);
   }
 
 

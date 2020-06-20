@@ -16,20 +16,61 @@
               </td>
             </tr>
             <tr>
-              <td>Nama Rekening Tujuan</td>
-              <td class="r">Teman Ukai</td>
-            </tr>
-            <tr>
               <td>Nama Paket</td>
-              <td class="r">Paket soal reguler</td>
-            </tr>
+              <td class="r"><?php echo $paket_r->nama_reguler?></td>
+            </tr> 
             <tr>
-              <td>Rekening Bank</td>
-              <td class="r">801254649</td>
-            </tr>
-            <tr>
-              <td>Harga Paket</td>
-              <td class="r">Rp. <?php echo number_format($paket_r->harga_reguler,'0','.','.') ?></td>
+              <td colspan="2">  
+              Rekening
+              <hr>
+              <div class="row">
+                <!-- <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-4">
+                          <img src="<?php echo base_url().'assets/images/bca.jpg' ?>" class="img-fluid" width="300px">
+                        </div>
+                        <div class="col-8 text-center">
+                          <h5 class="card-title">An. Teman Ukai</h5>
+                      <p class="card-text">10928309128391</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-4">
+                          <img src="<?php echo base_url().'assets/images/mandiri.jpg' ?>" class="img-fluid" width="300px">
+                        </div>
+                        <div class="col-8 text-center">
+                          <h5 class="card-title">An. Teman Ukai</h5>
+                      <p class="card-text">10928309128391</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-4">
+                          <img src="<?php echo base_url().'assets/images/bri.jpg' ?>" class="img-fluid" width="300px">
+                        </div>
+                        <div class="col-8 text-center">
+                          <h5 class="card-title">An. Imas Amalia Wardani</h5>
+                          <p class="card-text">1792-01-015182-50-8</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -61,7 +102,11 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <span>Bank</span>
-                <input type="text" class="form-control" id="" placeholder="Masukkan Bank" name="kode_bank">
+                <select class="form-control" name="kode_bank">
+                  <option value="BCA">BCA</option>
+                  <option value="Mandiri">Mandiri</option>
+                  <option value="BRI">BRI</option>
+                </select>
               </div>
               <div class="form-group col-md-6">
                 <span>Jumlah Pembayaran</span>

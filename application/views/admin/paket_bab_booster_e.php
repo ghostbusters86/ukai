@@ -159,7 +159,7 @@
                             Apakah Anda ingin menghapus data <b><?php echo $soal->pertanyaan; ?></b> ?
                           </div>
                           <div class="modal-footer">
-                            <a href="<?php echo site_url('admin/soal/delete/'.$soal->id_soal)?>">
+                            <a href="<?php echo site_url('admin/paket_booster/delete_soal/'.$soal->id_soal)?>">
                               <button type="button" class="btn btn-danger">Delete</button>
                             </a>
                           </div>

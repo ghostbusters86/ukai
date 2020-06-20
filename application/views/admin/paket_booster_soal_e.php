@@ -3,7 +3,7 @@
     <h1 class="h2">Form Ubah Soal</h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="<?php echo base_url(); ?>admin/soal">
+      <a href="<?php echo base_url(); ?>admin/paket_booster/edit_bab/<?php echo $bab_booster[0]->id_bab_booster ?>">
         <button class="btn btn-sm btn-outline-success">Kembali</button></a>
         
       </div>
@@ -33,7 +33,13 @@
             </div>                
             <div class="form-group">
               <label>Kunci Soal :</label>
-              <input type="text" class="form-control" value="<?php echo $edit->kunci_soal ?>"  name="kunci_soal" required>
+              <select class="custom-select form-control" name="kunci_soal">
+                  <option value="A" <?php if ($edit->kunci_soal=='A'){echo "selected";} ?>>A</option>
+                  <option value="B" <?php if ($edit->kunci_soal=='B'){echo "selected";} ?>>B</option>
+                  <option value="C" <?php if ($edit->kunci_soal=='C'){echo "selected";} ?>>C</option>
+                  <option value="D" <?php if ($edit->kunci_soal=='D'){echo "selected";} ?>>D</option>
+                  <option value="E" <?php if ($edit->kunci_soal=='E'){echo "selected";} ?>>E</option>
+                </select>
             </div>            
             <div class="form-group">
               <label>Pembahasan Soal :</label>

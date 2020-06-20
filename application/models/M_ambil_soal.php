@@ -12,6 +12,7 @@ class M_ambil_soal extends CI_Model {
     {
       $this->db->select('*');
       $this->db->from('ambil_soal');  
+      $this->db->join('user', 'ambil_soal.id_user = user.id_user');
       $this->db->order_by('id_ambil_soal', 'DESC');  
       $query  = $this->db->get();
       return $query->result();
@@ -21,13 +22,21 @@ class M_ambil_soal extends CI_Model {
       $this->db->where('id_ambil_soal',$data['id']);
       $this->db->delete('ambil_soal');
     }
+    public function delete_jawaban($kode_mulai)
+    {
+      $this->db->where('kode_mulai',$kode_mulai);
+      $this->db->delete('jawaban');
+    }
     public function add($data)
     {
         $this->db->insert('ambil_soal', $data);
     }
 
-    public function detail($id_ambil_soal){
-      $query=$this->db->get_where('ambil_soal',array('id_ambil_soal'=> $id_ambil_soal));
+    public function detail($data){
+       $this->db->select('*');
+      $this->db->from('ambil_soal');  
+      $this->db->where('id_ambil_soal', $data['id']);  
+      $query  = $this->db->get();
       return $query->row();
     }
 

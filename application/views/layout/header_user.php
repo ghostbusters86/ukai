@@ -19,6 +19,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('paket'); ?>">Paket Soal</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('paket/pengguna'); ?>">Paket Pengguna</a>
+        </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
         <a href="<?php echo base_url().'login/logout' ?>"><i class="fa fa-user" style="color: #9E1F63"></i> Logout</a>

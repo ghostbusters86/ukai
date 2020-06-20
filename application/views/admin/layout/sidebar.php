@@ -3,9 +3,9 @@
   <nav id="sidebar">
     <div class="sidebar-header">
       <center> 
-        <img src="<?php echo base_url(); ?>assets/images/admin.png" alt="Foto_Profil" class="rounded-circle coba mb-2" width="60%">
+        <img src="<?php echo base_url(); ?>img/img_user/<?php if($this->session->userdata('foto')=='0'){echo 'profil.png';}else{echo $this->session->userdata('foto');} ?>" alt="Foto_Profil" class="rounded-circle coba mb-2" width="60%">
         <br>
-        <span><?php echo $this->session->userdata('nanma_lengkap'); ?></span> 
+        <span><?php echo $this->session->userdata('nama_lengkap'); ?></span> 
         <hr>
       </center>
     </div>
@@ -26,6 +26,9 @@
       </li>
       <li>
         <a href="<?php echo base_url('admin/paket_booster'); ?>"><i class="fas fa-bookmark pr-3"></i>Paket Booster</a>
+      </li>
+      <li>
+        <a href="<?php echo base_url('admin/hasil'); ?>"><i class="fas fa-clipboard-check pr-3"></i>Hasil Peserta</a>
       </li>
        
       <li>

@@ -145,7 +145,7 @@
                 </td>
                 <td>
                   <a href="<?php echo site_url('admin/paket_booster/edit_bab/'.$bab_booster->id_bab_booster); ?>">
-                    <button class="btn btn-sm btn-outline-success">Edit</button>
+                    <button class="btn btn-sm btn-outline-success">Detail</button>
                   </a>
 
                   <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#<?php echo $bab_booster->id_bab_booster; ?><?php echo $bab_booster->id_bab_booster; ?>">
@@ -163,7 +163,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda ingin menghapus data <b><?php echo $bab_booster->id_bab_booster; ?></b> ?
+                          Apakah Anda ingin menghapus data <b><?php echo $bab_booster->nama_bab_booster; ?></b> ?
                         </div>
                         <div class="modal-footer">
                           <a href="<?php echo site_url('admin/paket_booster/delete_bab/'.$bab_booster->id_bab_booster)?>">
@@ -220,7 +220,7 @@
                 </td>
                 <td>
                   <a href="<?php echo site_url('admin/paket_booster/edit_bab/'.$bab_publish->id_bab_booster); ?>">
-                    <button class="btn btn-sm btn-outline-success">Edit</button>
+                    <button class="btn btn-sm btn-outline-success">Detail</button>
                   </a>
 
                   <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#<?php echo $bab_publish->id_bab_booster; ?><?php echo $bab_publish->id_bab_booster; ?>">
@@ -238,7 +238,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda ingin menghapus data <b><?php echo $bab_publish->id_bab_booster; ?></b> ?
+                          Apakah Anda ingin menghapus data <b><?php echo $bab_publish->nama_bab_booster; ?></b> ?
                         </div>
                         <div class="modal-footer">
                           <a href="<?php echo site_url('admin/paket_booster/delete_bab/'.$bab_publish->id_bab_booster)?>">
@@ -295,7 +295,7 @@
                 </td>
                 <td>
                   <a href="<?php echo site_url('admin/paket_booster/edit_bab/'.$bab_pending->id_bab_booster); ?>">
-                    <button class="btn btn-sm btn-outline-success">Edit</button>
+                    <button class="btn btn-sm btn-outline-success">Detail</button>
                   </a>
 
                   <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#<?php echo $bab_pending->id_bab_booster; ?><?php echo $bab_pending->id_bab_booster; ?>">
@@ -313,7 +313,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda ingin menghapus data <b><?php echo $bab_booster->kode_paket; ?></b> ?
+                          Apakah Anda ingin menghapus data <b><?php echo $bab_booster->nama_bab_booster; ?></b> ?
                         </div>
                         <div class="modal-footer">
                           <a href="<?php echo site_url('admin/paket_booster/delete_bab/'.$bab_pending->id_bab_booster)?>">
